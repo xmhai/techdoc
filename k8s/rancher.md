@@ -19,12 +19,11 @@ https://rancher.com/docs/rancher/v2.x/en/installation/resources/k8s-tutorials/in
 FOLLOW below link (best and detailed):  
 https://computingforgeeks.com/install-kubernetes-production-cluster-using-rancher-rke/
 
-RKE is a container-based installer, which means 
-- it requires Docker to be installed on the remote server (Node), and it currently requires Docker version 1.12 to be installed on the servers. 
-RKE works by connecting to each server via SSH and setting up a tunnel to the Docker socket on remote server (Node), which means 
+RKE works by connecting to each server via SSH and setting up a tunnel to the Docker socket on remote server (Node), which means: 
+- it requires Docker to be installed on the remote server (Node), and it currently requires Docker version 1.12 to be installed on the servers.  
 - the SSH user must have access to the Docker engine on remote server (Node). To enable access to the SSH user, you can add this user to the Docker group:
 usermod -aG docker
-- Testing: Make sure the user can Jumphost ssh to all remote server and run docker ps command (this is the make sure docker is available at nodes)
+- Verification: Make sure the user can Jumphost ssh to all remote server and run docker ps command (this is the make sure docker is available at nodes)
 
 **RKE (AzureVM: 1 x Jumphost, 1 x LoadBalancer, 3 x EC2 (RHEL 8.2)) SUCCESS**  
 https://rancher.com/docs/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha/
@@ -192,8 +191,8 @@ https://www.linuxsysadmins.com/setup-kubernetes-cluster-with-rancher/
 
 ## Troubleshooting
 
-Error: Failed to apply the ServiceAccount needed for job execution: Post "https://20.198.168.250:6443/apis/rbac.authorization.k8s.io/v1/clusterrolebindings?timeout=30s": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-Cause: Firewall not open
+**Error**: Failed to apply the ServiceAccount needed for job execution: Post "https://20.198.168.250:6443/apis/rbac.authorization.k8s.io/v1/clusterrolebindings?timeout=30s": context deadline exceeded (Client.Timeout exceeded while awaiting headers)  
+**Cause**: Firewall not open
 
 ---
 **cluster.yml**  
@@ -218,8 +217,9 @@ ingress:
     use-forwarded-headers: "true"  
 ```
 **openport.sh**  
-nano openport.sh
 ```sh
+nano openport.sh
+
 #!/bin/bash  
 for i in 22 80 443 179 5473 6443 8472 2376 8472 2379-2380 9099  10250 10251 10252 10254 30000-32767; do
     sudo firewall-cmd --add-port=${i}/tcp --permanent
@@ -229,7 +229,8 @@ for i in 8285 8472 4789 30000-32767; do
 done
 sudo systemctl disable firewalld
 sudo firewall-cmd --reload
-```
+
 chmod +x openport.sh  
 ./openport.sh
+```
 

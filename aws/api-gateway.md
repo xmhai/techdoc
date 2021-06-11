@@ -1,4 +1,4 @@
-# API Gateway With Cognito Authenticator Setup
+# API Gateway With Cognito Setup
 XXX - Backend Application/System Name
 ## Create User Pools
 1. Create User Pools "*XXX Users*"

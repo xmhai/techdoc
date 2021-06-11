@@ -12,6 +12,11 @@ Access Internet
 ## Bastion
 ![](bastion.png)
 
+How to copy the Jumpbox private key to Jumpbox:
+1. Use Notepad to open the jumpbox.pem, copy and paste to id_rsa
+2. chmod 400 ~/.ssh/id_rsa
+3. sudo ssh -i id-rsa ec2-user@10.0.1.41
+
 ## AWS Microservice Architecture
 https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/microservices-on-aws.html#introduction-section
 https://aws.amazon.com/blogs/architecture/field-notes-integrating-http-apis-with-aws-cloud-map-and-amazon-ecs-services/

@@ -43,7 +43,7 @@ In the end, the proposed solution is still using internal ALB to front the micro
 
 https://stackoverflow.com/questions/56897754/not-able-to-make-aws-ecs-services-communicate-over-service-discovery
 
-Proposed AWS solution:
+Proposed AWS solution:  
 ![](ECS.jpg) 
 ## Setup
 The setup is a POC for proposed AWS solution.
@@ -187,7 +187,7 @@ Define logging in task container definition.
       },
 NOTE: a new log stream with suffix of task-id will be created for each new task.
 Pros:
-- Don’t need to change program, just configure application log output to stdout (using stdout is actually one of the best practices in cloud logging)
+- Don’t need to change program, just configure application log output to stdout (**using stdout is actually one of the best practices in cloud logging**)
 Cons:
 - Too many logs mixed
 
@@ -237,4 +237,3 @@ sudo mkdir /mnt/efs
 sudo mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-975180d7.efs.ap-southeast-1.amazonaws.com:/ /mnt/efs
 df -T
 ```
-

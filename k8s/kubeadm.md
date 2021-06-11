@@ -13,7 +13,15 @@ https://upcloud.com/community/tutorials/install-kubernetes-cluster-centos-8/
 Extra steps
 -	Ignore the version in the instruction when install docker/kubeadm/kubectl/kubelet
 -	kubeadm init --ignore-preflight-errors=NumCPU --apiserver-advertise-address=192.168.56.105 --pod-network-cidr=10.244.0.0/16
--	*Might need to set CentOS 8 to use iptables*
+-	*Might need to set CentOS 8 to use iptables*  
+```sh
+# revert back to iptables (CentOS 8)
+sudo nano /etc/firewalld/firewalld.conf
+sudo systemctl enable firewalld
+sudo service firewalld restart
+# check
+iptables-save | grep <hostnames>
+```
 -	Install Fannel network plugin before join (use Flannel, tried Calico but not success maybe due to it only support CentOS 7)  
 **(Fannel)**  
 curl -LO https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml  

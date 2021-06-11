@@ -21,26 +21,27 @@ XXX - Backend Application/System Name
 ## Configure API Gateway
 1. Create EC2 instances in **private** subnet
 2. Create **Internal NLB** to load balance EC2 instances
-3. Create VPC Link
-4. Create REST API "*xxx-api*"
+3. (Optional) To support HTTPS, NLB need to add 443 listener, and set a CA certificate imported into ACM.
+4. Create VPC Link
+5. Create REST API "*xxx-api*"
    - Create Method GET
    - Integration Type: VPC Link
    - Use Proxy Integration
    - Method: GET
    - VPC Link: vpclink
-   - Set Endpoint to "http://api.aws.com/*path*"
-5. Create Authorizer
+   - Set Endpoint to "http://*api.aws.com*/*path*" (api.aws.com is the domain name of the certificate installed at NLB)
+6. Create Authorizer
    - Name: *XXXAuthorizer*
    - Type: Cognito
    - User Pool: *XXX Users*
    - Token Resource: Authorization
-6. Create API key for each insurer
+7. Create API key for each insurer
    - send to insurer together with client ID and secret
-7. Create Usage Plan “*XXXPlan*”
+8. Create Usage Plan “*XXXPlan*”
    - Add API Stage
    - Add API Keys
-8. Enable CORS from “action” dropdown list
-9. Set Method Authorization
+9. Enable CORS from “action” dropdown list
+10. Set Method Authorization
    - Authorization: *XXXAuthorizer*
    - Oath Scope: *xxx-api*/read
    - Api Key required: true

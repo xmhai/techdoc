@@ -1,0 +1,60 @@
+{
+  "executionRoleArn": "arn:aws:iam::696823325773:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "mainservice",
+      "image": "<IMAGE1_NAME>",
+	  "essential": true,
+      "cpu": 128,
+      "memory": 300,
+      "portMappings": [
+        {
+          "hostPort": 8080,
+          "protocol": "tcp",
+          "containerPort": 8080
+        }
+      ],
+      "environment": [
+        {
+          "name": "logging.file.name",
+          "value": "/var/logs/mainservice.log"
+        },
+        {
+          "name": "logging.pattern.console",
+          "value": "%d{yyyy-MM-dd HH:mm:ss} %-5level ${hostname} [console] [%t] %-50logger: %m%n"
+        },
+        {
+          "name": "logging.pattern.file",
+          "value": "%d{yyyy-MM-dd HH:mm:ss} %-5level ${hostname} [applog] [%t] %-50logger: %m%n"
+        },
+        {
+          "name": "service1.url",
+          "value": "http://alb.local/service1/name"
+        }
+      ],
+      "mountPoints": [
+        {
+          "containerPath": "/var/logs",
+          "sourceVolume": "efs-logs"
+        }
+      ]
+    }
+  ],
+  "memory": "300",
+  "compatibilities": [
+    "EC2"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:696823325773:task-definition/mainservice:20",
+  "family": "mainservice",
+  "cpu": "128",
+  "volumes": [
+    {
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-975180d7",
+        "transitEncryption": "ENABLED",
+        "rootDirectory": "/"
+      },
+      "name": "efs-logs"
+    }
+  ]
+}

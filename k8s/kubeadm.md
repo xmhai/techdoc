@@ -5,6 +5,7 @@
   - 1 x Master Node 
   - 2 x Worker Nodes
   - Better to configure HostNetwork as first network adaptor as CNI plug in will use first adaptor by default
+  - **Make sure server time are sync to host**
 - CentOS 8.3 + Kubernetes 1.21.1 + Fannel + ingress-nginx + haproxy  
 
 Follow instruction:  

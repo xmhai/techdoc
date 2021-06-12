@@ -6,9 +6,11 @@ https://grafana.com/docs/loki/latest/clients/promtail/
 - Pushes them to the Loki instance
 
 ## Installation
+Loki recommended installation is on k8s.
+
 Export the helm and change the values:
 - helm show values grafana/loki-stack > loki-stack-values.yaml
-- Enable loki persistence
+- Enable loki persistence (for production)
 
 helm install loki grafana/loki-stack --values loki-stack-values.yaml -n loki --create-namespace
 

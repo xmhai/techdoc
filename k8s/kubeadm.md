@@ -62,9 +62,10 @@ Diagnosis: run below command to view error message
 Solution: delete /etc/cni/* (in my case, it is due to I installed Calico before)  
 
 **Error**: nslookup Kubernetes.default -> connection timed out  
--	Check fannel, kube-proxy, coredns logs
--	https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
--	https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#is-the-kube-proxy-working
+- Check fannel, kube-proxy, coredns logs
+- In my case, it is Fannel default use the first interface enp0s3 which is a NAT interface, change interface to enp0s8 solve the issue.
+- https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
+- https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#is-the-kube-proxy-working
 	
 **Error**: Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:443/networking/v1beta1/ingresses?timeout=10s": context deadline exceeded  
 Solution:	kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission

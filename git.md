@@ -36,6 +36,7 @@ git push origin brahch_name
 git checkout brahch_name
 
 ## Setup central repository
+Central repository is not a working copy.
 git init --bare  
 
 ---

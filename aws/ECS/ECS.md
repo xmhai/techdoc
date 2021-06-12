@@ -95,7 +95,7 @@ So there are two options
   - Run one task in one instance
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/getting-started-ecs-ec2.html  
 
-Refer to taskdef-mainservice.json for task configuration
+Refer to [taskdef.json](taskdef.json) for task configuration
 - Define CPU Unit and Memory
 - Define environment variables
 - Define logging
@@ -152,8 +152,8 @@ https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-code
 - Define load balancer for ECS service
 This will make the tasks automatically register themselves to Target Group.
 - Can use standard deployment or Green-Blue deployment, which is specified both in Service and the pipeline stage.
-  - Amazon ECS standard deployments require an imagedefinitions.json file as an input to the deploy action.
-For standard deployment, need to create imagedefinitions.json file in CodeCommit repository.
+  - Amazon ECS standard deployments require an [imagedefinitions.json](imagedefinitions.json) file as an input to the deploy action.
+For standard deployment, need to create [imagedefinitions.json](imagedefinitions.json) file in CodeCommit repository.
   - Amazon ECS blue/green deployments require an imageDetail.json file as an input to the deploy action.
 Amazon ECR source actions generate an imageDetail.json file that is provided as an output from the source action.
 - Define Green-Blue deployment for creating ECS service.

@@ -4,4 +4,4 @@ https://medium.com/@TimvanBaarsen/build-your-spring-boot-project-using-azure-pip
 https://www.devguides.dev/how-to-build-and-deploy-docker-images-from-azure-devops-to-aws-ecr/  
 There are two errors in this article:
 - Variable name is AWS_SECRET_ACCESS_KEY instead of AWS_SECRET_ACCESS_KEY_ID
-- Should include aws configure commands in script (refer to azure-pipelines.yml)
+- Should include aws configure commands in script (refer to [azure-pipelines.yml](azure-pipelines.yml))

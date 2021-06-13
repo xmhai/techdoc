@@ -7,6 +7,6 @@ Grafana
 Add prometheus data source:   
 http://prometheus-server.prometheus.svc.cluster.local
 
-Import latest dashboard from grafana website
+Import latest dashboard from grafana website (14205 is working)
 
 https://medium.com/@chris_linguine/how-to-monitor-your-kubernetes-cluster-with-prometheus-and-grafana-2d5704187fc8

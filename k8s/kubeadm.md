@@ -23,8 +23,8 @@ sudo service firewalld restart
 # check
 iptables-save | grep <hostnames>
 ```
--	Install Fannel network plugin before join (use Flannel, tried Calico but not success maybe due to it only support CentOS 7)  
-**(Fannel)**  
+-	Install Flannel network plugin before join (use Flannel, tried Calico but not success maybe due to it only support CentOS 7)  
+**(Flannel)**  
 curl -LO https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml  
 Add - --iface=enp0s8  
 https://stackoverflow.com/questions/47845739/configuring-flannel-to-use-a-non-default-interface-in-kubernetes  

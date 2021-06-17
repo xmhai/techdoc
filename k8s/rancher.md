@@ -1,8 +1,51 @@
 ## Rancher Features
-- Create k8s cluster
-
 https://www.rancher.cn/installing-rancher-single-container-high-availability
 
+Rancher 
+- Load Balancer setup (Layer 4 or Layer 7)
+- Rancher Server datastore backup (docker version can be back be MySql???)
+- Prometheus stateful set, enable and how to set the PV???
+- 
+
+**Installation**  
+Installing Rancher on top of Linux OS running docker is an easy way to deploy Rancher Server, but it does not come with a HA option, hence it is intended more for testing and demo purposes.   
+
+For Rancher Server to be used in Production, installing on top of a RKE cluster is definitely recommended. In fact, Rancher Server can be first deployed as a 1 node RKE cluster, and then additional nodes can be added accordingly if HA is required subsequently.
+
+**Cluser Creation**
+For creating a cluster on prem, there are a few options:-  
+- (Option a) Create a RKE cluster and then use Rancher Server to register/import it  
+- (Option b) Create the infra nodes and then use Rancher Server to create a RKE cluster on top of these nodes  
+- (Option c) Use Rancher Server to both provision the infra nodes and create a RKE cluster  
+
+Option c would the most preferred way as it allows the full suite of features to be available to the managed cluster. However, this can only be done on selective infrastructure provider, such as vSphere and Openstack for on-prem cloud.  
+
+Option b is generally intended for bare metal or virtual-machine deployment, but since the provisioning of the nodes is performed outside of Rancher server, some nodes related features such as node scaling is not available.  
+
+Option a would have a limited suite of features, hence it should be the least preferred option.
+Do check out the link below for a more details.  
+https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/
+
+## Rancher Server Name can be changed
+
+## Air-gap environment need private docker repository
+
+## Private chart repository
+
+## Security
+CIS
+OPA Gatekeeper
+
+## Backup
+local -> Cluster Explorer -> App & Market -> Rancher Backup
+Backup to local means???
+
+## Longhorn
+How it works?
+
+## CICD using Fleet
+
+---
 ## Setup RKE
 **Env Setup**  
 Support Matrix  

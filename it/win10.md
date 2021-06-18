@@ -2,6 +2,13 @@
 **Wallpaper**
 C:\Users\\**linhai**\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
 
+**Display hostname in toolbar**
+Right-click on Taskbar -> 
+Go to Toolbars -> 
+Choose New Toolbar, 
+type in \\%computername%,  and Click Select Folder. 
+Done.
+
 ## Installation
 **Lenovo M900P**  
 - Burn a UEFI USB boot disk.

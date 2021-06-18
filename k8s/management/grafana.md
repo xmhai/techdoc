@@ -20,7 +20,12 @@ grafana.ini:
 ## Access Grafana
 For installation on VM:
 
-For installation on k8s:  
+## Deployment
+-  Very lightweight in use of memory and CPU,  
+Minimum recommended memory: 255 MB Minimum recommended CPU: 1
+- For Rancher, it will install Prometheus and Grafana on k8s.
+
+### For installation on k8s:  
 **Option 1**  
 Use port forward to access grafana:
 kubectl -n loki port-forward svc/loki-grafana 3000:80  

@@ -13,3 +13,5 @@ Techworld Nana Statefulset
 While PVC is namespaced.
 - Created by k8s admin before POD.
 - Storage Class provisions PV dynamatically. In PVC, specify the StorageClass.
+
+## Kubernetes Operator

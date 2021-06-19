@@ -14,7 +14,7 @@ datadir=C:/app/mysql-8.0.25/data
 ```
 - #initialize data folder  
   bin\mysqld --defaults-file=my.ini --initialize-insecure --console
-- mysqld
+- mysqld --install
 - mysql -u root --skip-password
 - ALTER USER 'root'@'localhost' IDENTIFIED BY 'root-password';
 

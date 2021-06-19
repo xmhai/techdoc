@@ -9,6 +9,10 @@ Choose New Toolbar,
 type in \\%computername%,  and Click Select Folder. 
 Done.
 
+**Add application to startup**  
+Windows+R to open the “Run” box  
+shell:startup
+
 ## Installation
 **Lenovo M900P**  
 - Burn a UEFI USB boot disk.

@@ -8,12 +8,15 @@ chmod 700 get_helm.sh
 ./get_helm.sh  
 ```
 **Install Rancher**  
+Preparation
 ```sh
 # use stable version
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
-
 kubectl create namespace cattle-system  
-
+```
+Install Cert  
+Option 1 - Cert-manager
+``` sh
 kubectl create namespace cert-manager  
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml  
 helm repo add jetstack https://charts.jetstack.io  
@@ -22,18 +25,43 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --versi
 # for k3s: add --kubeconfig /etc/rancher/k3s/k3s.yaml 
 # check cert-manager status, make sure 3 pods are running  
 kubectl get pods --namespace cert-manager
+```
+Option 2 - Bring in your own cert (for Layer-4 load balaner)
+``` sh
+# add option to helm install rancher
+--set privateCA=true
 
+kubectl -n cattle-system create secret tls tls-rancher-ingress --cert=tls.crt --key=tls.key
+
+kubectl -n cattle-system create secret generic tls-ca --from-file=cacerts.pem
+```
+Option 3 - TLS Terminated at external Layer-7 load balaner  
+NOTE: for test environment setup:  
+- 1 vm run browser (set dns to load balancer)
+- 1 vm run Nginx load balancer
+- 1 vm run k3s + Rancher Server (set dns to load balancer)
+https://forums.rancher.com/t/agent-certificate-chain-error-with-custom-ca-external-tls-termination/17960
+``` sh
+# create the tls-ca secret before running the install (with just the root CA cert, cert must contain SAN)
+kubectl -n cattle-system create secret generic tls-ca --from-file=cacerts.pem
+
+# add option to helm install rancher
+--set tls=external --set privateCA=true
+
+# The CA cert can be access from https://rancher.my.org/v3/settings/cacerts
+```
+Install Rancher
+``` sh
 # set to 1 instance for one node  
 # set hostname for the load balancer dns name.  
-helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname=rancher.my.org --set replicas=1
-```
--Check rancher status, make sure deployment successfully rollout (it takes time, wait for a few minutes)  
-```sh
+helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname=rancher.my.org --set replicas=1 (...other settings???)
+# check rancher status, make sure deployment successfully rollout (it takes time, wait for a few minutes)  
 kubectl -n cattle-system rollout status deploy/rancher
 ```
 ## Create Cluster
 - Disable firewall on nodes
 - Install Docker
+- Add rancher loadbalancer name to /etc/host
 - Add cluster from Rancher UI.  
   Remember to set below option when running rancher agent on the node:  
  --address 10.0.2.15 --internal-address 192.168.56.102

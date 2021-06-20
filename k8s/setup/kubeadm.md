@@ -53,12 +53,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 Need to define nodeport to specific port like 30080/30443, so that haproxy loadbalance can be configured.  
 
 ## Troubleshooting
-**Error**: pod in status of “CrashLoopBackOff”  
-Diagnosis: run below command to view error message  
-- kubectl describe -n nginx-ingress pod <pod_name>
-- Find the pod running on which node, and go to the node run “docker ps -a” to get failed container
--	Docker logs <container_id>
-
 **Error**: Flannel - CoreDns pods are stuck with status ContainerCreating  
 Solution: delete /etc/cni/* (in my case, it is due to I installed Calico before)  
 

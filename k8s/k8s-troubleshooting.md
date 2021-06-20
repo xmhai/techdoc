@@ -21,9 +21,10 @@ sudo chown hai ~/.kube/cache
 -	Docker logs <container_id>
 
 ---
-**Error**: pod cattle-cluster-agent in status of “CrashLoopBackOff”  
+**Error**: Rancher Cluster Explorer page shows "500 error" page newly created RKE cluster   
 **Diagnosis**:  
 ```sh
+# check pod cattle-cluster-agent in status of “CrashLoopBackOff”
 k describe pod cattle-cluster-agent-747c5b8bbb-gmvrl -n cattle-system
 docker ps -a (find the error cattle-cluster-agent container)
 docker logs 86f3bf662747

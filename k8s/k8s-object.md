@@ -15,3 +15,4 @@ While PVC is namespaced.
 - Storage Class provisions PV dynamatically. In PVC, specify the StorageClass.
 
 ## Kubernetes Operator
+Custom Defined Resource and Controller

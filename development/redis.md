@@ -8,7 +8,7 @@
 https://github.com/microsoftarchive/redis
 
 ## Deploy
-[HA Redis](../architecture/HA.md#Redis)
+[HA Redis](../architecture/HA.md#redis)
 
 ## Spring Integration
 https://dzone.com/articles/redis-sentinel-with-spring  

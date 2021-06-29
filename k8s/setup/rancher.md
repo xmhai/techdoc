@@ -8,21 +8,20 @@ chmod 700 get_helm.sh
 ./get_helm.sh  
 ```
 **Install Rancher**  
-Preparation
+Step 1: Preparation
 ```sh
 # use stable version
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 kubectl create namespace cattle-system  
 ```
-Install Cert  
+Step 2: Install Cert  
 Option 1 - Cert-manager
 ``` sh
 kubectl create namespace cert-manager  
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml  
 helm repo add jetstack https://charts.jetstack.io  
 helm repo update  
-helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.0.4 
-# for k3s: add --kubeconfig /etc/rancher/k3s/k3s.yaml 
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.0.4 --kubeconfig /etc/rancher/k3s/k3s.yaml 
 # check cert-manager status, make sure 3 pods are running  
 kubectl get pods --namespace cert-manager
 ```
@@ -50,33 +49,89 @@ kubectl -n cattle-system create secret generic tls-ca --from-file=cacerts.pem
 
 # The CA cert can be access from https://rancher.my.org/v3/settings/cacerts
 ```
-Install Rancher
+Step 3: Install Rancher
 ``` sh
 # set to 1 instance for one node  
-# set hostname for the load balancer dns name.  
-helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname=rancher.my.org --set replicas=1 (...other settings???)
+# hostname.  
+# - for rancher cluster, load balancer dns name
+# - for on-premise, any valid domain name
+# - for cloud, private IPv4 DNS
+helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname=rancher.my.org --set replicas=1  --kubeconfig /etc/rancher/k3s/k3s.yaml  (...other settings???)
 # check rancher status, make sure deployment successfully rollout (it takes time, wait for a few minutes)  
 kubectl -n cattle-system rollout status deploy/rancher
-```
-## Create Cluster
-- Disable firewall on nodes
-- Install Docker
-- Add rancher loadbalancer name to /etc/host
-- Add cluster from Rancher UI.  
-  Remember to set below option when running rancher agent on the node:  
- --address 10.0.2.15 --internal-address 192.168.56.102
 
-## Deploy Workload  
-For testing, use "HostPort". If select "NodePort", the service is not created, seems have to manually create yaml file and apply.
+# access Rancher UI using Chrome (Opera report error "Network Request Failed")
+```
 
 ## Uninstall Rancher
 https://www.rancher.co.jp/docs/rancher/v2.x/en/system-tools/#remove
 (However it is not working, the namespace will be in terminating status forever:(
 
-Create Cluster from Rancher Server
-https://www.linuxsysadmins.com/setup-kubernetes-cluster-with-rancher/
+---
+## (Optional for Reinstall Cluster) Clean Node
+Clean docker on the host (https://rancher.com/docs/rancher/v2.5/en/cluster-admin/cleaning-cluster-nodes/)  
+Reboot the host  
+Clean folders on the host
+Check processes (shouldn't be any other than system)  
+Check containers (shouldn't be any)  
+Check rancher/rancher log so it doesn't log any tls: bad certificate  
+Create custom cluster  
+Add node using docker run  
+If it doesn't work, post rancher/rancher logging from start to end.  
 
-## Rancher Features
+## Create Cluster
+https://www.linuxsysadmins.com/setup-kubernetes-cluster-with-rancher/
+- Disable firewall on nodes
+- Install Docker
+- Add rancher loadbalancer name to /etc/host
+- Add cluster from Rancher UI.  
+  Remember to set below option in UI when running rancher agent on the node with 2 network interfaces:  
+ --address 10.0.2.15 --internal-address 192.168.56.102
+
+## Deploy Workload  
+For testing, use "HostPort". If select "NodePort", the service is not created, seems have to manually create yaml file and apply.
+
+---
+## Troubleshooting
+check rancher/rancher log
+
+**Error**: Rancher Cluster Explorer page shows "500 error" page newly created RKE cluster   
+**Diagnosis**:  
+```sh
+# check pod cattle-cluster-agent in status of “CrashLoopBackOff”
+k describe pod cattle-cluster-agent-747c5b8bbb-gmvrl -n cattle-system
+docker ps -a (find the error cattle-cluster-agent container)
+docker logs 86f3bf662747
+find error "Invalid numeric literal at line 1, column 10"
+google "cattle-cluster-agent Invalid numeric literal at line 1, column 10", and find the solution.  
+```
+**cause**: you probably followed the tutorial and used the standard hostname rancher.my.org as it seems - that resolves to an existing public ip. it should resolve to the local rancher ip.   
+https://github.com/rancher/rancher/issues/22063  
+**Solution**: 
+```sh
+kubectl -n cattle-system patch  deployments cattle-cluster-agent --patch '{
+    "spec": {
+        "template": {
+            "spec": {
+                "hostAliases": [
+                    {
+                      "hostnames":
+                      [
+                        "rancher.my.org"
+                      ],
+                      "ip": "192.168.10.10"
+                    }
+                ]
+            }
+        }
+    }
+}'
+```
+or using Rancher UI
+RKE->System->cattle-cluster-agent->Edit->Show Advanced Options->Networking->Add HostAlias
+
+---
+## Best Practice
 https://www.rancher.cn/installing-rancher-single-container-high-availability
 
 **Deploy**  

@@ -13,14 +13,20 @@ nginx -s stop
 nginx -s reload
 ```
 ## Configuration
-Enable Https:
+**Enable Https**  
 ```sh
 # generate key from WSL
 openssl req -x509 -newkey rsa:2048 -nodes -days 365 -keyout rancher.my.org.key -out rancher.my.org.crt
 # copy files to conf folder
 # update nginx.conf
 ```
-Loadbalancer
+**WebSite Setup**  
+- *nginx.conf* is the top level congiuration file which includes Virtual Host Configs in "/etc/nginx/conf.d/*.conf" and "/etc/nginx/sites-enabled/\*".  
+- (Ubuntu) "*sites-available*" folder is for storing all of your vhost configurations, whether or not they're currently enabled.  
+- (Ubuntu) "*sites-enabled*" folder contains symlinks to files in the sites-available folder. This allows you to selectively disable vhosts by removing the symlink.  
+- (Preferred way to define vhost) "*conf.d*" does the same job
+
+**Loadbalancer**  
 ```sh
 	upstream rancher {
 		least_conn;

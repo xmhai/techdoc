@@ -14,6 +14,7 @@ Implementation
 - Configure application.properties
 - Add @EnableCaching to Application class
 - Add @Cacheable, @CacheEvict, @CachePut to methods
+- Spring Boot starter provides a simple cache provider which stores values in an instance of ConcurrentHashMap
 
 ---
 ## Swagger
@@ -22,6 +23,9 @@ swagger2markup-maven-plugin/asciidoctor-maven-plugin
 https://dzone.com/articles/static-api-documentation-with-spring-and-swagger  
 
 ---
-## Profiles
-- Multiple profiles can be included in one YAML file.
-- Need to create mulitple files if properties format is used.
+## Properties File (application.properites/application.yml)
+- Multiple Profiles
+  - Multiple profiles can be included in application.yml file.
+  - Need to create mulitple files if properties format is used.
+- Self-defined properties
+  - Can be parsed into a configuration class through @ConfigurationProperties(prefix = "cache.app-caches")

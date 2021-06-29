@@ -1,6 +1,11 @@
 ## Tip ##
 **Wallpaper**
-C:\Users\\**linhai**\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
+```cmd
+copy C:\Users\linhai\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets c:\temp\wallpaper
+cd c:\temp\wallpaper
+ren *.* *.jpg
+explorer c:\temp\wallpaper
+```
 
 **Display hostname in toolbar**
 Right-click on Taskbar -> 

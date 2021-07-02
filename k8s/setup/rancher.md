@@ -8,14 +8,14 @@ chmod 700 get_helm.sh
 ./get_helm.sh  
 ```
 **Install Rancher**  
-Step 1: Preparation
+*Step 1: Preparation*
 ```sh
 # use stable version
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 kubectl create namespace cattle-system  
 ```
-Step 2: Install Cert  
-Option 1 - Cert-manager
+*Step 2: Install Cert*  
+*Option 1 - Cert-manager*
 ``` sh
 kubectl create namespace cert-manager  
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml  
@@ -49,7 +49,7 @@ kubectl -n cattle-system create secret generic tls-ca --from-file=cacerts.pem
 
 # The CA cert can be access from https://rancher.my.org/v3/settings/cacerts
 ```
-Step 3: Install Rancher
+*Step 3: Install Rancher*
 ``` sh
 # set to 1 instance for one node  
 # hostname.  
@@ -81,12 +81,25 @@ If it doesn't work, post rancher/rancher logging from start to end.
 
 ## Create Cluster
 https://www.linuxsysadmins.com/setup-kubernetes-cluster-with-rancher/
-- Disable firewall on nodes
-- Install Docker
-- Add rancher loadbalancer name to /etc/host
+- Disable firewall on nodes.
+- Disable selinux on nodes. 
+- Install Docker.
+- Add rancher loadbalancer name to /etc/host.
+- Make sure Rancher server can ssh to the nodes.
 - Add cluster from Rancher UI.  
   Remember to set below option in UI when running rancher agent on the node with 2 network interfaces:  
  --address 10.0.2.15 --internal-address 192.168.56.102
+
+## Enable Monitoring
+2 (or 4???) CPU is needed for Rancher Prometheus deployment.  
+
+## Enable Logging
+https://rancher.com/docs/rancher/v2.x/en/logging/v2.5/  
+Ranch UI->App&Market->Logging
+
+Logging installed from "App&Market" is not working, fluentd keep restarting and logs is empty.
+
+Change to old version logging which installed from **Tools->Logging**, it works.
 
 ## Deploy Workload  
 For testing, use "HostPort". If select "NodePort", the service is not created, seems have to manually create yaml file and apply.

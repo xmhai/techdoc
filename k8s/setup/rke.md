@@ -91,28 +91,13 @@ sudo nano id_rsa
 Copy private file (*.pem) to ~/.ssh/id_rsa  
 
 **Install Docker (All Nodes)**  
-https://docs.docker.com/engine/install/centos/  
+https://rancher.com/docs/rancher/v2.x/en/installation/requirements/installing-docker/  
 https://docs.docker.com/engine/install/linux-postinstall/  
 
--- Ubuntu --  
-DON'T use ubuntu snap docker. If installed, run "sudo snap remove docker" to remove it before installation.  
-
-https://docs.docker.com/engine/install/ubuntu/ 
 ```sh 
 curl https://releases.rancher.com/install-docker/20.10.sh | sudo bash -  
-or  
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg  
-echo \
-  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null  
-sudo apt-get update  
-sudo apt-get install docker-ce docker-ce-cli containerd.io  
 ```
--- RHEL --  
-```sh
-sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo  
-sudo dnf install docker-ce-20.10.6 docker-ce-cli-20.10.6 containerd.io --allowerasing  
-
+```sh 
 sudo systemctl start docker  
 sudo systemctl enable --now docker  
 sudo usermod -aG docker $USER  

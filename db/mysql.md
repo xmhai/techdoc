@@ -16,6 +16,7 @@ datadir=C:/app/mysql-8.0.25/data
   bin\mysqld --defaults-file=my.ini --initialize-insecure --console
 - mysqld --install
 - mysql -u root --skip-password
+- (if error) https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html
 - ALTER USER 'root'@'localhost' IDENTIFIED BY 'root-password';
 
 ## Configuration

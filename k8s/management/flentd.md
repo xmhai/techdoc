@@ -7,3 +7,5 @@
   rancher-logging-fluentd-reloader (sidecar to container rancher-logging-fluentd)
   rancher-logging-log-aggregator-linux (1 pod)
 - Manual install
+
+https://docs.fluentd.org/output/elasticsearch#parameters

@@ -28,3 +28,7 @@ networks:
   elastic:
     driver: bridge  
 ```
+## Usage
+Management -> Stack Management -> Index Pattern  
+Analytics -> Discover  
+Left Panel -> Hover the field -> click "add" icon

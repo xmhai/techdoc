@@ -101,6 +101,23 @@ Logging installed from "App&Market" is not working, fluentd keep restarting and 
 
 Change to old version logging which installed from **Tools->Logging**, it works.
 
+The UI is buggy!!!
+
+Update:  
+https://banzaicloud.com/docs/one-eye/logging-operator/  
+https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/  
+https://github.com/uken/fluent-plugin-elasticsearch/tree/v4.3.  3#hosts  
+Try again and it works, use "Edit Yaml":
+```yaml
+  elasticsearch:
+    host: 20.40.82.80
+    hosts: 20.40.82.80,20.40.80.201
+    port: 9200
+    scheme: http
+```
+
+Deploy "chentex/random-logger" to default namespace and the logs comes in.
+
 ## Deploy Workload  
 For testing, use "HostPort". If select "NodePort", the service is not created, seems have to manually create yaml file and apply.
 

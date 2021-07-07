@@ -1,9 +1,27 @@
+## Concept
+- When the node startup, it will either join a cluster or create its own cluster.
+- Documents are JSON objects. They are stored  in **_source** field along with the meta data which used internally by ES.
+- Use Kibana "Dev Tools" to send REST API, the url consists of api and command in the format of /*api*/*command*
+- Sharding to divide index into mulitple pieces called "shard".
+  - An index defaults to having *one* shard.
+  - There are split and shrink api to manage shards.
+  - If there are millions of documents, can choose *five* shards.
+
+## Commands
+/_cluster/health  
+/_cat/indices?v
+/_cat/nodes?v
+/_cat/shards?v
+
 ## Installation
+- Standalone  
 #add "vm.max_map_count=262144" to sysctl.conf  
 sudo nano /etc/sysctl.conf  
-
 https://tecadmin.net/how-to-install-elasticsearch-on-centosl-8/  
 **NOTE:** use "bind: 0.0.0.0" and add "discovery.type: single-node"
+
+- Docker  
+https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
 
 http://localhost:9200  
 
@@ -72,6 +90,7 @@ POST /*index*/_doc
 {"firstName":"John", "lastName":"Doe"}
 
 - Select Document  
+GET /*index*/_doc/*ID*  
 GET /*index*/_search  
 { "match": { "lastName": "lin", "lastName": "liu" } }  
 { "sort": [ { "account_number": "asc" } ] }  

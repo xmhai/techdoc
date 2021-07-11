@@ -22,7 +22,10 @@ https://tecadmin.net/how-to-install-elasticsearch-on-centosl-8/
 
 - Docker  
 https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
-
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+```sh
+docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.13.2
+```
 http://localhost:9200  
 
 ## Mapping to SQL  

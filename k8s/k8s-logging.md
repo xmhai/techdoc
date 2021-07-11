@@ -2,3 +2,19 @@
 node log files location:  
 /var/log/pods/  
 /var/log/containers contains the softlink to /var/log/pods/
+
+# Log rotation
+
+
+# Rancher Logging (2.0-2.4.x)
+Two daemonset are created:  
+- rancher-logging-fluentd-linux (2 pods)  
+  rancher-logging-fluentd-reloader (sidecar to container rancher-logging-fluentd)
+- rancher-logging-log-aggregator-linux (1 pod)
+
+# Rancher Logging (2.5.x)
+- banzaicloud-logging-operator
+- (daemonset) rancher-logging-fluentbit
+  In the configMap, output points to rancher-logging-fluentd.cattle-logging-system.svc
+- rancher-logging-fluentd
+- (daemonset) rancher-logging-rke-aggregator

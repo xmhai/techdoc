@@ -20,3 +20,15 @@ sudo chown hai ~/.kube/cache
 - Find the pod running on which node, and go to the node run “**docker ps -a**” to get failed container
 - **Docker logs** <container_id>
 
+---
+**Error**: DiskPressure cause pod to be evicted  
+**Diagnosis**:  
+df -h  
+shows that /dev/mapper/rootvg-varlv (mnt to /var) only allocated 8G and used 83% of disk space.  
+sudo vgdisplay rootvg  
+shows that there are still 40G aviable space.   
+**Solution**
+Increase the lv.  
+https://docs.microsoft.com/en-us/azure/virtual-machines/linux/resize-os-disk-gpt-partition  
+
+---

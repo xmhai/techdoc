@@ -9,6 +9,7 @@ https://docs.microsoft.com/en-us/dotnet/architecture/microservices/architect-mic
   - etc
 - Request Aggregation  
   May cause "new ESB" issue.
+- Monitoring
 
   # Dummy api endpoint
   https://httpbin.org/anything

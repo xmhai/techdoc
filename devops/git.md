@@ -39,6 +39,9 @@ git checkout brahch_name
 Central repository is not a working copy.
 git init --bare  
 
+## Fork Repository
+
+
 ---
 ## Azure DevOps
 Goto Azure devop portal, open the project, e.g.:  https://dev.azure.com/*organization*/_git/*project*
@@ -49,3 +52,4 @@ set user name and password (or use PTA - Personal Assess Token), copy the git ur
 From project parent directory, run Cmd:  
 git clone https://dev.azure.com/*organization*/_git/*project*  
 Enter user name/password or PTA/PTA from Clone Repository page.
+

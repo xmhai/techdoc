@@ -119,7 +119,7 @@ Try again and it works, use "Edit Yaml":
 Deploy "chentex/random-logger" to default namespace and the logs comes in.
 
 ## Deploy Workload  
-For testing, use "HostPort". If select "NodePort", the service is not created, seems have to manually create yaml file and apply.
+Select "NodePort", specfiy the container port.
 
 ---
 ## Troubleshooting

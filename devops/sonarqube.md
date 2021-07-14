@@ -12,14 +12,15 @@ https://docs.sonarqube.org/latest/setup/install-server/
     - The SonarQube instance configuration.
 
 ## SonarQube Server 
-https://docs.sonarqube.org/latest/setup/install-server/
-- Install PostgreSQL 13
+https://docs.sonarqube.org/latest/setup/install-server/  
+https://devopscube.com/setup-and-configure-sonarqube-on-linux/  
+https://computingforgeeks.com/install-sonarqube-code-review-centos/  
+- Install PostgreSQL 13  
 ```sql
 create database sonarqube;
 create user sonarqube with encrypted password 'sonarqube';
 grant all privileges on database sonarqube to sonarqube;
 ```
-https://computingforgeeks.com/install-sonarqube-code-review-centos/  
 Elasticsearch listening on [HTTP: 127.0.0.1:9001, TCP: 127.0.0.1:44259]
 Sonarqube listening on 9000
 ```sh
@@ -77,27 +78,40 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
+## From Sonarqube web UI
+- Create project
+- Copy the information to sonar-project.properties
+
 ## SonarScanner  
 https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/  
 SonarScanner must run with a server.  
+**Cli**  
+This approach is for java projects not using maven.  
 sonar-scanner -Dproject.settings=sonar-project.properties
 ```properties
 # Sample sonar-project.properties for Java projects
-sonar.host.url=https://localhost:9000
-sonar.projectKey=<to be provided to you> 
+sonar.host.url=<http://localhost:9000>
+sonar.projectKey=<to be provided to you>
 sonar.projectName=<to be provided to you> 
-sonar.projectVersion=1.0 
-sonar.login=<to be provided to you> 
+sonar.projectVersion=1.0
+sonar.login=<token or userid to be provided to you> 
 sonar.password=<to be provided to you> 
-sonar.projectBaseDir=/home/ftpdrop/cobol/project1
-sonar.sources=<Path of your src folder> 
+sonar.projectBaseDir=</home/ftpdrop/cobol/project1>
+sonar.sources=src
 sonar.java.source=1.11 
 sonar.java.target=1.11 
 sonar.language=java 
 sonar.scm.disabled=true 
-sonar.java.binaries=<path of your classes folder> 
+sonar.java.binaries=target/classes
+sonar.java.libraries=<path/to/library>
 sonar.ws.timeout=360 
 ```
+**Maven**  
+This approach is recommended as it integrate with build process.
+
+## Export report
+https://github.com/cnescatlab/sonar-cnes-report  
+
 
 ## ALM Integration Overview
 https://docs.sonarqube.org/latest/architecture/architecture-integration/  

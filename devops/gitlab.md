@@ -11,13 +11,34 @@ Note: Might encounter when invoke Let's Encrypt.
 
 ## Configuration
 - To change IP/Port after installation, edit the following line in /etc/gitlab/gitlab.rb:  
-```sh
-export EXTERNAL_URL "https://ip:port"  
-sudo gitlab-ctl reconfigure  
-```
+    ```sh
+    export EXTERNAL_URL "https://ip:port"  
+    sudo gitlab-ctl reconfigure  
+    ```
 
 - Create User  
 From "Admin Area", create user, and then "Edit" user to set password.
+
+- Disable puma cluster mode to save memory
+  Puma is the web server for GitLab.
+  ```sh
+  sudo nano /etc/gitlab/gitlab.rb  
+  sudo gitlab-ctl reconfigure
+  ```
+- Use external PostgreSQL
+  https://docs.gitlab.com/ee/administration/postgresql/external.html  
+
+- Reduce Memory  
+  https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html  
+  NOTE:  
+  cggroup setting should NOT included as it will cause exception. Just use below settings.
+    ```ini
+    puma['worker_processes'] = 0
+    prometheus_monitoring['enable'] = false
+    sidekiq['max_concurrency'] = 10
+    ```
+- Reset Password  
+  sudo gitlab-rake "gitlab:password:reset[root]"
 
 ## Sonarqube Integration
 https://www.programmersought.com/article/66704933922/  

@@ -97,17 +97,15 @@ https://www.linuxsysadmins.com/setup-kubernetes-cluster-with-rancher/
 https://rancher.com/docs/rancher/v2.x/en/logging/v2.5/  
 Ranch UI->App&Market->Logging
 
-Logging installed from "App&Market" is not working, fluentd keep restarting and logs is empty.
+**Make sure** the Racher/RKE server can access the ElasticSearch Server
 
-Change to old version logging which installed from **Tools->Logging**, it works.
-
-The UI is buggy!!!
+The UI is buggy!!! To use Cluster Output in Flows, select namespace as "cattle-logging-system" first, choose the cluster output, then switch back to the desired namespace.
 
 Update:  
 https://banzaicloud.com/docs/one-eye/logging-operator/  
 https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/  
-https://github.com/uken/fluent-plugin-elasticsearch/tree/v4.3.  3#hosts  
-Try again and it works, use "Edit Yaml":
+https://github.com/uken/fluent-plugin-elasticsearch/tree/v4.3.3#hosts  
+To setup 3 nodes, use "Edit Yaml":
 ```yaml
   elasticsearch:
     host: 20.40.82.80
@@ -115,7 +113,10 @@ Try again and it works, use "Edit Yaml":
     port: 9200
     scheme: http
 ```
+**Another option**:  
+Change to old version logging which installed from menu Tools->Logging, it works.
 
+**Test**:  
 Deploy "chentex/random-logger" to default namespace and the logs comes in.
 
 ## Deploy Workload  

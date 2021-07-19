@@ -18,7 +18,12 @@
 
 ## Installation
 https://medium.com/jaegertracing/a-guide-to-deploying-jaeger-on-kubernetes-in-production-69afb9a7c8e5  
+https://medium.com/@klaus.dobbler/introducing-distributed-tracing-to-a-docker-swarm-landscape-f92c033e36db  
 https://logz.io/blog/jaeger-and-the-elk-stack/
 
 
 ## Deploy
+Production
+- Jaeger Client
+- Jaeger Agent  
+  Installing the agent as a deamonset is the simplest and most economical option.

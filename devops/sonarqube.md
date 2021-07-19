@@ -108,6 +108,7 @@ sonar.ws.timeout=360
 ```
 **Maven**  
 This approach is recommended as it integrate with build process.
+mvn sonar:sonar -Dproject.settings=sonar-project.properties
 
 ## Export report
 https://github.com/cnescatlab/sonar-cnes-report  

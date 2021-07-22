@@ -23,7 +23,19 @@ https://logz.io/blog/jaeger-and-the-elk-stack/
 
 
 ## Deploy
+- Jaeger Client  
+  https://github.com/opentracing-contrib/java-spring-jaeger  
+  RestController call will be traced by default.
+  - Set service name in application.yml
+
+Development
+- jaegertracing All-in-One  
+  https://www.jaegertracing.io/docs/1.24/getting-started/  
+  docker run -d --name jaeger -p 16686:16686 -p 6831:6831/udp jaegertracing/all-in-one:1.24.0  
+
 Production
-- Jaeger Client
 - Jaeger Agent  
   Installing the agent as a deamonset is the simplest and most economical option.
+
+Production (Jaeger Operator)  
+https://www.jaegertracing.io/docs/1.24/operator/  

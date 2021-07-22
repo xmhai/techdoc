@@ -50,6 +50,8 @@
   - "Attack" -> "Active Scan..." 
     - Configure "Technology"
   - "Attack" -> "Fuzz..."
+- Use script for Authentication  
+  https://www.devonblog.com/continuous-delivery/owasp-zap-for-apis-using-custom-script-based-authentication/
 
 ## Troubleshooting
 - Spring Login which has a redirection return
@@ -58,3 +60,6 @@
   - ZAP automatically sends the POST request that I have flagged as form-based authentication
   - The post request returns a HTTP 302 with an empty body - As ZAP cannot find in the HTTP 302 body neither the login nor the logout indicator, I am returned to the login page.
   - so auto login does not work.
+
+- csrf
+  Use HttpSender to fire a request to get and replace the csrf.

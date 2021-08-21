@@ -1,4 +1,6 @@
 ## Architecture
+https://www.theserverside.com/video/Automate-quality-control-with-Java-static-code-analysis-tools  
+
 https://docs.sonarqube.org/latest/setup/install-server/
 ![](sonarqube.png)
 

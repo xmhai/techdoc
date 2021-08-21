@@ -6,7 +6,9 @@ The way to identify microservices.
 - Change Frequency
 ## Migration
 - Start with new features???
-- Strangler Pattern
+- Strangler Pattern  
+  https://martinfowler.com/bliki/StranglerFigApplication.html  
+  https://martinfowler.com/bliki/EventInterception.html  
   - Analyze system modules.
   - Design a logical breakdown of the modules into probable services.
   - Identify the first batch of modules with the least dependencies to be moved out.

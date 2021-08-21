@@ -46,12 +46,17 @@
 - Spider the site
   - Configure Authentication and Session
   - "Attack" -> "Spider..."
+- Authentication
+  - Form-based authentication
+  - JWT-based
+    Get the jwt by manual login.
+    Use "Option"->"Replacer" to replace "Authorization" header value with jwt.
+  - Use script for Authentication  
+    https://www.devonblog.com/continuous-delivery/owasp-zap-for-apis-using-custom-script-based-authentication/
 - Attack
   - "Attack" -> "Active Scan..." 
     - Configure "Technology"
   - "Attack" -> "Fuzz..."
-- Use script for Authentication  
-  https://www.devonblog.com/continuous-delivery/owasp-zap-for-apis-using-custom-script-based-authentication/
 
 ## Troubleshooting
 - Spring Login which has a redirection return

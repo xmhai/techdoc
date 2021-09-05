@@ -33,3 +33,11 @@
 sudo systemctl stop k3s  
 /usr/local/bin/k3s-uninstall.sh  
 drop MySQL table!!!
+
+## Run containrd
+K3s includes and defaults to containerd
+```sh
+$ sudo chmod 777 /var/lib/rancher/k3s/ -R
+$ sudo chmod 777 /run/k3s/containerd/ -R
+$ k3s crictl ps
+```

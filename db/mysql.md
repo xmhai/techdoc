@@ -1,4 +1,6 @@
 ## Installation
+start: mysqld  
+stop:  mysqladmin −u root -p shutdown  
 
 ### Using a noinstall ZIP Archieve (MySQL 8.0 Windows)
 - Download MSVC runtime  

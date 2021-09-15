@@ -28,8 +28,23 @@
   ```
 - For HA setup, just run above command on another node.
 
-- Docker compose
-https://www.trion.de/news/2019/08/28/kubernetes-in-docker-mit-k3s.html
+- **Docker Compose**  
+```sh
+md k3s
+# create docker-compose.yaml with content:  
+# https://github.com/k3s-io/k3s/blob/master/docker-compose.yml  
+set K3S_TOKEN="K3S_TOKEN"  
+docker-compose up
+set KUBECONFIG="kubeconfig.yaml"
+kubectl get nodes
+# Test deploy Nginx
+kubectl create deployment --image=nginx nginx
+# Expose the service: https://k3d.io/usage/guides/exposing_services/
+# Use port forward to expose to host
+# get pod name: kubectl get pods
+kubectl port-forward pod/<podname> 8080:80
+```
+
 
 ## Uninstall
 sudo systemctl stop k3s  

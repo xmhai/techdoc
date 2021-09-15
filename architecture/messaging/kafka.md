@@ -1,3 +1,6 @@
+# Overview  
+chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/viewer.html?pdfurl=https%3A%2F%2Fportworx.com%2Fwp-content%2Fuploads%2F2020%2F10%2Fexperts-guide-kafka-kubernetes.pdf&clen=663355&chunk=true  
+
 - Distribute data across the cluster  
 - Use key/value pairs and partitions to group distributed data  
 - Replication (fault-tolerant)  
@@ -42,6 +45,9 @@ consumers reading from the same topic, ensuring that all consumers in the group 
 - Deleting logs  
 - Compaction  
 
-# Best Pratice
+## Best Pratice
 - Create topic manually.
 - At least two replicas for each topic.
+
+## Installation
+https://strimzi.io/blog/2018/06/11/deploying-kafka-on-kubernetes-with-local-storage-using-strimzi/  

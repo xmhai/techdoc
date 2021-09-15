@@ -1,0 +1,114 @@
+# sudo mkdir /mnt/data
+# sudo chmod 777 /mnt/data
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zookeeper
+  labels:
+    name: pv-zookeeper
+spec:
+  storageClassName: manual # It defines the StorageClass name manual for the PersistentVolume, which will be used to bind PersistentVolumeClaim requests to this PersistentVolume
+  capacity:
+    storage: 10Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-my-cluster-zookeeper-0
+  namespace: my-kafka-project
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 10Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-kafka
+  labels:
+    name: pv-kafka
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-my-cluster-kafka-0
+  namespace: my-kafka-project
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 10Mi
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: my-cluster
+spec:
+  kafka:
+    template:
+      pod:
+        securityContext:
+          runAsUser: 0
+          fsGroup: 0
+    replicas: 1
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+        authentication:
+          type: tls
+      - name: external
+        port: 9094
+        type: nodeport
+        tls: false
+    storage:
+      type: persistent-claim
+      size: 10Mi
+      selector:
+        matchLabels:
+          name: pv-kafka
+      deleteClaim: true
+    config:
+      offsets.topic.replication.factor: 1
+      transaction.state.log.replication.factor: 1
+      transaction.state.log.min.isr: 1
+  zookeeper:
+    template:
+      pod:
+        securityContext:
+          runAsUser: 0
+          fsGroup: 0
+    replicas: 1
+    storage:
+      type: persistent-claim
+      size: 10Mi
+      selector:
+        matchLabels:
+          name: pv-zookeeper
+      deleteClaim: true
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}

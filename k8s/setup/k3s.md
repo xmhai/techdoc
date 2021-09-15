@@ -28,6 +28,8 @@
   ```
 - For HA setup, just run above command on another node.
 
+- Docker compose
+https://www.trion.de/news/2019/08/28/kubernetes-in-docker-mit-k3s.html
 
 ## Uninstall
 sudo systemctl stop k3s  

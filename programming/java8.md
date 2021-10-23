@@ -1,4 +1,4 @@
-- Stream API
+## Stream API
   - map(*lambda*)
   - filter()
   - reduce(*identity*, *accumulator*[*lambda* or *Method Reference*], *combiner*)  
@@ -10,4 +10,22 @@
     reduction stream operations allow us to produce one single result from a sequence of elements  
     predefined reduction operations: sum(), count()  
 
-  
+
+## Thread programming
+- Related methods
+  - wait()/notify()/notifyAll()
+  - start()/join() - caller thread will wait until the thread exited.
+  - sleep()
+- Thread safety can be achieved in following ways:  
+  - sychronized (method/block/static method sychronized)
+  - volatile
+  - wait()/notify()/notifyAll()
+  - Concurrent wapper
+- Thread Pool
+- Thread Usage in Java Projects
+  - In memory cache
+  - Singleton
+  - Controller state
+  - Multiple JMS  
+    setConcurrentConsummer or use taskExecutor?
+  - Batch processing

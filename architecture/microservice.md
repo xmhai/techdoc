@@ -1,9 +1,15 @@
 ## Design
 The way to identify microservices.  
 - Domain Driven Design
+  Identify Business Domain/Bounded Context/Data Model
 - Business Function  
 - Business Organization
 - Change Frequency
+
+## Difficulties
+- Code will increase 35-45 percent compare to monolithic
+- Distributed Transaction (SAGA pattern to solve)  
+  -> Doesn't support Read isolation (use process orchestrator to solve)
 
 ## Migration
 - How to start
@@ -28,4 +34,14 @@ The way to identify microservices.
   - Database wrapping service” pattern.
 
 ## Practice
-- Make sure the infrastructure is ready before making any commitment to the migration. Infrastructure includes: Event-driven architecture, SSO, API Gateway etc.
+- Make sure the infrastructure is ready before making any commitment to the migration (It will take 2-3 month). Infrastructure includes: 
+	- API gateways
+  - SSO
+	- Service mesh
+  - Event-driven architecture
+	- DevSecOps pipelines
+	- Developer tools and utilities
+	- Agile project management
+	- Issue tracking solutions
+	- Logging
+	- Monitoring solutions and so on.

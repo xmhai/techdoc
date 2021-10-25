@@ -1,8 +1,6 @@
 ## Installation
-start: mysqld  
-stop:  mysqladmin −u root -p shutdown  
 
-### Using a noinstall ZIP Archieve (MySQL 8.0 Windows)
+### (MySQL 8.0 Windows) Using a noinstall ZIP Archieve 
 - Download MSVC runtime  
 https://support.microsoft.com/tr-tr/topic/en-son-desteklenen-visual-c-indirmeleri-2647da03-1eea-4433-9aff-95f26a218cc0
 
@@ -16,10 +14,15 @@ datadir=C:/app/mysql-8.0.25/data
 ```
 - #initialize data folder  
   bin\mysqld --defaults-file=my.ini --initialize-insecure --console
-- mysqld --install
 - mysql -u root --skip-password
 - (if error) https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html
 - ALTER USER 'root'@'localhost' IDENTIFIED BY 'root-password';
+
+Start: mysqld  
+Stop:  mysqladmin −u root -p shutdown  
+
+### Ubuntu
+### RHEL
 
 ## Configuration
 **Allow remote access**  

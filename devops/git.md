@@ -39,8 +39,10 @@ http://nvie.com/posts/a-successful-git-branching-model/
 **Clone Repository**
 - git clone *url*
 - Local repository is created
+- git fetch --all
 
 **Configure Git**  
+- git config --list
 - git config user.name "xmhai"
 - git config user.email "xmhai@hotmail.com"
 - .git/config is updated

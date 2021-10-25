@@ -29,3 +29,7 @@ https://dzone.com/articles/static-api-documentation-with-spring-and-swagger
   - Need to create mulitple files if properties format is used.
 - Self-defined properties
   - Can be parsed into a configuration class through @ConfigurationProperties(prefix = "cache.app-caches")
+
+---
+## Transactional
+https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth  

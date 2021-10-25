@@ -1,3 +1,7 @@
+https://dzone.com/articles/essential-engineering-skills-for-every-software-ar?edition=698401  
+https://github.com/mhadidg/software-architecture-books  
+https://medium.com/@ThilinaAshenGamage/the-best-software-architecture-books-of-all-time-b82b63bb853b  
+
 ## Understand the Business
 - Business lines
 - Revenue
@@ -9,7 +13,7 @@
 - Understand and work with end users
 
 ## Communcation
-- Communcate with different stackholders in different languages.
+- Communcate with **different** stackholders (view point) in **different** languages.
 
 ## Architect should code
 - Understand the technology

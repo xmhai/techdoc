@@ -100,6 +100,7 @@ git commit -m "initial commit"
 git push origin brahch_name  
 
 ## Switch to branch
+git fetch  
 git checkout brahch_name
 
 ## Setup central repository

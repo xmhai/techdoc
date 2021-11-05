@@ -19,17 +19,30 @@ https://alexbilbie.com/guide-to-oauth-2-grants/
   - Authorization Server return Authorization Code
   - Client exchanges the authorization code for an access token by making a POST request (include the Secret) to the authorization server's token endpoint.
   - The server replies with an access token and expiration time.  
+  ![Cleint Credentials Flow](oauth2-auth-code.png)
+
 - Authorization Code with PKCE  
   secret is not used in this case. The flow is based on the authorization code flow above, but with the addition of a dynamically generated secret used on each request.
   Use Random secret and hash.
+
+- Cleint Credentials  
+  For Server-to-Server communication. In some cases, applications may need an access token to act on behalf of themselves rather than a user.  
+  ![Cleint Credentials Flow](oauth2-client-credentials.png)
+
 - Password  
   Since this obviously requires the application to collect the user's password, it must only be used by apps created by the Authorization Service itself. e.g. Twitter login.  
-- Cleint Credentials  
-  In some cases, applications may need an access token to act on behalf of themselves rather than a user.
-- Implicit (Obselete, relaced by PKCE)  
+
+- ~~Implicit~~ (Obselete, relaced by PKCE)  
 
 The end result of all the grant types is obtaining an access token.  
 https://www.oauth.com/oauth2-servers/access-tokens/self-encoded-access-tokens/  
+
+## Access Token Validation  
+https://developer.okta.com/docs/guides/validate-access-tokens/dotnet/overview/  
+- Local validation
+- Remote validation with Authorization Server  
+  using the Token Introspection endpoint.  
+  This incurs a network request which is slower to do verification, but can be used when you want to guarantee that the access token hasn't been revoked.
 
 ## Access Token Generation
 - Self-encoded token  
@@ -57,13 +70,6 @@ HTTP/1.1 400 Bad Request
   "error_uri": "See the full API docs at https://authorization-server.com/docs/access_token"
 }
 ```
-## Access Token Validation  
-https://developer.okta.com/docs/guides/validate-access-tokens/dotnet/overview/  
-- Local validation
-- Remote validation with Authorization Server  
-  using the Token Introspection endpoint.  
-  This incurs a network request which is slower to do verification, but can be used when you want to guarantee that the access token hasn't been revoked.
-
 ## OAuth2 Implmentation
 https://github.com/Baeldung/spring-security-oauth
 

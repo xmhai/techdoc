@@ -1,8 +1,28 @@
+## Resources
+https://martinfowler.com/articles/microservices.html  
+"Microservices Architecture" - Michael Amundeson  
+"Building Microservices" - Sam Newman  
+"Implementing Domain-Driven Design" - Vaughn Vernon  
+
+## Concept
+My understanding: Microservice is to address non-functional requirements and techincal needs in three areas:-  
+- **Maintenability**: Fast change and evolve part of the system  
+- **Scalability**  
+- **Performance**: Use appropriate technology Stack  
+
+Criteria:  
+- Loose coupled module: if a change to a miroservice will cause changes to other services, then we should think about is it part of other service.
+
+Benifit:  
+- Own CICD lifecycle, fast to evolve
+- Fault isolation
+- Increase throughput
+
 ## Design
 The way to identify microservices.  
 - Domain Driven Design
   Identify Business Domain/Bounded Context/Data Model
-- Business Function  
+- Business Capability/Function  
 - Business Organization
 - Change Frequency
 
@@ -34,14 +54,44 @@ The way to identify microservices.
   - Database wrapping service” pattern.
 
 ## Practice
-- Make sure the infrastructure is ready before making any commitment to the migration (It will take 2-3 month). Infrastructure includes: 
+- Make sure the infrastructure is ready before making any commitment to the migration (It will take 2-3 month). Infrastructure includes:-  
 	- API gateways
   - SSO
-	- Service mesh
+  - Service mesh
   - Event-driven architecture
-	- DevSecOps pipelines
-	- Developer tools and utilities
-	- Agile project management
-	- Issue tracking solutions
-	- Logging
-	- Monitoring solutions and so on.
+  - DevSecOps pipelines
+  - Developer tools and utilities
+  - Agile project management
+  - Issue tracking solutions
+  - Logging
+  - Monitoring solutions and so on.
+
+## Microservice Concern  
+**Design**
+- Granularity  
+  DDD and bounded context as first step.
+- Data model sharing  
+  Event sourcing and CQRS: one service emits event, other service use the event to build it's own model.  
+  DON'T overuse it, to be use when necessary.
+- Distributed Transaction  
+  Eventual Consistent:  
+  Saga: compensation transaction callback is invoked when need to rollback.
+- Service communication  
+  Asynchronous Messaging.  
+
+**Operation**
+- Security/Authentication  
+  API Gateway.  
+  Approach 1: Kong Ingress Controller with OIDC plugin, no authentication at springboot.  
+- Deployment  
+  Docker.
+- Service discovery
+- Request routing
+- Service failure handling
+- Logging
+
+## Patterns
+- API Gateway
+- Back For Frontend (BFF)
+- Saga
+- Event Sourcing

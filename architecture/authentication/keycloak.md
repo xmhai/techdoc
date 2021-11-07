@@ -7,12 +7,23 @@ https://www.keycloak.org/docs/latest/getting_started/index.html
 ## Setup
 https://medium.com/@hasnat.saeed/setup-keycloak-server-on-ubuntu-18-04-ed8c7c79a2d9
 
+```sql
+SET @@global.time_zone = '+00:00';
+```
 **MySQL setup**  
 https://medium.com/@pratik.dandavate/setting-up-keycloak-standalone-with-mysql-database-7ebb614cc229  
-After create the module under modules/keycloak
-and configure datasource in standalone.xml, need to add module:  
+For Windows, use explorer to create the module:  
+Can create the folder, copy the jdbc driver to folder and create module.xml.  
+
+For Linux, use sh to create the module.xml:  
+After create the module under modules/keycloak, need to add module:  
+```sh
 $jboss-cli
 module add --name=com.mysql --resources=D:/app/keycloak/keycloak-8.0.2/modules/system/layers/keycloak/com/mysql/main/mysql-connector-java-8.0.21.jar --dependencies=javax.api,javax.transaction.api
+```
+
+Configure datasource in standalone.xml after JBoss module is created.  
+Note: Make sure **username and password is correct.**
 
 **MSSQL setup**  
 https://medium.com/multinetinventiv/keycloak-mssql-database-integration-87fc46dbec2c  

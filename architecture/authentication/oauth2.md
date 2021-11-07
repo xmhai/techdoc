@@ -13,20 +13,17 @@ OAuth2 is a delegated authorization protocol
 
 ## Grant Type  
 https://alexbilbie.com/guide-to-oauth-2-grants/
-- Authorization Code  
-  suitable for Web Server Apps, flow:  
-  - Client redirect to Authorization Server
-  - Authorization Server return Authorization Code
-  - Client exchanges the authorization code for an access token by making a POST request (include the Secret) to the authorization server's token endpoint.
-  - The server replies with an access token and expiration time.  
+- Authorization Code (Traditional Web Server Application)  
   ![Cleint Credentials Flow](oauth2-auth-code.png)
+
+- Authorization Code (Single Page Application)  
+  The flow is exactly the same as the authorization code flow, but at the last step, the authorization code is exchanged for an access token without using the client secret.
 
 - Authorization Code with PKCE  
   secret is not used in this case. The flow is based on the authorization code flow above, but with the addition of a dynamically generated secret used on each request.
   Use Random secret and hash.
 
-- Cleint Credentials  
-  For Server-to-Server communication. In some cases, applications may need an access token to act on behalf of themselves rather than a user.  
+- Cleint Credentials (Server-to-Server)  
   ![Cleint Credentials Flow](oauth2-client-credentials.png)
 
 - Password  

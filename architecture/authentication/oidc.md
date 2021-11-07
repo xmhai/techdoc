@@ -7,6 +7,7 @@ OpenID Connect (OIDC) is a thin layer that sits on top of OAuth 2.0 that adds lo
 The OpenID Connect flow looks the same as OAuth. The only differences are:-  
 - in the initial request, a specific scope of openid is used.
 - in the final exchange the Client receives both an Access Token and an ID Token.
+- How the access token and ID token pass to backend?
 
 ## Endpoints  
 https://developer.okta.com/docs/reference/api/oidc/#endpoints  

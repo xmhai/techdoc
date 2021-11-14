@@ -4,6 +4,7 @@ https://itbook.download/ (username: xmhai2000/Test!1234)
 https://oiipdf.com/download/building-evolutionary-architectures  
 
 https://github.com/hungbang/book-2  
+https://ru.b-ok.as/book/6010931/b20b83  
 
 ## Programmmer
 - Clean Code

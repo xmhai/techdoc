@@ -51,6 +51,10 @@
   - JWT-based
     Get the jwt by manual login.
     Use "Option"->"Replacer" to replace "Authorization" header value with jwt.
+    or
+    set Authentication Header Environmental Variables: ZAP_AUTH_HEADER_VALUE
+    https://www.zaproxy.org/docs/desktop/start/features/authentication/  
+    https://groups.google.com/g/zaproxy-users/c/U9Yla0bArtQ?pli=1  
   - Use script for Authentication  
     https://www.devonblog.com/continuous-delivery/owasp-zap-for-apis-using-custom-script-based-authentication/
 - Attack

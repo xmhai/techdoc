@@ -1,3 +1,9 @@
+Easy
+1  Two Sum
+53 Maximum Subarray
+69 Sqrt(x)
+climbing stairs
+
 ## Steps
 - Read question carefully
 - Write algorithm in comments

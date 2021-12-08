@@ -51,7 +51,7 @@
   - JWT-based
     Get the jwt by manual login.
     Use "Option"->"Replacer" to replace "Authorization" header value with jwt.
-    or
+    or (for Automation Test)
     set Authentication Header Environmental Variables: ZAP_AUTH_HEADER_VALUE
     https://www.zaproxy.org/docs/desktop/start/features/authentication/  
     https://groups.google.com/g/zaproxy-users/c/U9Yla0bArtQ?pli=1  

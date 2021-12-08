@@ -45,7 +45,7 @@ http://nvie.com/posts/a-successful-git-branching-model/
 - git config --list
 - git config user.name "xmhai"
 - git config user.email "xmhai@hotmail.com"
-- .git/config is updated
+- Above configure is save to .git/config
 - Update .gitignore
 
 **Stash Change**
@@ -120,4 +120,7 @@ set user name and password (or use PTA - Personal Assess Token), copy the git ur
 From project parent directory, run Cmd:  
 git clone https://dev.azure.com/*organization*/_git/*project*  
 Enter user name/password or PTA/PTA from Clone Repository page.
+
+## Eclipse
+Eclipse EGit can only use access token as password to login GitHub to perform push.
 

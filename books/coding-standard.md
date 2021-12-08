@@ -1,6 +1,7 @@
 ## Preface
 This coding standard, principle and pratice are extracted from most famous coding books:-  
-- Clean Code
+- Clean Code  
+  https://dzone.com/articles/in-defense-of-clean-code-100-pieces-of-timeless-ad?edition=703417  
 - Effective Java
 - Refactoring
 - The pragmatic programmer

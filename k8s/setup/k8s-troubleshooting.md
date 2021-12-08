@@ -1,3 +1,27 @@
+**In case you face any issue in kubernetes**  
+First step is to check if kubernetes self applications are running fine or not. Command to check:-  
+kubectl get pods -n kube-system  
+If you see any pod is crashing, check it's logs
+
+---
+**Error**: "kubectl get nodes" show node NotReady  
+**Solution**: kubectl describe node nodename
+If everything is alright here, SSH into the node and observe kubelet logs to see if it reports anything.  
+```sh
+sudo systemctl status kubelet
+sudo systemctl status docker
+sudo journalctl -u kubelet
+#if error is found and fixed, run  
+systemctl daemon-reload  
+systemctl restart kubelet
+# If still didn't get the root cause, check below things:-
+Make sure your node has enough space and memory. Check for /var directory space especially. command to check:-  
+-df -kh, free -m
+Verify cpu utilization with top command. and make sure any process is not taking an unexpected memory.    
+```
+---
+**Error**: Kubernetes stuck on ContainerCreating
+**Solution**: sudo journalctl -u kubelet -f
 
 ---
 **Error**: kubectl get nodes return "the connection to the server 8080 was refused"  

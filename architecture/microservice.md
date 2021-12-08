@@ -19,12 +19,23 @@ Benifit:
 - Increase throughput
 
 ## Design
-The way to identify microservices.  
-- Domain Driven Design
-  Identify Business Domain/Bounded Context/Data Model
-- Business Capability/Function  
-- Business Organization
-- Change Frequency
+- Identify Microservices  
+  - Domain Driven Design
+    Identify Business Domain/Bounded Context/Data Model
+  - Business Capability/Function  
+  - Business Organization
+  - Change Frequency
+- Granularity
+  DDD and bounded context as first step.  
+  - Too coarse-grained  
+    - Too many responsibilities  
+    - Manages data across a large number of tables
+      Use the guideline that a microservice should own no more than three to five tables.  
+    - Too many test cases  
+      e.g. hundreds of unit and integration tests
+  - Too fine-grained
+    - Become a collection of simple CRUD
+    - Heavily interdependent on one another (Chatty Services)  
 
 ## Difficulties
 - Code will increase 35-45 percent compare to monolithic
@@ -68,8 +79,6 @@ The way to identify microservices.
 
 ## Microservice Concern  
 **Design**
-- Granularity  
-  DDD and bounded context as first step.
 - Data model sharing  
   Event sourcing and CQRS: one service emits event, other service use the event to build it's own model.  
   DON'T overuse it, to be use when necessary.

@@ -10,7 +10,7 @@ If everything is alright here, SSH into the node and observe kubelet logs to see
 ```sh
 sudo systemctl status kubelet
 sudo systemctl status docker
-sudo journalctl -u kubelet
+sudo journalctl -u kubelet -f
 #if error is found and fixed, run  
 systemctl daemon-reload  
 systemctl restart kubelet

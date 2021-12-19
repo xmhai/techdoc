@@ -1,6 +1,6 @@
 ## Installation
 
-### (MySQL 8.0 Windows) Using a noinstall ZIP Archieve 
+### - (MySQL 8.0 Windows) Using a noinstall ZIP Archieve 
 - Download MSVC runtime  
 https://support.microsoft.com/tr-tr/topic/en-son-desteklenen-visual-c-indirmeleri-2647da03-1eea-4433-9aff-95f26a218cc0
 
@@ -21,8 +21,12 @@ datadir=C:/app/mysql-8.0.25/data
 Start: mysqld  
 Stop:  mysqladmin −u root -p shutdown  
 
-### Ubuntu
-### RHEL
+### - Linux
+https://dev.mysql.com/doc/refman/8.0/en/linux-installation-yum-repo.html  
+- Save the .rpm file to local and upload to linux server via sftp.  
+- Disable password validation module so that simple password can be set.  
+mysql> UNINSTALL COMPONENT 'file://component_validate_password';  
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';  
 
 ## Configuration
 **Allow remote access**  

@@ -18,7 +18,9 @@
 #add "vm.max_map_count=262144" to sysctl.conf  
 sudo nano /etc/sysctl.conf  
 https://tecadmin.net/how-to-install-elasticsearch-on-centosl-8/  
-**NOTE:** use "bind: 0.0.0.0" and add "discovery.type: single-node"
+**NOTE:**  
+-Set "network.host: 0.0.0.0" ("bind: 0.0.0.0"?)  
+-Add "discovery.type: single-node"
 
 - Docker  
 https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html

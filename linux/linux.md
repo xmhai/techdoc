@@ -1,4 +1,4 @@
-## Folder
+## Folder Structure
 https://tldp.org/HOWTO/HighQuality-Apps-HOWTO/fhs.html
 https://unix.stackexchange.com/questions/8656/usr-bin-vs-usr-local-bin-on-linux/259326  
 - /etc — Configuration Files  
@@ -47,10 +47,14 @@ How the script is execute: https://en.wikipedia.org/wiki/Shebang_(Unix)
 - nmcli
 - ifconfig
 - ip addr
+- sudo lsof -i -P -n | grep LISTEN
+- netstat -tunlp | grep 8081  
 
 ## Mem
+- free
 
 ## CPU
+- top
 
 ## Disk
 - df  
@@ -58,8 +62,9 @@ How the script is execute: https://en.wikipedia.org/wiki/Shebang_(Unix)
 - lsblk  
   lists all mass storage devices and partitions on them, including mounted file systems, unmounted file systems and devices without any file system.
 - fdisk
+- mount/umount
 - Move /opt, /home to another device  
-
+softlink and bind mount???  
 **Method 1**: partition/mount  
 https://www.howtogeek.com/442101/how-to-move-your-linux-home-directory-to-another-hard-drive/  
 ```sh

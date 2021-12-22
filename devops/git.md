@@ -1,3 +1,14 @@
+## Installation
+- Centos 7
+```sh
+#remove the old version
+sudo yum -y remove git
+sudo yum -y remove git-*
+#add repo
+sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.9-1.x86_64.rpm
+sudo yum install git
+```
+
 ## Git Concept
 ## Repository
 Git makes no distinction between the working copy and the central repository—they're all full-fledged Git repositories.

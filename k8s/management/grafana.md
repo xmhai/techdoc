@@ -18,7 +18,9 @@ grafana.ini:
     root_url: https://subdomain.example.com/grafana
 ```
 ## Access Grafana
-For installation on VM:
+For installation on VM:  
+http://ip:3000  
+admin/admin
 
 ## Deployment
 -  Very lightweight in use of memory and CPU,  

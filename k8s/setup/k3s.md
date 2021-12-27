@@ -28,11 +28,10 @@
   ```
 - For HA setup, just run above command on another node.
 
-- **Docker Compose**  
+- **Run as Docker using Docker Compose**  
 ```sh
 md k3s
-# create docker-compose.yaml with content:  
-# https://github.com/k3s-io/k3s/blob/master/docker-compose.yml  
+# create docker-compose.yaml with content from https://github.com/k3s-io/k3s/blob/master/docker-compose.yml  
 set K3S_TOKEN="K3S_TOKEN"  
 docker-compose up
 set KUBECONFIG="kubeconfig.yaml"
@@ -57,4 +56,12 @@ K3s includes and defaults to containerd
 $ sudo chmod 777 /var/lib/rancher/k3s/ -R
 $ sudo chmod 777 /run/k3s/containerd/ -R
 $ k3s crictl ps
+```
+
+## Use K3S
+```sh
+# Add alias to
+nano ~/.bashrc
+alias k='k3s kubectl'
+alias crictl='k3s crictl'
 ```

@@ -42,6 +42,13 @@ Branch Model
 http://nvie.com/posts/a-successful-git-branching-model/
 
 ---
+## Developer (DB)
+- git clone *url*
+- git checkout *orgin-branch*
+- git checkout -b *feature-branch* *orgin-branch*
+- git push origin *feature-branch*
+  This will create remote branch at server 
+
 ## Git Lifecycle
 **Create Remote Repository**
 - git init --bare *repository* or from github/gitlab/...

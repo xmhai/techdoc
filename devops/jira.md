@@ -38,7 +38,9 @@ http://192.168.10.10:8080/secure/WelcomeToJIRA.jspa
   - defect
 - sub-task
   - more granular level of detail to be assigned when multiple people working on a story, task or a bug.  
-
+- Sprint
+  - Use existing sprint story point (velocity) to estimate the work can complete within a sprint
+  
 ## UI
 - JIRA Administration
 - Project Configuration

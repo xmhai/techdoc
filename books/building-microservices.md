@@ -103,9 +103,9 @@ to delivering a particular user experience (NO buisness logic inside).
 - Build a simple dashboard to display the services running, and pull more and more information over time.
 
 ## Reference Books
-REST in practice (O'Reily)
-Refactoring Databases (Addison-Wesley) Scott J. Ambler and Pramod J. Sadalage
-Continuous Delivery (Addison-Wesley) Jez Humble and David Farley
-Agile Testing: A Practical Guide for Testers and Agile Teams (Addison-Wesley) Lisa Crispin and Janet Gregory
+REST in practice (O'Reily)  
+Refactoring Databases (Addison-Wesley) Scott J. Ambler and Pramod J. Sadalage  
+Continuous Delivery (Addison-Wesley) Jez Humble and David Farley  
+Agile Testing: A Practical Guide for Testers and Agile Teams (Addison-Wesley) Lisa Crispin and Janet Gregory  
 Release It! (Pragmatic Programmers) Michael Nygard
 

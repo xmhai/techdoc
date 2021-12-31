@@ -8,16 +8,16 @@ https://unix.stackexchange.com/questions/8656/usr-bin-vs-usr-local-bin-on-linux/
   commonly used by proprietary software that doesn’t obey the standard file system hierarchy. e.g. Jboss EAP
 - /lib — Essential Shared Libraries  
   contains libraries needed by the essential binaries in the /bin and /sbin folder. Libraries needed by the binaries in the /usr/bin folder are located in /usr/lib.
+- /bin, /usr/bin, /usr/local/bin
+  ```txt
+  Executable location:  
+  /usr/bin:        for distribution managed user programs  
+  /usr/local/bin:  for NON-distribution managed user programs  
+  $HOME/bin:       current user  
+  $PATH can see the order of paths, /usr/local/bin search before /usr/bin  
 
-```txt
-Executable location:  
-/usr/bin:        for distribution managed user programs  
-/usr/local/bin:  for NON-distribution managed user programs  
-$HOME/bin:       current user  
-$PATH can see the order of paths, /usr/local/bin search before /usr/bin  
-
-To find out the location of command: $which command  
-```
+  To find out the location of command: $which command  
+  ```
 
 ## Linux Software Package
 https://embeddedinventor.com/a-beginners-introduction-to-linux-package-managers-apt-yum-dpkg-rpm/
@@ -67,50 +67,50 @@ How the script is execute: https://en.wikipedia.org/wiki/Shebang_(Unix)
 softlink and bind mount???  
 **Method 1**: partition/mount  
 https://www.howtogeek.com/442101/how-to-move-your-linux-home-directory-to-another-hard-drive/  
-```sh
-sudo fdisk /dev/sda
+  ```sh
+  sudo fdisk /dev/sda
      d: delete existing partition
      n: create new partition
-sudo mkfs -t ext4 /dev/sda1
-sudo mkdir -p /mnt/sda1
-sudo mount -t auto /dev/sda1 /mnt/sda1
-sudo umount /dev/sda1
-df -hT
-sudo rm -rf lost+found
-```
-**Method 2**: Logical Volume/mount  
-https://www.thegeekdiary.com/redhat-centos-a-beginners-guide-to-lvm-logical-volume-manager/  
-```sh
-# run as root
-lvmdiskscan
-# create Physical Volume
-pvcreate /dev/sda1
-pvscan
-pvs
-# create Volume Group
-vgcreate vg01 /dev/sda1
-vgs
-vgdisplay vg01
-# create Logical Volume
-lvcreate -L 100G -n lvol01 vg01
-lvcreate -L 50G -n lvol02 vg01
-lvs
-lvdisplay
-# create File System
-mkfs.ext4 /dev/vg01/lvol01
-mkfs.ext4 /dev/vg01/lvol02
-# mount
-nano /etc/fstab
-/dev/vg01/lvol01	/opt			ext4	defaults	0 0
-# comment existing /home mapping
-/dev/vg01/lvol02	/home			ext4	defaults	0 0
-# delete home lv
-lvremove /dev/centos/home
-# check available space with vgs
-vgs
-lvextend -L+8G /dev/centos/root
-resize2fs /dev/centos/root
-```
+  sudo mkfs -t ext4 /dev/sda1
+  sudo mkdir -p /mnt/sda1
+  sudo mount -t auto /dev/sda1 /mnt/sda1
+  sudo umount /dev/sda1
+  df -hT
+  sudo rm -rf lost+found
+  ```
+  **Method 2**: Logical Volume/mount  
+  https://www.thegeekdiary.com/redhat-centos-a-beginners-guide-to-lvm-logical-volume-manager/  
+  ```sh
+  # run as root
+  lvmdiskscan
+  # create Physical Volume
+  pvcreate /dev/sda1
+  pvscan
+  pvs
+  # create Volume Group
+  vgcreate vg01 /dev/sda1
+  vgs
+  vgdisplay vg01
+  # create Logical Volume
+  lvcreate -L 100G -n lvol01 vg01
+  lvcreate -L 50G -n lvol02 vg01
+  lvs
+  lvdisplay
+  # create File System
+  mkfs.ext4 /dev/vg01/lvol01
+  mkfs.ext4 /dev/vg01/lvol02
+  # mount
+  nano /etc/fstab
+  /dev/vg01/lvol01	/opt			ext4	defaults	0 0
+  # comment existing /home mapping
+  /dev/vg01/lvol02	/home			ext4	defaults	0 0
+  # delete home lv
+  lvremove /dev/centos/home
+  # check available space with vgs
+  vgs
+  lvextend -L+8G /dev/centos/root
+  resize2fs /dev/centos/root
+  ```
 - Logical Volume Management  
   https://www.howtogeek.com/howto/40702/how-to-manage-and-use-lvm-logical-volume-management-in-ubuntu/  
 

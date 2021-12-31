@@ -41,3 +41,11 @@ if a test requires starting up Spring in order to run such as @WebMvcTest , it i
 - Load test resource  
   input = this.getClass().getResourceAsStream("/data/test_data.txt");
   String data = IOUtils.toString(input, StandardCharsets.UTF-8);
+- Random data for bean
+  random-easy
+- Create instance for private constructor class  
+  ```java
+  Constructor cxor = CommonUtl.class.getDeclaredConstructor();  
+  cxor.setAccessible(true);  
+  cxor.newInstance();  
+  ```

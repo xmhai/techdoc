@@ -8,19 +8,19 @@ wlp2s0 **unmanaged**
     - To solve "unmanaged" issue, run "yum install NetworkManager-wifi", reason is minimal install default wifi module is not installed.
 - RJ45 diagnosis: one blinking orange light means data is transmitting, one steady green/red light means connection is ok.
 - When putty shows error "no route to host", check the firewall status and make sure it disabled.
-```sh
-systemctl status firewalld
-systemctl stop firewalld
-systemctl disable firewalld
-systemctl mask --now firewalld
-```
+  ```sh
+  systemctl status firewalld
+  systemctl stop firewalld
+  systemctl disable firewalld
+  systemctl mask --now firewalld
+  ```
 - Useful command when diagnosis network issue
-```sh
-nmcli device status
-nmcli con up eno1
-ip addr
-systemctl status xxx
-```
+  ```sh
+  nmcli device status
+  nmcli con up eno1
+  ip addr
+  systemctl status xxx
+  ```
 ## Initial Setup after installation
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7  
 

@@ -4,3 +4,7 @@
   Connect to printer using USB.  
   Run "Samsung Easy Wireless Setup" program.  
 
+## MyBookLive
+- Map network drive  
+
+

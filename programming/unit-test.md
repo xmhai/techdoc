@@ -49,3 +49,5 @@ if a test requires starting up Spring in order to run such as @WebMvcTest , it i
   cxor.setAccessible(true);  
   cxor.newInstance();  
   ```
+- Unit test for bean  
+  BeanUtils.copyProperities  

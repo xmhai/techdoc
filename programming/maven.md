@@ -33,7 +33,8 @@ e.g. mvn dependency:tree is using plugin
   - Maven goals are granular and typically perform one task  
   - Goals in Maven are packaged in plugins  
     e.g. run "mvn complier:compile", **compiler** is the **plugin** that provides the **goal compile**
-- plugin
+- Plugin  
+  https://www.baeldung.com/core-maven-plugins  
   - JAR file that can performs some tasks (goals)  
   - Use @Mojo to define custom plugin goal and default phase (either use @Mojo(defaultPhase=...) annotaion or @goal and @phase in Javadoc)  
   - Two types: Build plugin and reporting plugin  
@@ -41,9 +42,11 @@ e.g. mvn dependency:tree is using plugin
 - Lifecycle
   Maven’s build lifecycle constitutes a series of stages (phases) that get executed in the same order. (https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference)  
   Maven project has the following three built-in lifecycles:  
-  - default: validate, resources (resources), compile (compiler), test (test), package (war), verify, install (install), deploy (deploy)
+  - default  
+    responsible for all steps in the build process.
   - clean
   - site  
+    in charge of building a site, showing Maven related information of the project.  
 - Phase
   - The \<packaging> element in the pom.xml file will automatically assign the right goals for each of the phases.  
   - Each phase is associated with zero or more goals.  
@@ -78,14 +81,15 @@ Maven default plugins are developed as Maven project (e.g. maven-surefire-plugin
 - \<pluginmanagement>
 
 ## Question
-- Which lifecycle is invoked?
+- Which lifecycle is invoked?  
   Decided by the phases passed in mvn command.  
 - Where are the phase defined for a lifecycle?  
   https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference  
-- Is the phase name unique?
+- Is the phase name unique?  
   yes
 - Where the the phase goals are defined?  
-  There are default plugin could be defined in plugin, also we can specify extra plugin, goals and phase in \<build> section.  
+  When create plugin, we can specify the default phase or goal (refer to above plugin section),  
+  also we can specify extra plugin, goals and phase in \<build> section.  
   Can customize own maven phase:  
   https://stackoverflow.com/questions/12433120/creating-a-new-phase  
 - How does the short form plugin name like to plugin jar file? e.g. mvn jetty:run  

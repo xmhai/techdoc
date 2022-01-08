@@ -17,6 +17,9 @@ Also quote from Spring doc:
 
 ## Mockito  
 
+## easy-random
+To generate random data in objects.  
+
 ## Jacoco
 - Error: "Skipping Jacoco execution due to missing execution data file" upon executing Jacoco.  
   Reason: No test case is created. src/test/java is empty.
@@ -26,6 +29,21 @@ Also quote from Spring doc:
   This will add @lombok.Generated annotations to all generated nodes where possible.  
   Note: JaCoCo performs analysis of bytecode and hence annotation must have retention policy RUNTIME (aka "runtime visible") or CLASS (aka "runtime invisible" yet retained in class files)  
   javax.annotation.Generated or javax.annotation.processing.Generated unfortunately both have retention policy SOURCE (aka discarded by compiler).
+- For unit testing, should exclude all bean classes and Spring configuration classes.  
+- Can use beantutils.copyProperties to make sure code are covered in Jacoco.
+- Classes and methods annotated with annotation whose retention policy is runtime or class and whose simple name is Generated are filtered out during generation of report (For jacoco plugin, and NOT applicable to sonar)  
+  ```java
+  // need to test whether name like ExcludeFromJacocoGeneratedReport is working or not???
+  @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
+  @interface Generated {}
+  ```
+- Note: 
+  ```txt
+  The exclustion of classes is ONLY happening at report phase, the plugin or sonarType is generating report from jacoco result jacoco-unit.exec.
+  Thus, jacoco plugin exclusion is only for the jacoco report generated under folder /site/jacoco.  
+  For Sonar report (CICD), need to set:  
+  sonar.exclusion=....
+  ```
 
 ## Spring Boot
 if a test requires starting up Spring in order to run such as @WebMvcTest , it is not a unit test but an integration test.  

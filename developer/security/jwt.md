@@ -12,7 +12,6 @@ defines a container to transport data between interested parties (e.g. ID token)
 - payload  
   is known as the JWT claims set. It’s up to the each application of JWT to define mandatory and optional claims.  
   **The payload is not necessarily JSON.**  
-- signature  
 
 ## JWS
 is a signed JWT.  

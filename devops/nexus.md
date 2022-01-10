@@ -43,3 +43,14 @@ sudo systemctl start nexus.service
 # view log
 sudo tail -f /opt/nexusdata/nexus3/log/nexus.log
 ```
+
+## Access
+http://srv:8081/
+
+## Repository Management
+https://dzone.com/refcardz/getting-started-repository  
+- Repository Types
+  - Proxy
+  - Hosted
+  - Group (single url to retrieve jars)  
+    https://help.sonatype.com/repomanager3/nexus-repository-administration/repository-management#RepositoryManagement-ManagingRepositoriesandRepositoryGroups  

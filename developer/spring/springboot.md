@@ -16,3 +16,6 @@ https://www.baeldung.com/exception-handling-for-rest-with-spring
   An implementation of the ErrorController is used to provide a custom whitelabel error page.
   Spring Boot provides an ErrorController implementation to handle errors in a sensible way. In a nutshell, it serves a fallback error page for browsers (a.k.a. the Whitelabel Error Page) and a JSON response for RESTful, non-HTML requests:
   - Custom ErrorController with @RequestMapping("/error")
+
+## Q&A
+- If there are multiple 

@@ -1,5 +1,5 @@
 ## Concept  
-Managing build processes: Compiling, Testing, Reporting, Packaging  
+A build framework using plugins to manage build processes: Compiling, Testing, Reporting, Packaging  
 - Standard project directory layout (Archetypes, can build own and use as local)  
 - Manage dependency  
   Handle transitive dependency  
@@ -9,10 +9,17 @@ e.g. mvn dependency:tree is using plugin
 - pom.xml  
 
 ## Configuration
+- pom.xml  
+  pom.xml is inherited from maven super pom, parent pom. e.g. "central" repository is defined in super pom  
+  - repository  
+    define repository with an **id**, this id will be referred in settings.xml.  
 - settings.xml  
-  - (enterprise users) configure proxy  
-  - (enterprise users) configure repository  
+  - proxy (enterprise environment)   
   - can encrypt password  
+  - mirrors (enterprise environment)  
+    for maven to use enterprise repository by having it mirror all repositry request, this overrides what is in pom.xml
+  - servers  
+    the id of the server need to match the id of repository defined in pom.xml.  
 
 ## Dependency
 - dependency mediation  
@@ -23,7 +30,7 @@ e.g. mvn dependency:tree is using plugin
   - to resolve JAR conflict, can use \<exclusion> tag  
 
 ## Properties
-- Implicit Properties  
+- Implicit Properties which can be referred directly in pom  
   project.xxx, env.xxx, settings.xxx  
 - User-Defined Properties  
   defined under \<properties>
@@ -63,6 +70,7 @@ Execute a goal
 - mvn help:describe -Dplugin=compiler
 
 Execute one or more phases  
+- mvn **[phase] [phase]**  
 - mvn package
 
 ## Maven plugins
@@ -97,5 +105,3 @@ Maven default plugins are developed as Maven project (e.g. maven-surefire-plugin
   https://maven.apache.org/guides/plugin/guide-java-plugin-development.html  
 - To execute JUnit test only  
   mvn -Dtest=NameOfTest surefire:test  
-
-

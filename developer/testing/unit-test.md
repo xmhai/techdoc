@@ -14,6 +14,30 @@ Also quote from Spring doc:
 ## JUnit
 - Error: "The input type of launch configuration does not exist" when right click on test class and run as "Junit Test" .  
   Reason is the test class is not created under src/test/java folder.  
+- @ExtendWith({ExecutionContextExtension.class})
+- **Extension points**  
+  - **Conditional Test Execution**  
+    ExecutionCondition makes the test case to run on the conditions. e.g. properties  
+  - **Life-cycle callbacks**  
+    BeforeAllCallback, AfterAllCallback, BeforeEachCallback,
+  AfterEachCallback  
+  - **Parameter resolution**  
+    ParameterResolver to resolve the constrcutor parameters.  
+  - **Exception handling**  
+    TestExecutionExceptionHandler  
+  - **Test instance postprocessing**  
+    TestInstancePostProcessor  
+- Spring Application Test  
+  ```java
+  @ExtendWith(SpringExtension.class)
+  @ContextConfiguration("classpath:application-context.xml")
+  ```
+
+## Integration Test
+use failsafe plugin.  
+https://www.baeldung.com/maven-integration-test  
+- Create test cases like xxxIT.
+- mvn verify
 
 ## easy-random
 To generate random data in objects.  
@@ -26,6 +50,41 @@ if a test requires starting up Spring in order to run such as @WebMvcTest , it i
 - Use @DataJpaTest to write test for persistence layer.
 - Use @SpringBootTest with TestRestTemplate to write integration-test for Spring Boot application.
 - Use @MockBean for integration service.
+```java
+// bootstrap the entire container
+@SpringBootTest
+// XML configuration (obsolete)
+@EnableAutoConfiguration
+@ImportResource(...)
+// Annotation configuration, define additional beans or customizations for a test
+@TestConfiguration
+public class xxxConfig {...}
+@Import(xxxConfig.class)
+
+// REST API test skeleton
+// Refer to <<JUnit in Action>> pg 365
+@AutoConfigureMockMvc
+public class RestApplicationTest {
+  @Autowired
+  private MockMvc mvc;
+  // Mock Spring Bean
+  @MockBean
+  UserRepository mockRepository;
+  // usage in code
+  @Test
+  void testXXX () {
+    Mockito.when(mockRepository.count()).thenReturn(123L);
+    mvc.perform(get("/countries"))
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.name", is("Peter Michelsen")))
+      ...;
+    // verify the mock method is call 1 time
+    Mockito.verify(passengerRepository, times(1)).save(passenger);
+  }
+}
+
+  // SpringJPATest???
+  ```
 
 ## Best Practice
 - Maven skip integration test cases  

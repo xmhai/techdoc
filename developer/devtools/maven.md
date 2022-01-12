@@ -22,12 +22,15 @@ e.g. mvn dependency:tree is using plugin
     the id of the server need to match the id of repository defined in pom.xml.  
 
 ## Dependency
-- dependency mediation  
-  - closest to the tree  
-  - first-found dependency  
-  - can override by explicitly include the JAR in pom  
-  - mvn dependency:tree  
-  - to resolve JAR conflict, can use \<exclusion> tag  
+- How maven decide the version of dependency:   
+  - Closest to the tree  
+    so that we can include specific JAR version in pom, this will override the implicit dependency.  
+  - First-found dependency  
+- To view dependency tree:  
+  mvn dependency:tree  
+- To resolve JAR conflict
+  - Either use \<exclusion> tag  
+  - Or include specific version in pom.    
 
 ## Properties
 - Implicit Properties which can be referred directly in pom  

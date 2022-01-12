@@ -53,16 +53,15 @@ if a test requires starting up Spring in order to run such as @WebMvcTest , it i
 ```java
 // bootstrap the entire container
 @SpringBootTest
-// XML configuration (obsolete)
-@EnableAutoConfiguration
-@ImportResource(...)
+
 // Annotation configuration, define additional beans or customizations for a test
 @TestConfiguration
 public class xxxConfig {...}
-@Import(xxxConfig.class)
+@Import(xxxConfig.class) // import above configuration class
 
-// REST API test skeleton
+// Test skeleton
 // Refer to <<JUnit in Action>> pg 365
+// Refer to <<Spring Boot in Action>> pg 82
 @AutoConfigureMockMvc
 public class RestApplicationTest {
   @Autowired
@@ -74,10 +73,24 @@ public class RestApplicationTest {
   @Test
   void testXXX () {
     Mockito.when(mockRepository.count()).thenReturn(123L);
+
+    // Verify status code
+		mvc.perform(MockMvcRequestBuilders.get("/"))
+			.andExpect(MockMvcResultMatchers.status().isOk());
+
+    // Verify JSON
     mvc.perform(get("/countries"))
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.name", is("Peter Michelsen")))
       ...;
+
+    // Verify MVC
+    mvc.perform(get("/"))
+      .andExpect(status().isOk())
+      .andExpect(view().name("readingList"))
+      .andExpect(model().attribute("reader", samePropertyValuesAs(expectedReader)))
+      .andExpect(model().attribute("books", hasSize(0)));
+
     // verify the mock method is call 1 time
     Mockito.verify(passengerRepository, times(1)).save(passenger);
   }

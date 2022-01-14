@@ -1,3 +1,7 @@
+## Devtools
+- Hot reload of everything under /src/main  
+- H2 console: http://localhost:8080/h2-console  
+
 ## Cache 
 https://programmerfriend.com/ultimate-guide-to-redis-cache-with-spring-boot-2-and-spring-data-redis/  
 Cacheable Annotation

@@ -14,7 +14,8 @@ Also quote from Spring doc:
 ## JUnit
 - Error: "The input type of launch configuration does not exist" when right click on test class and run as "Junit Test" .  
   Reason is the test class is not created under src/test/java folder.  
-- @ExtendWith({ExecutionContextExtension.class})
+- @ExtendWith({ExecutionContextExtension.class})  
+  e.g.   @ExtendWith(SpringExtension.class)
 - **Extension points**  
   - **Conditional Test Execution**  
     ExecutionCondition makes the test case to run on the conditions. e.g. properties  
@@ -27,11 +28,6 @@ Also quote from Spring doc:
     TestExecutionExceptionHandler  
   - **Test instance postprocessing**  
     TestInstancePostProcessor  
-- Spring Application Test  
-  ```java
-  @ExtendWith(SpringExtension.class)
-  @ContextConfiguration("classpath:application-context.xml")
-  ```
 
 ## Integration Test
 use failsafe plugin.  
@@ -42,14 +38,19 @@ https://www.baeldung.com/maven-integration-test
 ## easy-random
 To generate random data in objects.  
 
-## Spring Boot
+## Spring Boot Test
 if a test requires starting up Spring in order to run such as @WebMvcTest , it is not a unit test but an integration test.  
 @SpringBootTest, @ContextConfiguration, @DataJpaTest and @WebMvcTest are all involved in loading a subset of Spring components. They are in consequence related to integration testing.  
-- Use @SpringJUnitConfig to write unit-test.
-- Use @WebMvcTest with MockMvc to write test for controller layer.
-- Use @DataJpaTest to write test for persistence layer.
-- Use @SpringBootTest with TestRestTemplate to write integration-test for Spring Boot application.
-- Use @MockBean for integration service.
+- @SpringBootTest with TestRestTemplate
+  Integration-test for Spring Boot application.  
+- @WebMvcTest with MockMvc  
+  Test for controller layer.  
+  - MockMvc
+  - MockMvcRequestBuilders.get|post  
+  - MockMvcResultMatchers.content|status|view  
+- Use @SpringJUnitConfig to write unit-test.  
+- Use @DataJpaTest to write test for persistence layer.  
+- Use @MockBean for integration service.  
 ```java
 // bootstrap the entire container
 @SpringBootTest

@@ -36,7 +36,6 @@ data structures (objects/ folder)
 - index  
   a temporary and dynamic binary file that describes the directory structure of entire repository.
 
-
 ## Branch
 Branch Model  
 http://nvie.com/posts/a-successful-git-branching-model/
@@ -46,8 +45,17 @@ http://nvie.com/posts/a-successful-git-branching-model/
 - git clone *url*
 - git checkout *orgin-branch*
 - git checkout -b *feature-branch* *orgin-branch*
-- git push origin *feature-branch*
-  This will create remote branch at server 
+- git push -u origin *feature-branch*
+  This will create remote branch at server.  
+- git branch -d *feature-branch*
+
+When this branch is behind integrataion branch.  
+- git checkout *orgin-branch*
+- git pull
+  As git checkout doesn't really get the latest files from server.  
+- git rebase *orgin-branch*  
+- git push --force  
+
 
 ## Git Lifecycle
 **Create Remote Repository**
@@ -142,3 +150,8 @@ Enter user name/password or PTA/PTA from Clone Repository page.
 ## Eclipse
 Eclipse EGit can only use access token as password to login GitHub to perform push.
 
+## Best Pratice
+- Only allow fast-forward merge for integration branch  
+  https://git-scm.com/docs/git-push  
+- Integrate more often, not only at the end of sprint
+- 

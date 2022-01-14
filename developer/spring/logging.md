@@ -1,0 +1,3 @@
+- Spring default use logback  
+- lombok @Slf4j
+- log4j

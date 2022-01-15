@@ -1,4 +1,5 @@
 ## Annotation
+- @Controller
 - @RequestMapping  
   use it at class level.  
 - @GetMapping/@PostMapping/@DeleteMapping
@@ -7,8 +8,11 @@
   - Class-level @SessionAttributes annotation  
     specifies any model objects like the order attribute that should be kept in session.  
   - Cleanup session  
-    SessionStatus sessionStatus;  
-    sessionStatus.setComplete();
+    ```java
+    public String controllerMethod(..., SessionStatus sessionStatus) {
+        sessionStatus.setComplete();
+    }
+    ```
 - @ModelAttribute  
   - Parameter-level @ModelAttribute  
     indicate that its value should come from the model and that Spring MVC shouldn’t attempt to bind request parameters to it.  
@@ -16,8 +20,7 @@
     ensures that an model object will be created in the model.  
 
 ## ModelView
-- Before Spring hands the request over to a
-view, it copies the model data into request attributes.  
+- Before Spring hands the request over to a view, it copies the model data into request attributes.  
 
 ## Validation
 - Validation API and the Hibernate implementation of the Validation API are automatically added to the project.  
@@ -35,7 +38,6 @@ public String processOrder(@Valid Order order, Errors errors) {
 <!-- Display validation error -->
 <span class="validationError" th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}">CC Num Error</span>
 ```
-
 ## Redirect vs. Forward
 Forward:
 - The request will be further processed on the server side
@@ -64,3 +66,16 @@ public class WebConfig implements WebMvcConfigurer {
 - Disable cache in development  
   spring.thymeleaf.cache=false
 
+## REST
+- @RestController = @Controller + @ResponseBody  
+  controller should have their return value written directly to the body of the response, rather than being carried in the model to a view for rendering.  
+- @CrossOrigin
+- @PathVariable
+- ResponseEntity  
+  return new ResponseEntity<>(optTaco.get(), HttpStatus.OK);  
+- @RequestBody  
+  ensures that JSON in the request body is bound to the parameter instead. without it, Spring MVC would assume that you want request parameters (either query parameters or form parameters) to be bound to the parameter.  
+- @ResponseStatus  
+- POST to create new; PUT for replace whole; PATCH for replace partially;
+- spring-data-rest  
+- @Repository-RestController

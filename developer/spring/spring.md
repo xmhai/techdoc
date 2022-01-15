@@ -27,13 +27,5 @@ swagger2markup-maven-plugin/asciidoctor-maven-plugin
 https://dzone.com/articles/static-api-documentation-with-spring-and-swagger  
 
 ---
-## Properties File (application.properites/application.yml)
-- Multiple Profiles
-  - Multiple profiles can be included in application.yml file.
-  - Need to create mulitple files if properties format is used.
-- Self-defined properties
-  - Can be parsed into a configuration class through @ConfigurationProperties(prefix = "cache.app-caches")
-
----
 ## Transactional
 https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth  

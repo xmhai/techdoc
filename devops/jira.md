@@ -16,6 +16,13 @@ Jira Server evalation license is valid for 30 days and can be extended to 90 day
 Jira becomes read-only when your evaluation expires.  
 You will get the following massage "One or more of your application licenses have expired. Users affected by this will not be able to log in. Please renew your licenses to reactivate your applications."
 
+## Uninstall
+https://confluence.atlassian.com/adminjiraserver/uninstalling-jira-applications-from-linux-938846843.html  
+```sh
+cd /opt/atlassian/jira/
+sudo ./uninstall
+```
+
 ## Access
 http://ip:8080  
 Need to register a Atlassian account first to get a token to complete server setup.  

@@ -9,3 +9,16 @@ v7.3 on Centos 7
 ## Access  
 http://ip:9090  
 default password in: /var/lib/jenkins/secrets/initialAdminPassword  
+
+## Configuration
+- Find out Jenkins user  
+From gui, go to "manage jenkins" > "system information" and look for "user.name"
+
+### Maven Integration
+- Install Maven plugin  
+- Install Maven  
+  https://www.baeldung.com/install-maven-on-windows-linux-mac  
+  ```sh
+  wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
+  tar xzvf apache-maven-3.8.4-bin.tar.gz
+  ```

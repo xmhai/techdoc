@@ -23,14 +23,21 @@ https://unix.stackexchange.com/questions/8656/usr-bin-vs-usr-local-bin-on-linux/
 https://embeddedinventor.com/a-beginners-introduction-to-linux-package-managers-apt-yum-dpkg-rpm/
 https://embeddedinventor.com/yum-dnf-explained-for-beginners/
 
-- yum (RHEL)
-- apt (Ubuntu)
+- yum (RHEL) / apt (Ubuntu)
 - Download File  
   - curl -OJL url
   - wget --user=admin --password='dangji2004' ftp://192.168.1.100/Public/geocoder.tar.gz
-- Unzip  
-  - gz:  gzip -d filename
-  - tar: tar -xvf filename
+  - Unzip  
+    - gz:  gzip -d filename
+    - tar: tar -xvf filename
+  - mv \<dir\> /opt
+  - create link in /usr/bin for the application under /opt/\<dir\>/bin  
+    ln -s /<full>/<path>/<to>/<file> /usr/bin
+  - OR add application to PATH  
+    ```sh
+    nano ~/.bashrc
+    export PATH=<path>:$PATH    
+    ```
 
 ## Shell Script
 How the script is execute: https://en.wikipedia.org/wiki/Shebang_(Unix)

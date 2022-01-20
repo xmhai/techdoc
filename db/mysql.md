@@ -55,9 +55,14 @@ The correct procedure is to insert a second entry with Host='localhost' and User
 Update directory in my.ini file
 
 **Migrate db to another server**  
-mysqldump -u root -p --opt [database name] > [database name].sql
-winscp OR scp [database name].sql [username]@[servername]:path/to/database/
-mysql -u root -p newdatabase < /path/to/newdatabase.sql
+- mysqldump
+  ```cmd
+  mysqldump -u root -p --opt [database name] > [database name].sql
+  winscp OR scp [database name].sql [username]@[servername]:path/to/database/
+  mysql -u root -p newdatabase < /path/to/newdatabase.sql
+  ```
+- MySQL workbench  
+  Menu "Server->Data Export"  
 
 **Reset root password**  
 http://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html

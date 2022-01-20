@@ -88,4 +88,7 @@ http://localhost:8080/actuator
 - jar
 
 ## Q&A
-- If there are multiple 
+- How to build a common jar library?  
+  https://spring.io/guides/gs/multi-module/  
+  https://stackoverflow.com/questions/32696080/how-to-use-spring-boot-making-a-common-library/45060285  
+

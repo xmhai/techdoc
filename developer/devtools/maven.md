@@ -87,9 +87,14 @@ Maven default plugins are developed as Maven project (e.g. maven-surefire-plugin
 - parent POM  
   \<packaging>pom\<\packaging>  
   \<modules>\<module>...\<\modules>  
-- \<pluginmanagement>  
-  affect this POM and all inheriting POMs. 
-- \<pluginmanagement>
+  **Using the dependencyManagement tag in the parent POM file**  
+  \<dependencyManagement>  
+  **good practice to explicitly declare the configuration and lockdown the versions for any plugins required in a multi-module project**
+  \<pluginManagement>
+- child POM  
+  **using the dependencies in the child's POM files (sub-modules) and even the parent module itself (if applicable)**
+  \<dependencies>
+  \<plugins>
 
 ## Question
 - Which lifecycle is invoked?  

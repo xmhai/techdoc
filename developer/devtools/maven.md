@@ -90,8 +90,13 @@ Maven default plugins are developed as Maven project (e.g. maven-surefire-plugin
   **Using the dependencyManagement tag in the parent POM file**  
   \<dependencyManagement>  
   **good practice to explicitly declare the configuration and lockdown the versions for any plugins required in a multi-module project**
-  \<pluginManagement>
+  \<pluginManagement>  
+  If project parent pom (i.e. used by one project), then put it at project root,  
+  else if standard parent pom (e.g. like spring-boot-parent), then create it separately.  
 - child POM  
+  \<parent>  
+    use empty relativePath \<relativePath/> when using standard pom like spring-boot-parent.  
+    use \<relativePath>../pom.xml</relativePath> for project parent pom.  
   **using the dependencies in the child's POM files (sub-modules) and even the parent module itself (if applicable)**
   \<dependencies>
   \<plugins>

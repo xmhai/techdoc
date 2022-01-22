@@ -6,6 +6,7 @@ https://www.techrepublic.com/article/the-4-most-important-files-for-ssh-connecti
     ssh-keygen -t rsa
     # add public key to authorized_keys
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    chmod 600 ~/.ssh/authorized_keys  
     ```
 
 - Remote (copy key from remote machine)  
@@ -34,6 +35,10 @@ This is for multiple machine setup, e.g. Rancher
   - puttygen to convert id_rsa to putty key .ppk
   - specify putty connection->data and connection->SSH->auth
 
+- WSL ssh access
+  - copy id_rsa to c:/users/\<user>/.ssh folder
+
 - Troubleshooting  
   - Server refused our key  
-    Caused by authorized_keys not created.  
+    - Cause 1: Caused by authorized_keys not created.  
+    - Cause 2: authorized_keys permission not 600

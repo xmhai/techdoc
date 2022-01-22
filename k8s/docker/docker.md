@@ -59,17 +59,21 @@ Q: What is the memory size allocated for each container?
 A: can specify in command option.
 
 ## Troubleshooting
-**Error**: Error response from daemon: i/o timeout  
+- Error response from daemon: i/o timeout  
 **Solution**: 
 Open Docker  Setting, click on the Resources->Network tab and change the DNS server from Automatic to Fixed "8.8.8.8".
 
-**Error**:  
+- Error:  
 show "Docker is starting" forever  
 show "Linux Containers WSL 2 has stopped"  
 **Solution**:  
 Open Docker Troubleshoot, clear data, reset to factory default
 If not working, uninstall and reinstall  
 
+- Error: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock
+  sudo chmod 666 /var/run/docker.sock
+
+## Appendix
 ---
 Maven build plugin
 ```xml

@@ -65,3 +65,25 @@ nano ~/.bashrc
 alias k='k3s kubectl'
 alias crictl='k3s crictl'
 ```
+
+## Private docker image registry
+https://rancher.com/docs/k3s/latest/en/installation/private-registry/  
+```sh
+sudo nano /etc/rancher/k3s/registries.yaml
+sudo systemctl restart k3s
+```
+```yml
+mirrors:
+  harbor.home:9443:
+    endpoint:
+      - "https://harbor.home:9443"
+configs:
+  "harbor.home:9443":
+    auth:
+      username: admin # this is the registry username
+      password: admin # this is the registry password
+    tls:
+      cert_file: /etc/docker/certs.d/harbor.home:9443/harbor.home.cert # path to the cert file used in the registry
+      key_file:  /etc/docker/certs.d/harbor.home:9443/harbor.home.key  # path to the key file used in the registry
+      ca_file:   /etc/docker/certs.d/harbor.home:9443/ca.crt           # path to the ca file used in the registry	  
+```

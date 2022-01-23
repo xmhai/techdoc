@@ -5,13 +5,13 @@
 https://support.microsoft.com/tr-tr/topic/en-son-desteklenen-visual-c-indirmeleri-2647da03-1eea-4433-9aff-95f26a218cc0
 
 - Create my.ini under MySQL root folder  
-```ini
-[mysqld]
-# set basedir to your installation path
-basedir=C:/app/mysql-8.0.25
-# set datadir to the location of your data directory
-datadir=C:/app/mysql-8.0.25/data
-```
+  ```ini
+  [mysqld]
+  # set basedir to your installation path
+  basedir=C:/app/mysql-8.0.25
+  # set datadir to the location of your data directory
+  datadir=C:/app/mysql-8.0.25/data
+  ```
 - #initialize data folder  
   bin\mysqld --defaults-file=my.ini --initialize-insecure --console
 - mysql -u root --skip-password
@@ -25,8 +25,12 @@ Stop:  mysqladmin −u root -p shutdown
 https://dev.mysql.com/doc/refman/8.0/en/linux-installation-yum-repo.html  
 - Save the .rpm file to local and upload to linux server via sftp.  
 - Disable password validation module so that simple password can be set.  
-mysql> UNINSTALL COMPONENT 'file://component_validate_password';  
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';  
+  ```sql
+  mysql> UNINSTALL COMPONENT 'file://component_validate_password';  
+  mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';  
+  ```
+- Install as linux service (when use binary to install)  
+  https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/secure-deployment-post-install.html#secure-deployment-systemd-startup  
 
 ## Configuration
 **Allow remote access**  

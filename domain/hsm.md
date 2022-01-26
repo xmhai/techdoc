@@ -1,5 +1,7 @@
 ## Concept  
 https://github.com/snowch/hsm-guide/blob/master/book.md  
+https://stackoverflow.com/questions/26756077/thales-hsm-pin-related-operations  
+https://github.com/Hairi81/HThalesAdaptor  
 
 ## Key Management
 https://netzts.in/retail-payments-domain/hsm-lmk-zmk-tmk-pvk-cvk/  

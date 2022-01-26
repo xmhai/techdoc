@@ -22,10 +22,9 @@ kubectl -n ambassador wait --for condition=available --timeout=90s deploy edge-s
 - Loadbalancer  
   https://www.getambassador.io/docs/edge-stack/latest/topics/install/bare-metal/  
 
-- Configuration
+- Configuration  
 https://www.getambassador.io/docs/edge-stack/latest/howtos/configure-communications/  
-Sample HTTP configuration:  
-
+[Sample HTTP configuration](https://github.com/xmhai/PersonalFinanceAssistant/blob/master/k8s/k8s-prod/ingress-service-ambassador.yaml)
 
 ## Troubleshooting
 - Error: Loadbalancer Pending

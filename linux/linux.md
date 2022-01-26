@@ -19,7 +19,7 @@ https://unix.stackexchange.com/questions/8656/usr-bin-vs-usr-local-bin-on-linux/
   To find out the location of command: $which command  
   ```
 
-## Linux Software Package
+## Install Software
 https://embeddedinventor.com/a-beginners-introduction-to-linux-package-managers-apt-yum-dpkg-rpm/
 https://embeddedinventor.com/yum-dnf-explained-for-beginners/
 
@@ -45,6 +45,12 @@ How the script is execute: https://en.wikipedia.org/wiki/Shebang_(Unix)
 - The program loader mechanism parses the rest of the file's initial line as an interpreter directive. 
 - The loader executes the specified interpreter program, passing path/to/script as the first argument
 - Create shell file in Notepad++, and "Edit"->"EOL Conversion"->Unix, otherwise can encounter "invalid end of file" error.
+
+## File
+- which
+- grep (search for text in file content)
+  grep -r "text-to-find-here" .
+- find (search for files by file information)  
 
 ## System  
 - systemctl status|start|stop servicename

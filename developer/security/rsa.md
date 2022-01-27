@@ -1,4 +1,5 @@
 ## Concept  
+https://www.openssl.org/docs/man1.1.1/man1/  
 https://security.stackexchange.com/questions/90169/rsa-public-key-and-private-key-lengths  
 https://adangel.org/2016/08/29/openssl-rsa-java/  
 
@@ -7,17 +8,23 @@ Create self-signed cert
 ```sh
 # generete private key and cert
 openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out cert.pem
+
 # extract public key (PEM) from cert
 openssl x509 -pubkey -noout -in cert.pem  > pubkey.pem
-# extract public key (DER) from cert
-openssl rsa -in pubkey.pem -inform PEM -pubin -outform DER -out pubkey.der
+
+# convert public key from PEM to DER
+openssl rsa -pubin -in pubkey.pem -inform PEM -outform DER -out pubkey.der
+
+# convert private key from PEM to DER
+openssl rsa -in key.pem -inform PEM -outform DER -out key.der
+
 # parse DER format
 # https://www.openssl.org/docs/man1.1.1/man1/openssl-asn1parse.html
 openssl asn1parse -in pubkey.der -inform der
 ```
 ```sh
 # Java to get public key
-https://docs.oracle.com/javase/8/docs/api/index.html?java/security/spec/X509EncodedKeySpec.html
+https://docs.oracle.com/javase/8/docs/api/index.html?java/security/spec/X509EncodedKeySpec.html  
 
 X509EncodedKeySpec represents the ASN.1 encoding of a public key, encoded according to the ASN.1 type SubjectPublicKeyInfo. The SubjectPublicKeyInfo syntax is defined in the X.509 standard as follows:
  SubjectPublicKeyInfo ::= SEQUENCE {
@@ -80,5 +87,7 @@ RSAPrivateKey ::= SEQUENCE {
   otherPrimeInfos   OtherPrimeInfos OPTIONAL
 }
 -----END RSA PRIVATE KEY-----
+# Can be view by:
+# openssl asn1parse -in key.der -inform der
 ```
 PEM (bytes): 1708  

@@ -46,13 +46,33 @@ Three level key system
   Bank and Visa are not within security zone.  
 
 ## Host Command
-- EI: Generate a Public/Private Key Pair  
-  The private key that is returned from a Thales HSM keypair generation command is encrypted under LMK keypair 34-35. You will never see this in the clear i.e unencrypted form.
-- EO: Import public key to HSM  
-- EK: Load a RSA Private Key  
-- GK: Export Key under RSA public key
-- A0: generate DEK key
-- L6: Import an RSA Private Key
+- Reference:  
+  "General Information Manual"
+  "Host Command Reference Manual"  
+  "Host Programmer's Manual"  
+  "Hose Command Examples" (Appendix G)
+
+- RSA Commands (in sequence):  
+  - EI(EJ): Generate a Public/Private Key Pair  
+    The private key that is returned from a Thales HSM keypair generation command is encrypted under LMK keypair 34-35. You will never see this in the clear i.e unencrypted form.  
+    Public key is encoded (!not encrypted) in **ASN.1 PKCS#1 DER** format. Need to transform to generate SubjectPublicKeyInfo **OpenSSL PEM** format.
+    https://stackoverflow.com/questions/18039401/how-can-i-transform-between-the-two-styles-of-public-key-format-one-begin-rsa  
+    ```sh
+    openssl rsa -pubin -inform DER -RSAPublicKey_in -in pubkey.der -pubout > pubkey.dem
+    ```
+
+  - EK(EL): Load a RSA Private Key  
+    It will be stored in one of the slot 00-20 
+
+  - EO(EP): Import public key to HSM  
+    Output is the MAC for the public key
+
+  - EW(EX): Generate a RSA Signature
+    Can be verify by public key.  
+    ```sh
+    # sig contains 256 bytes signature generated, myfile.txt contains the message data.
+    openssl dgst -sha256 -verify pubkey.pem -signature sig myfile.txt
+    ```
 
 - To specific LMK key using host commands  
   - Specify the LMK id in the host command  
@@ -60,5 +80,3 @@ Three level key system
     1500 -> default LMK, 1501 -> LMK id 0, port 1502 -> LMK id 1 and so on.
 
 ## Console Command
-- IK: Import Key, not really ''importing'' anything in the HSM storage area
-- FK: Form Key, not really ''importing'' anything in the HSM storage area

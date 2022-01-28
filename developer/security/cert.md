@@ -1,5 +1,6 @@
 ## Concept  
-Digital Cert: .crt .cer .pem ...  
+https://en.wikipedia.org/wiki/Public_key_certificate  
+https://www.baeldung.com/openssl-self-signed-cert  
 https://www.ssl.com/guide/pem-der-crt-and-cer-x-509-encodings-and-conversions/  
 
 - Certificate  
@@ -9,8 +10,8 @@ https://www.ssl.com/guide/pem-der-crt-and-cer-x-509-encodings-and-conversions/
 - CSR (Certificate Signing Request)  
 - CA (Certificate Authority)  
 - X.509 certificates and keys  
----
-- PEM  
+
+## PEM  
   https://docs.microfocus.com/SM/9.51/Hybrid/Content/security/concepts/what_are_pem_files.htm  
   a common format for X.509 certificate, CSRs, and cryptographic keys.  
   -----BEGIN CERTIFICATE----- and -----END CERTIFICATE-----
@@ -20,8 +21,8 @@ https://www.ssl.com/guide/pem-der-crt-and-cer-x-509-encodings-and-conversions/
   container format 
 - OpenSSL  
   a command-line toolkit for working with X.509 certificates, certificate signing requests (CSRs), and cryptographic keys. 
----
-- keystore format
+
+## keystore format
 - cacerts  
   https://docs.microfocus.com/SM/9.51/Hybrid/Content/security/concepts/what_is_a_cacerts_file.htm  
   is a collection of trusted certificate authority (CA) certificates.  

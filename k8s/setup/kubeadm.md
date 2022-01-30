@@ -13,23 +13,23 @@ Follow instruction:
 **!!!Required changes to the instructions**
 https://github.com/justmeandopensource/kubernetes/blob/master/docs/install-cluster-centos-7.md  
 - Update /etc/hosts to include the master and worker nodes
--	Remove the version in the instruction when install docker/kubeadm/kubectl/kubelet
-  ```sh
-  yum install -y kubeadm kubelet kubectl
-  ```
+-	Remove the version in the instruction when install docker/kubeadm/kubectl/kubelet  
+    ```sh
+    yum install -y kubeadm kubelet kubectl
+    ```
 -	apiserver change to master IP address  
-  ```sh
-  kubeadm init --ignore-preflight-errors=NumCPU --apiserver-advertise-address=**master-ip** --pod-network-cidr=10.244.0.0/16
-  ```
+    ```sh
+    kubeadm init --ignore-preflight-errors=NumCPU --apiserver-advertise-address=**master-ip** --pod-network-cidr=10.244.0.0/16
+    ```
 -	*Might need to set CentOS 8 to use iptables*  
-  ```sh
-  # revert back to iptables (CentOS 8)
-  sudo nano /etc/firewalld/firewalld.conf
-  sudo systemctl enable firewalld
-  sudo service firewalld restart
-  # check
-  iptables-save | grep <hostnames>
-  ```
+    ```sh
+    # revert back to iptables (CentOS 8)
+    sudo nano /etc/firewalld/firewalld.conf
+    sudo systemctl enable firewalld
+    sudo service firewalld restart
+    # check
+    iptables-save | grep <hostnames>
+    ```
 -	Install Flannel network plugin before join (use Flannel, tried Calico but not success maybe due to it only support CentOS 7)  
 **(Flannel)**  
 curl -LO https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml  

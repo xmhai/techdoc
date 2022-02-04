@@ -51,3 +51,22 @@ consumers reading from the same topic, ensuring that all consumers in the group 
 
 ## Installation
 https://strimzi.io/blog/2018/06/11/deploying-kafka-on-kubernetes-with-local-storage-using-strimzi/  
+
+Centos 7  
+https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-centos-7  
+https://www.confluent.io/blog/kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc/  
+Note: need to modify the configuration file server.properties  
+```sh
+sudo nano config/server.properties
+# modify following values
+listeners=PLAINTEXT://0.0.0.0:9092
+# this is the address will be returned to client for actual connection
+advertised.listeners=PLAINTEXT://server-ip:9092
+```
+
+## Quickstart
+https://kafka.apache.org/quickstart  
+```sh
+# Create topic (replication-factor must be less than broker count)
+bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092  --replication-factor 2 --partitions 2
+```

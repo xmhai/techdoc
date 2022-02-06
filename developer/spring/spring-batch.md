@@ -15,11 +15,17 @@
     - Ad Hoc and on-demand (?)
 - Chunk processing: 
 - Restartablilty:
+- Error Handling
+  - logging
+  - skipping records with errors
+  - retry logic  
 - Parallel processing
 
 ## Spring Batch Architecture
 https://docs.spring.io/spring-batch/docs/current/reference/html/domain.html#domainLanguageOfBatch  
+
 ### JobLauncher
+In the Spring Boot world, this is a component that you typically do not need to directly work with because Spring Boot provides facilities of launching a job out of the box.  
 
 ### Job
 a container for Step instances. It defines:  
@@ -27,12 +33,12 @@ a container for Step instances. It defines:
 - Definition and ordering of Step instances.  
 - Global properies like whether or not the job is restartable.  
 
+### Job Parameters
+a JobParameters object holds a set of parameters used to start a batch job.
+
 ### Job Instance
 refers to the concept of a logical job run.  
 JobInstance = Job + identifying JobParameters.
-
-### Job Parameters
-a JobParameters object holds a set of parameters used to start a batch job.
 
 ### Job Execution
 a single attempt to run a Job. An execution may end in failure or success.
@@ -45,10 +51,11 @@ BATCH_JOB_EXECUTION_PARAMS
 BATCH_JOB_EXECUTION  
 
 ### Step
+Each step is responsible for obtaining its own data, applying the required business logic to it, and then writing the data to the appropriate location.
 - Tasklet  
   - Define a Functional Interface called repeatly until return FINISHED.  
   - Each call wrapped into a transaction.
-- chunk step
+- Chunk step
   - Define chunk size, reader, processor, writer.
   - ItemReader: usually defined as @StepScope as it is not thread safe.
   - ItemProcessor: return null for stop processing the item.
@@ -58,8 +65,9 @@ BATCH_JOB_EXECUTION
 - Create custom Tasklet/ItemReader/ItemProcessor/ItemWritter.
 - Define Job and its steps in Configuration class.
 
-## Batch Job Launch
-- Launching the job from the command line
-- Launching the job using job schedulers
-- Launching the job from a Java program
-- Launching the job from a web application
+## Parallelization  
+- Multiple Threads Step (Chunks are processed in different thread)  
+- Parallel Steps  
+- Asynchronous ItemProcessor/ItemWriter
+- Remote Chunking (network intensive)  
+- Partitioning

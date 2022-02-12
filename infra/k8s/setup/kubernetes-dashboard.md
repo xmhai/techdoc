@@ -64,6 +64,7 @@ spec:
 ```
 - ingress.yaml  
 ```yaml
+# Nginx Ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -87,3 +88,14 @@ spec:
             port:
               name: dashboard-port
 ```    
+```yaml
+# Ambassador Mapping
+apiVersion: getambassador.io/v3alpha1
+kind: Mapping
+metadata:
+  name: dashboard-mapping
+spec:
+  hostname: "*"
+  prefix: /dashboard/
+  service: https://kubernetes-dashboard.kubernetes-dashboard:443
+```

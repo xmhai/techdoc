@@ -43,13 +43,6 @@ JobInstance = Job + identifying JobParameters.
 ### Job Execution
 a single attempt to run a Job. An execution may end in failure or success.
 
-### JobRepository
-metadata about the currently running process  
-BATCH_* tables To store Job, JobExecution, StepExecution state???  
-BATCH_JOB_INSTANCE  
-BATCH_JOB_EXECUTION_PARAMS  
-BATCH_JOB_EXECUTION  
-
 ### Step
 Each step is responsible for obtaining its own data, applying the required business logic to it, and then writing the data to the appropriate location.
 - Tasklet  
@@ -61,7 +54,16 @@ Each step is responsible for obtaining its own data, applying the required busin
   - ItemProcessor: return null for stop processing the item.
   - CompositeItemProcessor: delegate pattern
 
+### JobRepository
+metadata about the currently running process  
+BATCH_* tables To store Job, JobExecution, StepExecution state???  
+BATCH_JOB_INSTANCE  
+BATCH_JOB_EXECUTION_PARAMS  
+BATCH_JOB_EXECUTION  
+
 ## Spring Batch Programming
+- To initialize batch tables:  
+  spring.batch.initialize-schema=always
 - Create custom Tasklet/ItemReader/ItemProcessor/ItemWritter.
 - Define Job and its steps in Configuration class.
 
@@ -71,3 +73,17 @@ Each step is responsible for obtaining its own data, applying the required busin
 - Asynchronous ItemProcessor/ItemWriter
 - Remote Chunking (network intensive)  
 - Partitioning
+
+## Run the Job  
+- CommandLineJobRunner  
+- JobRegistryJobRunner
+- JobLaunderCommandLineRunner
+- Late Job Parameter Binding (Parameter, @StepScope)  
+- JobParameter
+- JobExecutionListener (Notification/Initialization/CleanUp)
+- ExecutionContext (Execution state for restarting job)
+- Step
+  - Tasklet
+  - CallableTaskletAdapter (executed in a different thread)
+  - MethodInvokingTaskletAdapter (execute method in another class)
+  - SystemCommandTasklet (execute system command asynchronously)

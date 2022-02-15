@@ -5,7 +5,13 @@ For HA setup, basic setup with three boxes running both Redis and Sentinal.
 
 ![](redis-sentinel-setup-logical-diagram.png)
 
-**Installation**  
+## Installation
+**Centos 7**  
+https://www.linode.com/docs/guides/install-and-configure-redis-on-centos-7/  
+sudo nano /etc/redis.conf  
+comment out bind so that it will accept connection to any address.
+
+**Centos 8**  
 https://www.tecmint.com/setup-redis-high-availability-with-sentinel-in-centos-8/  
 NOTE:
 - Part 1 - Must set to same password in all three nodes.  

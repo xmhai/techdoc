@@ -2,8 +2,10 @@
 kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/  
 
 ## Install
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/  
 - Container running on https port 8443 in default installatopm
-- To be running on http port 9090, need to change the container argument  
+- To enable HTTP Access (default running on http port 9090):  
+  Need to change the container argument in **recommended.yaml**  
 vividcode.io/disable-authentication-and-https-in-kubernetes-dashboard/  
 **remove** the argument --auto-generate-certificates  
 **add** following extra arguments:  

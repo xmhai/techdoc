@@ -1,3 +1,7 @@
+# Concept
+- Application logs should output to stdout.
+- For application logs that are not directed to standard output (stdout) and standard error (stderr), a common way is to deploy a sidecar logging agent within the application pods, and use volumes to share the logs folder with the agent container which can then access and process the logs and send them to your log-aggregation system.
+
 # How it works
 node log files location:  
 /var/log/pods/  

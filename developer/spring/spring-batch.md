@@ -74,16 +74,50 @@ BATCH_JOB_EXECUTION
 - Remote Chunking (network intensive)  
 - Partitioning
 
-## Run the Job  
+## Features  
 - CommandLineJobRunner  
 - JobRegistryJobRunner
 - JobLaunderCommandLineRunner
 - Late Job Parameter Binding (Parameter, @StepScope)  
 - JobParameter
-- JobExecutionListener (Notification/Initialization/CleanUp)
+- JobExecutionListener/StepExecutionListner/ChunkListener (Notification/Initialization/CleanUp)
 - ExecutionContext (Execution state for restarting job)
 - Step
   - Tasklet
   - CallableTaskletAdapter (executed in a different thread)
   - MethodInvokingTaskletAdapter (execute method in another class)
   - SystemCommandTasklet (execute system command asynchronously)
+- Flow
+- Status: 
+- Customize BatchConfiguration
+  - JobRepository, e.g. mulitple datasource
+  - JobExplorer
+  - PlatformTransactionManager
+  - JobLauncher, e.g. User MvcController???
+- ValidatingItemProcessor
+- BeanValidatingItemProcessor
+  - @NotNull
+  - @Size
+  - @Pattern
+
+## What I want to know
+- Trigger a Job  
+  - On application run: this is default, JobLauncherCommandLineRunner will run any @Job defined.
+  - RESTful call:   
+    spring.batch.job.enabled = false  
+  - executed via a schedule  
+    Quartz + RESTful trigger  
+    Autosys + UberJar  
+
+- Stop a Job  
+  - stepExecution.setTerminateOnly();
+
+- Exception  
+  - Spring Batch’s default method of handling an exception is to stop the job in the failed status.
+  - Skipping records is common practice in batch processing. Can set skip exception class and skip count.
+  - Use ItemListener to record the error record.
+  - For no input, use StepExecutionListner to return FAILED status.
+
+- Restart a Job
+
+

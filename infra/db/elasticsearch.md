@@ -9,57 +9,68 @@
 
 ## Installation
 - Standalone  
-#add "vm.max_map_count=262144" to sysctl.conf  
-sudo nano /etc/sysctl.conf  
-https://tecadmin.net/how-to-install-elasticsearch-on-centosl-8/  
-**NOTE:**  
--Set "network.host: 0.0.0.0" ("bind: 0.0.0.0"?)  
--Add "discovery.type: single-node"
+  https://tecadmin.net/how-to-install-elasticsearch-on-centosl-8/  
+  ```sh
+  # add "vm.max_map_count=262144" to sysctl.conf  
+  sudo nano /etc/sysctl.conf  
+  # install
+  sudo yum install elasticsearch -y
+  # configure
+  sudo nano /etc/elasticsearch/elasticsearch.yml  
+  # Set "network.host: 0.0.0.0" ("bind: 0.0.0.0"?)  
+  # Add "discovery.type: single-node"
+  ```
 
 - Docker  
 https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
 https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-```sh
-docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.13.2
-```
+  ```sh
+  docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.13.2
+  ```
+- Docker Compose:  
+  https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html  
+
+- Cluster  
+  https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
+
+  Elasticsearch cluster should have a minimum of 3 master-eligible nodes.
+  - Replication is supported natively and enabled by default.  
+  - Primary shard and replica shards for reading (2 replicas for critical systems, default 1 replica)
+  - Can take snapshot for backup.
+  - A master node is responsible for creating and deleting indices, and assign shards etc.
+  - A node with master node role will not automatically become the master node (is elected by quorum).
+
+  For production setup with 3 nodes:  
+  https://logz.io/blog/elasticsearch-cluster-tutorial/  
+  https://www.crybit.com/setup-a-three-node-elasticsearch-cluster-centos-7/  
+  ```sh
+  yum install java-1.8.0-openjdk
+  curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.2-x86_64.rpm
+  sudo rpm -i elasticsearch-7.13.2-x86_64.rpm
+  # configure elasticsearch.yml
+  # - For Cloud VM, network.host: \_*eth0*_ 
+  # - Use intranet ip address for discovery.zen.ping.unicast.hosts
+  sudo nano /etc/elasticsearch/elasticsearch.yml
+  # COPY the configuration files to other nodes, and change the node name.
+  # start the service
+  sudo systemctl daemon-reload
+  sudo systemctl enable elasticsearch.service
+  sudo systemctl start elasticsearch.service 
+  ```
+
+**Access**  
 http://localhost:9200  
 
-- Cluster
-https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
+**Troubleshooting**
+- Error: Failed to start Elasticsearch, status code 143.  
+  Restart the service.
+  
 
-**HA Mode**: 3 Master  
-Elasticsearch cluster should have a minimum of 3 master-eligible nodes.
-- Replication is supported natively and enabled by default.  
-- Primary shard and replica shards for reading (2 replicas for critical systems, default 1 replica)
-- Can take snapshot for backup.
-- A master node is responsible for creating and deleting indices, and assign shards etc.
-- A node with master node role will not automatically become the master node (is elected by quorum).
-
-**Installation**  
-For testing use Docker Compose:  
-https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html  
-For production setup with 3 nodes:  
-https://logz.io/blog/elasticsearch-cluster-tutorial/  
-https://www.crybit.com/setup-a-three-node-elasticsearch-cluster-centos-7/  
-```sh
-yum install java-1.8.0-openjdk
-curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.2-x86_64.rpm
-sudo rpm -i elasticsearch-7.13.2-x86_64.rpm
-# configure elasticsearch.yml
-# - For Cloud VM, network.host: \_*eth0*_ 
-# - Use intranet ip address for discovery.zen.ping.unicast.hosts
-sudo nano /etc/elasticsearch/elasticsearch.yml
-# COPY the configuration files to other nodes, and change the node name.
-# start the service
-sudo systemctl daemon-reload
-sudo systemctl enable elasticsearch.service
-sudo systemctl start elasticsearch.service 
-```
 **Clean Node**
 sudo rm -r /var/lib/elasticsearch
 
 **Uninstall**
-sudo systemctl stop elasticsearch
+sudo systemctl stop elasticsearch   
 sudo rpm -e elasticsearch
 
 **Springboot Connection**  
@@ -69,10 +80,6 @@ Define the nodes in ClientConfiguration
 **Fluentd Connection**  
 https://docs.fluentd.org/output/elasticsearch#parameters  
 Define the nodes in hosts parameter
-
-**FluentBit Connection**
-
-**Jaeger Connection**
 
 ## Commands
 /_cluster/health  

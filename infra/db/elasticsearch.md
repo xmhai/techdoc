@@ -1,7 +1,6 @@
 ## Concept
 - When the node startup, it will either join a cluster or create its own cluster.
 - Documents are JSON objects. They are stored  in **_source** field along with the meta data which used internally by ES.
-- Use Kibana "Dev Tools" to send REST API, the url consists of api and command in the format of /*api*/*command*
 - Sharding to divide index into mulitple pieces called "shard".
   - An index defaults to having *one* shard.
   - There are split and shrink api to manage shards.

@@ -2,11 +2,15 @@
 - Grafana needs a database to store users and dashboards (and other things).
 - By default it is configured to use sqlite3 which is an embedded database, data in /var/lib/grafana (database and plugins)
 
-## Installation
-Running separately is recommended??? My points:
-- It is dashboard for different parts of the systems, so it should be running in Management zone.
-- Use MySQL as storage
+## Deployment
+-  Very lightweight in use of memory and CPU,  
+Minimum recommended memory: 255 MB Minimum recommended CPU: 1
+- For Rancher, it will install Prometheus and Grafana on k8s.
+- Running separately is recommended??? My points:
+  - It is dashboard for different parts of the systems, so it should be running in Management zone.
+  - Use MySQL as storage
 
+## Installation
 https://grafana.com/docs/grafana/latest/administration/configuration/
 
 **Set context**  
@@ -22,12 +26,7 @@ For installation on VM:
 http://ip:3000  
 admin/admin
 
-## Deployment
--  Very lightweight in use of memory and CPU,  
-Minimum recommended memory: 255 MB Minimum recommended CPU: 1
-- For Rancher, it will install Prometheus and Grafana on k8s.
-
-### For installation on k8s:  
+### Access (installation on k8s):  
 **Option 1**  
 Use port forward to access grafana:
 kubectl -n loki port-forward svc/loki-grafana 3000:80  

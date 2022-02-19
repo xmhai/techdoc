@@ -78,6 +78,7 @@ $ k3s crictl ps
 nano ~/.bashrc
 alias k='k3s kubectl'
 alias crictl='k3s crictl'
+kubectl config view --raw >~/.kube/config
 ```
 
 ## Private docker image registry

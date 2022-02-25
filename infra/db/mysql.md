@@ -11,12 +11,17 @@ https://support.microsoft.com/tr-tr/topic/en-son-desteklenen-visual-c-indirmeler
   basedir=C:/app/mysql-8.0.25
   # set datadir to the location of your data directory
   datadir=C:/app/mysql-8.0.25/data
+  # allow remote access
+  bind-address = 0.0.0.0
   ```
 - #initialize data folder  
   bin\mysqld --defaults-file=my.ini --initialize-insecure --console
+
 - mysql -u root --skip-password
 - (if error) https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html
 - ALTER USER 'root'@'localhost' IDENTIFIED BY 'root-password';
+
+- Add Windows Firewall rule to allow port 3306
 
 Start: mysqld  
 Stop:  mysqladmin −u root -p shutdown  
@@ -32,6 +37,11 @@ https://dev.mysql.com/doc/refman/8.0/en/linux-installation-yum-repo.html
 - Install as linux service (when use binary to install)  
   https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/secure-deployment-post-install.html#secure-deployment-systemd-startup  
 
+## Access (Linux)
+```sh
+mysql -h 192.168.86.37 -u hai -p pfa
+```
+
 ## Configuration
 **Allow remote access**  
 ```ini
@@ -41,6 +51,8 @@ bind-address = 0.0.0.0
 ```
 For Linux, /etc/mysql/my.cnf or /etc/mysql/mysql.conf.d/mysqld.cnf  
 search bind-address and replace 127.0.0.1 with 0.0.0.0  
+
+The remote user must have a hostname %, e.g. 'hai'@'%'
 
 **Create admin user**  
 As the root user has a host restriction of localhost in mysql.user table, need to create another administrator user for remote access

@@ -1,6 +1,7 @@
 ## Concept
 - ambassador running on port 8080/8443, so the NodePort/LoadBalancer need to point to this port.  
 - Configure Listener and Host (for HTTPS) after installation.
+- For EdgeStack v1.xx, only need to define the Mapping and Host.
 
 ## Installation
 V2.1.1 + k3s (1.22.5) + Centos 7  

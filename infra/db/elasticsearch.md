@@ -57,13 +57,23 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
   sudo systemctl start elasticsearch.service 
   ```
 
+**Configuration**
+```sh
+sudo nano /etc/elasticsearch/elasticsearch.yml
+sudo nano /etc/elasticsearch/jvm.options
+# add memory setting to below files (default ES uses half of Node memory)
+sudo nano /etc/elasticsearch/jvm.options.d/jvm.options
+sudo systemctl restart elasticsearch.service
+```
+
 **Access**  
 http://localhost:9200  
 
 **Troubleshooting**
 - Error: Failed to start Elasticsearch, status code 143.  
   Restart the service.
-  
+- Reduce elasticsearch memory usage.  
+  https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory  
 
 **Clean Node**
 sudo rm -r /var/lib/elasticsearch

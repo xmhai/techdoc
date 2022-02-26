@@ -14,12 +14,12 @@ Repository storages are configured in: /etc/gitlab/gitlab.rb by the git_data_dir
   https://stackoverflow.com/questions/53214381/using-multiple-runners-in-one-gitlab-ci  
   
 ## Installation
-https://about.gitlab.com/install/?version=ce#ubuntu  
+https://about.gitlab.com/install/?version=ce#almalinux-8  
 NOTE:  
 ```sh
 # Replace DNS in follow command
-sudo EXTERNAL_URL="https://192.168.10.16:10000" dnf install -y gitlab-ce
-# Get root password
+sudo EXTERNAL_URL="http://192.168.86.43:10000" dnf install -y gitlab-ce
+# Get root password (username: root)
 sudo cat /etc/gitlab/initial_root_password
 ```
 Note: Might encounter when invoke Let's Encrypt.

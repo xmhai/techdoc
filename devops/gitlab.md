@@ -14,7 +14,7 @@ Repository storages are configured in: /etc/gitlab/gitlab.rb by the git_data_dir
   https://stackoverflow.com/questions/53214381/using-multiple-runners-in-one-gitlab-ci  
   
 ## Installation
-https://about.gitlab.com/install/?version=ce#almalinux-8  
+https://about.gitlab.com/install/?version=ce#centos-7  
 NOTE:  
 ```sh
 # Replace DNS in follow command
@@ -24,8 +24,9 @@ sudo cat /etc/gitlab/initial_root_password
 ```
 Note: Might encounter when invoke Let's Encrypt.
 
-**Install Runner**
+**Install Runner**  
 https://docs.gitlab.com/runner/install/linux-repository.html  
+https://docs.gitlab.com/runner/register/index.html#linux
 
 ## Configuration
 - To change IP/Port after installation, edit the following line in /etc/gitlab/gitlab.rb:  

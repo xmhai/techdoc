@@ -24,6 +24,9 @@ sudo cat /etc/gitlab/initial_root_password
 ```
 Note: Might encounter when invoke Let's Encrypt.
 
+**Install Runner**
+https://docs.gitlab.com/runner/install/linux-repository.html  
+
 ## Configuration
 - To change IP/Port after installation, edit the following line in /etc/gitlab/gitlab.rb:  
     ```sh

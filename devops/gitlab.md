@@ -9,9 +9,15 @@ Repository storages are configured in: /etc/gitlab/gitlab.rb by the git_data_dir
 - Job
 - Artifact
 - Cache
-- Runner
-  Multiple Runner for One Project:  
+- Runner  
+  Multiple Runner for One Project, and runners can run on different machine:  
+  - Pull the source code and download the artifacts before job execution.  
+  - Upload the artifacts to Gitlab server after job execution.
   https://stackoverflow.com/questions/53214381/using-multiple-runners-in-one-gitlab-ci  
+  https://docs.gitlab.com/runner/  
+- Environment Variables  
+  Defined in Instance/Group/Project setting->CICD->Variable section.  
+  https://software.rcc.uchicago.edu/git/help/ci/variables/README.md  
   
 ## Installation
 https://about.gitlab.com/install/?version=ce#centos-7  
@@ -124,4 +130,30 @@ deploy:
   script:
     - echo "Upload artifact to JIRA..."
     - echo "upload artifact"
+```
+
+# Script
+**sed**
+```sh
+# remove lines start with SPACE
+sed '/^\s*$/d' build-project.property
+# remove lines start with #
+sed '/^#/d'
+# replace env.GITLAB_USER_EMAIL with env $GITLAB_USER_EMAIL
+# option: ignore case, ! as delimiter, replace all
+sed -i 's!env.GITLAB_USER_EMAIL!'$GITLAB_USER_EMAIL'!g' dockerfile
+# replace initialDelaySeconds.*$ with ...
+sed -i 's!initialDelaySeconds.*$!initialDelaySeconds: '$initialDelaySeconds'!g' k8s.release.yaml
+# insert content with external file after the matching line
+sed -i '/#lifecycle/r /home/gitlab-runner/scripts/lifecycleconf.xml' k8s.release.yaml
+```
+**awk**
+```sh
+# add "export " to each line of input
+awk '{print "export " $0}'
+```
+**source**
+```sh
+# run each line of file
+source <filename>
 ```

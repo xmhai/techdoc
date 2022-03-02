@@ -62,6 +62,20 @@ git commit -m "initial commit"
 git remote add origin *remote-url*  
 git push origin master  
 
+## Clone repository to new git server  
+https://stackoverflow.com/questions/5181845/git-push-existing-repo-to-a-new-and-different-remote-repo-server  
+```sh
+# Create a new repo at github.
+# Clone the repo to your local machine.
+git clone URL_TO_OLD_REPO
+git remote rename origin upstream
+git remote add origin URL_TO_NEW_REPO
+git push origin master
+# Now you can work with it just like any other github repo.
+# To pull in patches from upstream, simply run
+git pull upstream master && git push origin master
+```
+
 # Azure DevOps
 Goto Azure devop portal, open the project, e.g.:  https://dev.azure.com/*organization*/_git/*project*
 

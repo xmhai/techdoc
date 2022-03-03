@@ -16,8 +16,9 @@ Note:
   - Configure
     ```sh
     sudo nano /etc/kibana/kibana.yml  
-    # Set server.host  
+    # Set server.host to server IP or "0.0.0.0"
     ```
+  - Follow the steps to start the service
 - Docker  
   https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
 

@@ -63,6 +63,8 @@ sudo nano /etc/elasticsearch/elasticsearch.yml
 sudo nano /etc/elasticsearch/jvm.options
 # add memory setting to below files (default ES uses half of Node memory)
 sudo nano /etc/elasticsearch/jvm.options.d/jvm.options
+-Xms2g
+-Xmx2g
 sudo systemctl restart elasticsearch.service
 ```
 
@@ -74,6 +76,8 @@ http://localhost:9200
   Restart the service.
 - Reduce elasticsearch memory usage.  
   https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory  
+- Error: Startup timeout  
+  https://sleeplessbeastie.eu/2020/02/29/how-to-prevent-systemd-service-start-operation-from-timing-out/  
 
 **Clean Node**
 sudo rm -r /var/lib/elasticsearch

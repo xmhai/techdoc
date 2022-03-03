@@ -16,26 +16,29 @@ https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-w
   Ingress is actually NOT a type of service. Instead, it sits in front of multiple services and act as a “smart router” or entrypoint into your cluster.
 
 ## Access to External
-```yaml
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql-service
-spec:
-  ports:
-    - protocol: TCP
-      port: 3306
-      targetPort: 3306
-
----
-apiVersion: v1
-kind: Endpoints
-metadata:
-  name: mysql-service
-subsets:
-  - addresses:
-      - ip: 192.168.86.43
+- Option 1: Use direct IP
+- Option 2: Define an Endpoint and create a Service for this EndPoint  
+https://ksingh7.medium.com/kubernetes-endpoint-object-your-bridge-to-external-services-3fc48263b776  
+  ```yaml
+  ---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: mysql-service
+  spec:
     ports:
-      - port: 3306
-```
+      - protocol: TCP
+        port: 3306
+        targetPort: 3306
+
+  ---
+  apiVersion: v1
+  kind: Endpoints
+  metadata:
+    name: mysql-service
+  subsets:
+    - addresses:
+        - ip: 192.168.86.43
+      ports:
+        - port: 3306
+  ```

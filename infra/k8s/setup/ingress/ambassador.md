@@ -31,11 +31,14 @@ https://www.getambassador.io/docs/edge-stack/latest/howtos/configure-communicati
 Sample [configuration](https://github.com/xmhai/PersonalFinanceAssistant/blob/master/k8s/k8s-prod/ingress-service-ambassador.yaml)
 
 ## Troubleshooting
+https://www.getambassador.io/docs/edge-stack/latest/topics/running/debugging/  
 - Error: Loadbalancer Pending
   https://serverfault.com/questions/1064313/ambassador-service-stays-pending  
   https://stackoverflow.com/questions/67637854/ambassador-service-stays-pending  
 - Error: Unhealthy upstream  
   change the service from service: <service.name> to service: <service.name>.<namespace>
+- Error: upstream request timeout
+  Delete the pod and failed to start.
 
 ## Appendix: Sample Configuration
 ```yaml

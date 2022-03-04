@@ -18,7 +18,8 @@ curl -sfL https://get.k3s.io | sh -s - server
 ## HA setup
 run above command on another node.
 
-## Disable Traefik  
+## Disable Traefik 
+https://www.suse.com/c/rancher_blog/deploy-an-ingress-controller-on-k3s/#:~:text=Deploying%20K3s%20with%20Ambassador,Traefik%20as%20an%20ingress%20controller.   
 ```sh
 kubectl -n kube-system delete helmcharts.helm.cattle.io traefik
 sudo service k3s stop

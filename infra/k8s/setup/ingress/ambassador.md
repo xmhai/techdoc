@@ -5,7 +5,11 @@
 
 ## Installation
 V2.1.1 + k3s (1.22.5) + Centos 7  
-https://www.getambassador.io/docs/edge-stack/latest/topics/install/yaml-install/  
+Emissary is new version for Ambassador and is OpenSource, while Edge-stack is more for enterprise which has more features.  
+https://www.getambassador.io/docs/emissary/latest/topics/install/yaml-install/  
+
+For old version of kubernetes (1.20.x):  
+https://www.suse.com/c/rancher_blog/deploy-an-ingress-controller-on-k3s/#:~:text=Deploying%20K3s%20with%20Ambassador,Traefik%20as%20an%20ingress%20controller.  
 
 ```sh
 wget https://app.getambassador.io/yaml/edge-stack/2.1.1/aes-crds.yaml
@@ -37,8 +41,8 @@ https://www.getambassador.io/docs/edge-stack/latest/topics/running/debugging/
   https://stackoverflow.com/questions/67637854/ambassador-service-stays-pending  
 - Error: Unhealthy upstream  
   change the service from service: <service.name> to service: <service.name>.<namespace>
-- Error: upstream request timeout
-  Delete the pod and failed to start.
+- Error: upstream request timeout  
+  Encounter this error and cannot solve it, so revert to k3s bundled traefik.
 
 ## Appendix: Sample Configuration
 ```yaml

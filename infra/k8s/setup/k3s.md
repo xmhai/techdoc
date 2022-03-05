@@ -1,3 +1,6 @@
+**IMPORTANT**
+Once decide the components (e.g. traefik, servicelb) during installation, it is not easy to put them back or remove. Suggest a clean setup.  
+
 # Installation
 At least 1CPU/2G  (for cloud, 2CPU/4G is minimum)  
 AWS t2.micro (1CPU/1G) too small, encounter "TLS timeout error" when running "kubectl get nodes"
@@ -8,6 +11,9 @@ sudo systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
 sudo reboot  
 
 curl -sfL https://get.k3s.io | sh -s - server  --write-kubeconfig-mode 0644
+# to exclude traefik, servicelb
+-- disable traefik
+-- disable servicelb 
 ```
 ## Use MySQL as data store:  
 ```sh
@@ -18,7 +24,7 @@ curl -sfL https://get.k3s.io | sh -s - server
 ## HA setup
 run above command on another node.
 
-## Disable Traefik 
+## Disable Traefik  
 https://www.suse.com/c/rancher_blog/deploy-an-ingress-controller-on-k3s/#:~:text=Deploying%20K3s%20with%20Ambassador,Traefik%20as%20an%20ingress%20controller.   
 ```sh
 kubectl -n kube-system delete helmcharts.helm.cattle.io traefik
@@ -28,6 +34,12 @@ sudo nano /etc/systemd/system/k3s.service
 sudo systemctl daemon-reload
 sudo rm /var/lib/rancher/k3s/server/manifests/traefik.yaml
 sudo service k3s start
+```
+
+## Disable Load Balancer
+https://rancher.com/docs/k3s/latest/en/networking/  
+```sh 
+k delete  daemonset.apps/svclb-traefik -n kube-system
 ```
 
 ## Use NGINX Ingress:  

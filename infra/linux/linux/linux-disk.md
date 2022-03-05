@@ -29,6 +29,8 @@ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/in
   sudo lvextend -L +100G /dev/centos/root
   # resize by free space
   sudo lvextend -l +100%FREE /dev/vg01/lvol02
+  # perform an online resize (for xfs), use fsadm to handle xfs, ext4 and a few filesystem
+  xfs_growfs /dev/centos/root
   ```
 
 ## Add New Disk

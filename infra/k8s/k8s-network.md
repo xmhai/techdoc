@@ -1,6 +1,9 @@
 ## Concept
 https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0  
 
+## Debug  
+https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/  
+
 ## Access from External  
 - Kubernetes Proxy  
     ```sh

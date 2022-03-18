@@ -1,6 +1,19 @@
 ## Concept
 https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0  
 
+- ClusterIP
+  - Kubernetes will create EndPoint under the hood
+  - Endpoint is created to store Pod IP and port
+- NodePort
+  - Expose through Node port
+- LoadBalancer
+  - Kubernetes will create NodePort under the hood.
+  - The actual load balancer point to the Node port.
+- EndPoint
+  - Can point to multiple external IP address.
+- Flow in production (On-Premise)  
+  Load Balancer -> Ingress NodePort (HostPort) -> Ingress Controller (DaemonSet) -> Services
+
 ## Debug  
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/  
 

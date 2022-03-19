@@ -32,7 +32,11 @@ From gui, go to "manage jenkins" > "system information" and look for "user.name"
 https://dzone.com/articles/jenkins-publish-maven-artifacts-to-nexus-oss-using  
 
 ## Pipeline
-Use 
+https://www.jenkins.io/doc/book/pipeline/getting-started/  
+Use share library  
+need to install groovy???  
+https://www.jenkins.io/doc/book/pipeline/shared-libraries/  
+https://www.jenkins.io/blog/2017/10/02/pipeline-templates-with-shared-libraries/  
 
 ## Troubleshooting
 - Error: groovy.lang.MissingPropertyException: No such property: docker for class: groovy.lang.Binding

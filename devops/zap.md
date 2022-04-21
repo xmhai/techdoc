@@ -62,6 +62,15 @@
     - Configure "Technology"
   - "Attack" -> "Fuzz..."
 
+## Tips
+- For JWT authentication, make sure the token is valid, check Option->Replacer. Remove the "Authorization" http header before doing the manual testing (Need to double-check **Option->Replacer** after each restart!!!).
+- Validate JWT token in website.
+- Firefox is preferred for ZAP.
+- Import ZAP certificate in to browser.
+- To completely uninstall ZAP, need to delete C:\Users\\\<user>\OWASP ZAP folder.  
+  https://www.zaproxy.org/faq/what-is-the-default-directory-that-zap-uses/
+- ZAP error log for problem like Chrome not startup.
+
 ## Troubleshooting
 - Spring Login which has a redirection return
   https://stackoverflow.com/questions/33767728/how-to-perform-authentication-with-zap-and-http-302  

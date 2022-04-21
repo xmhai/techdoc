@@ -86,10 +86,10 @@ rm -rf </home/hai/centos/images/centos7.qcow2>
 ## Commands
 https://computingforgeeks.com/virsh-commands-cheatsheet/  
 ```sh
-virsh list --all
-virsh edit kmaster
-virsh reboot kmaster
-virsh domiflist kmaster
+sudo virsh list --all
+sudo virsh start|shutdown|destory <vm_name> 
+sudo virsh edit <vm_name>
+sudo virsh domiflist kmaster
 ```
 
 ## Troubleshooting

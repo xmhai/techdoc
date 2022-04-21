@@ -1,9 +1,24 @@
 ## Redis
+https://cloudinfrastructureservices.co.uk/redis-sentinel-vs-cluster/  
 https://redis.io/topics/sentinel  
-**HA Mode**:  Sentinel + 1 Master (Write/Read) - 2 or more Replicas (Read)  
-For HA setup, basic setup with three boxes running both Redis and Sentinal.  
+**HA Mode (Failover)**:  Sentinel + 1 Master (Write/Read) - 2 or more Replicas (Read)  
+- Primary/Replica, available in Redis OSS version.
+- Sentinel handles failover.
+- Write only to Primary node.
+- Azure Cache for Redis Standard/Premium SKU use this version. In azure, Load Balancer has the same function as Sentinel.
+  https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-high-availability#standard-replication-for-high-availability  
+- For HA setup, basic setup with three boxes running both Redis and Sentinal.  
 
 ![](redis-sentinel-setup-logical-diagram.png)
+
+**Cluster**
+- Only available in Redis Enterprise version.
+- Write to multiple nodes.
+- Azure Cache for Redis Enterprise SKU use this version.
+
+**Sharding**  
+In Redis, data sharding (partitioning) is the technique to split all data across multiple Redis instances so that every instance will only contain a subset of the keys.  
+https://www.javacodegeeks.com/2015/09/redis-sharding.html#:~:text=In%20Redis%2C%20data%20sharding%20(partitioning,parts%20(shards%20or%20partitions).  
 
 ## Installation
 **Centos 7**  

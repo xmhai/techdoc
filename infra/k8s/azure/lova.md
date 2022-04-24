@@ -1,4 +1,5 @@
-## Installation
+# Installation
+
 ## Infra Setup
 - Create Kubernetes Service
 - Create Azure Database  
@@ -10,6 +11,7 @@
 - Create RabbitMQ Management Service  
   - Access via Loadbalancer Service (public IP is added to azure FrontEnd IP)
 - Create Ambassador Ingress Controller
+
 ## Application Setup
 - Push application images to Container Registry.
 - Create ConfigMap from application.yaml & redisson.yaml

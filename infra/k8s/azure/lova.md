@@ -1,16 +1,17 @@
 ## Installation
 ## Infra Setup
 - Create Kubernetes Service
-- Create Azure Database
+- Create Azure Database  
   Access via public dns: dns/username/password 
-- Create Azure Redis
+- Create Azure Redis  
   Access via public dns: dns/access-key
-- Create RabbitMQ Service
-  Access via k8s Local DNS: rabbitmq-0.rabbitmq.default.svc.cluster.local
-  username/password: guest/guest
+- Create RabbitMQ Service  
+  - Application access via k8s Local DNS: rabbitmq-0.rabbitmq.default.svc.cluster.local (username/password: guest/guest)
+- Create RabbitMQ Management Service  
+  - Access via Loadbalancer Service (public IP is added to azure FrontEnd IP)
 - Create Ambassador Ingress Controller
 ## Application Setup
-- Push image to Container Registry
+- Push application images to Container Registry.
 - Create ConfigMap from application.yaml & redisson.yaml
   https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-directories  
 - Create Deployment  

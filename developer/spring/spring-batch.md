@@ -1,5 +1,24 @@
+## For Batch Framework
+view batch.md
+
+## Common Pattern
+- Conditional step  
+  - Use JobExecutionDecider.  
+    ```java
+    .start(step1())
+    .next(decider()).on("TRUE").next(step2())
+    .from(decider()).on("*").next(step3())
+    .end()
+    .build();
+    ```
+  - Use subflow is there are multiple deciders, one subflow for every decider.
+- Skip logic  
+  - Use faultTolerant() and skip()
+  - Use SkipPolicy for more complicated scenarios.
+- Listner
+
 ## Batch Processing Requirements
-- Bulk-oriendted (Long running)
+- Bulk-oriented (Long running)
 - Background execution (Non-interactive)
 - Support for multiple file formats, including fixed length, delimited files, XML and common database access using JDBC, and other prominent frameworks
 - Automatic retry after failure 
@@ -119,5 +138,4 @@ BATCH_JOB_EXECUTION
   - For no input, use StepExecutionListner to return FAILED status.
 
 - Restart a Job
-
 

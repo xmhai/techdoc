@@ -5,6 +5,28 @@ https://medium.com/codex/spring-boot-with-drools-engine-7119774c559f
     - https://paras301.medium.com/working-with-drools-using-excel-sheet-supplied-from-outside-project-part-1-8be30afc8180
     - Official drools doc  
     https://docs.drools.org/5.4.0.CR1/drools-expert-docs/html/ch06.html
+- Some Thinking
+  - Flexibility. No need UI, and Business user can define the rules.
+  - Testability.
+
+## Drools Programming
+- KieServices
+- KieFileSystem (kieServices.newKieFileSystem())
+- KieBuilder (kieServices.newKieBuilder(kieFileSystem))
+  - kieBuilder.buildAll()
+    Generate KieModule, i.e. kjar
+- KieModule (kieBuilder.KieModule())
+- KieContainer (kieServices.newKieContainer(kieModule.getReleaseId()))
+- KieSession (kieContainer.newKieSession)
+- To upload single rule
+  - save the new rules file to existing KieFileSystem:  
+    ```java
+    // the folder must be under src/main/resources 
+    // must keep the original file name, .drl or .xlsx
+    kieFileSystem.write("src/main/resources/rules"+filename, file);
+    ```
+  - Create a new KieBuilder with the KieFileSystem.
+  - Create a new container.
 
 ## Concept
 - DRL rules are converted to Java class.
@@ -28,13 +50,19 @@ https://medium.com/codex/spring-boot-with-drools-engine-7119774c559f
     - Object defined with prefix $, and it is for use in ACTION.
     - How to define if-else rule:  
     Put the generic condition before specific conditions, and set Sequential to true.
-- **How to store rules in the system**?  
+- **How to store rules in the system**  
   Store the rules in DB, and assign a RULE_ID for each rule.
-- **When the rules are loaded**???  
-  During system initialization or rule triggered first time???
-- How to dynamically reload rules???
-- **How to invoke the rule**???
-
+- **When the rules are loaded**  
+  During system initialization @PostConstruct
+- **How to dynamically reload rules**
+  Recreate the KieFileSystem or only update one file of KieFileSystem.
+- **How to invoke only rule**  
+  Define rule name with same prefix. e.g. Point Award, (the rule name will be auto converted to Pascal Case)
+  new RuleNameStartsWithAgendaFilter("Point Award")
+  To findout the rules triggered, use DebugAgendaEventListener  
+  ```java
+  ksession.addEventListener( new DebugRuleRuntimeEventListener() );
+  ```
 
 ## Troubleshooting
 - Drools converts the decision table to DRL. Due to that, dealing with errors and typos in the Excel file can be hard. Often the errors refer to the content of the DRL. So to troubleshoot, it helps to print and analyze the DRL.

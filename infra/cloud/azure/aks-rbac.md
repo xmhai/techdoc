@@ -6,7 +6,7 @@
 Step by Step
 ```sh
 # Get current user AD groups
-az ad user get-member-groups --id iris.liu@YCH.COM
+az ad user get-member-groups --id xmhai@hotmail.com
 
 # Find out group members
 az ad group member list --group ffbd50b1-3714-4e77-a22a-410b6c0da22f

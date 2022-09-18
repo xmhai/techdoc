@@ -6,22 +6,17 @@
 Step by Step
 ```sh
 # Get current user AD groups
-az ad user get-member-groups --id xmhai@hotmail.com
+az ad user get-member-groups --id <xmhai@hotmail.com>
 
 # Find out group members
-az ad group member list --group ffbd50b1-3714-4e77-a22a-410b6c0da22f
+az ad group member list --group <group-object-id>
 
 # Enable AKS AD integration
 # All users in this group will be cluster admin
-az aks update -g Y3TECH-SAAS-NGAPPS -n cluster-tls-demo --enable-aad --aad-admin-group-object-ids ffbd50b1-3714-4e77-a22a-410b6c0da22f
+az aks update -g <group-name> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <admin-ad-group-object-id>
 
 # Get .config
-az aks get-credentials --resource-group Y3TECH-SAAS-NGAPPS --name cluster-tls-demo
-
-Y3 Product Development
-ffbd50b1-3714-4e77-a22a-410b6c0da22f
-Y3_DevOps
-fe48699d-e1c7-42f1-9b8d-82c69850cb41
+az aks get-credentials --resource-group <aks-resource-group-name> --name <cluster-name>
 
 # Enable RBAC for other groups
 kind: ClusterRoleBinding

@@ -1,14 +1,20 @@
 ## API
 - Endpoint
-  - Use nones for list of objects. e.g. e.g. /accounts
-  - Post for complex request and security (use /enquiry path).
-  - Use dash in url.
-  - Major version in url, e.g. v1, minor version in HTTP header, e.g. X-MYAPI-VERSION: 1.1
+  - /api/{version}/{system}/{resource}/{id}/{dependent-resource}/{id}
+  - Use nones for resources.  
+    e.g. /accounts
+  - Use all lowercase letters and using hyphens in place of spaces.
+  - POST method for complex request and security.  
+    e.g. POST /{resource}/search
+  - Map API Operations to HTTP Methods. PUT/DELETE is vulnerable during pen test, so try to avoid.
+  - Major version in url, e.g. v1, minor version in HTTP header,  
+    e.g. X-MYAPI-VERSION: 1.1
 
 - HTTP Header
   - API implementation should not introduce or depend on headers.
   - Header must not include API or domain specific values.
   - Accept/Accept-Charset (utf-8)/Content-Language/Content-Type
+  - API in HTTP header to identify client.
 
 - Request
   - Create separate jar module or package for API request&response. e.g. api

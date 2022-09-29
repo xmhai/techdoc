@@ -87,7 +87,7 @@ rm -rf </home/hai/centos/images/centos7.qcow2>
 https://computingforgeeks.com/virsh-commands-cheatsheet/  
 ```sh
 sudo virsh list --all
-sudo virsh start|shutdown|destory <vm_name> 
+sudo virsh start|autostart|shutdown|destory <vm_name> 
 sudo virsh edit <vm_name>
 sudo virsh domiflist kmaster
 ```

@@ -14,6 +14,12 @@ https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-w
 - Flow in production (On-Premise)  
   Load Balancer -> Ingress NodePort (HostPort) -> Ingress Controller (DaemonSet) -> Services
 
+Manifest
+- containerPort: (indicative) container listening port
+- port: clusterIP service listening port
+- targetPort: target container listening port
+- nodePort: host port
+
 ## Debug  
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/  
 
@@ -27,9 +33,14 @@ https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/
   - For debug  
 
 - NodePort
+  For on-premise, a proxy can be setup in front of cluster nodes, and forward the requests to node NodePorts.
 - LoadBalancer
+  For cloud env, NodePort and cloud load balancer will be automatically created for each microservice.
 - Ingress  
-  Ingress is actually NOT a type of service. Instead, it sits in front of multiple services and act as a “smart router” or entrypoint into your cluster.
+  - For multiple microservices, instead of using multiple load balancer and proxy, and to save the trouble of configuration, Ingress is a kubernetes solutions for this.  
+  - Ingress is actually NOT a type of service. Instead, it sits in front of multiple services and act as a “smart router” or entrypoint into your cluster.  
+  - Ingress Controller still need one loadbalancer or proxy outside cluster to point to it. But it is a one-time configuration.
+  - Need deploy Ingress Controller (Nginx is k8s supported). It is intelligent to monitor cluster, IngressResource and configure Nginx automatically.
 
 ## Access to External
 - Option 1: Use direct IP

@@ -13,7 +13,7 @@ k get po -o wide --show-labels --watch
 # delete pod
 k delete pod <pod-name> -f
 # create pod
-k run NAME --image=IMAGE --env="KEY=VALUE" --labels=KEY=VALUE -- COMMAND ARGS
+k run NAME --image=IMAGE --env="KEY=VALUE" --env="KEY=VALUE" --labels="KEY=VALUE,KEY=VALUE" -- COMMAND ARGS
 # run command
 k exec NAME -- COMMAND
 ```
@@ -37,6 +37,8 @@ volumes:
 ## ConfigMap
 ```sh
 k create config -h
+# --from-file is used for mount
+# --from-literal and --from-env-file is used for setting env
 ```
 
 ```yaml
@@ -89,12 +91,16 @@ k rollout undo deploy NAME
 k rollout undo deploy NAME --to-revision=1
 ```
 
-## Troubleshoot Pod
+## Troubleshoot
 ```sh
+# Pod troubleshooting
 k get deploy
-k describe po POD-NAME
-k logs POD-NAME
-k get ep
+# check READY, STATUS and RESTARTS column
+k get pod NAME
+k describe TYPE NAME
+k logs NAME [-f] [-p]
+# Service troubleshooting
+k get ep [SERVICE-NAME]
 ```
 
 ## Service
@@ -113,10 +119,17 @@ k expose pod -h
 
 ## Helm
 ```sh
+# repo
+helm repo ls
+helm repo update
+# manage
+helm ls [-a]
 helm search hub|repo <chart>
-helm install <release-name> <chart-name>
-helm list
+helm show values <chart-name>
+helm install <release-name> <chart-name> --set KEY=VALUE
+helm upgrade <release-name> <chart-name>
 helm uninstall <release-name>
+# pull to local and install
 helm pull --untar <chart-name>
 helm install <release-name> ./<local-folder>
 ```

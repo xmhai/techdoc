@@ -14,3 +14,10 @@ https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 
 ## Authz
 https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+
+## Network Policy
+https://github.com/ahmetb/kubernetes-network-policy-recipes
+
+## Security Context
+- Pod
+- Container

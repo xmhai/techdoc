@@ -5,14 +5,16 @@ https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-w
   - Kubernetes will create EndPoint under the hood
   - Endpoint is created to store Pod IP and port
 - NodePort
-  - Expose through Node port
+  - Expose through Node port (on every node)
 - LoadBalancer
   - Kubernetes will create NodePort under the hood.
   - The actual load balancer point to the Node port.
+- Ingress Controller  
+  - Act as reverse proxy, to reduce the cost of load balancer.
 - EndPoint
   - Can point to multiple external IP address.
-- Flow in production (On-Premise)  
-  Load Balancer -> Ingress NodePort (HostPort) -> Ingress Controller (DaemonSet) -> Services
+- On-Premise Setup  
+  - Load Balancer (HAProxy) -> Ingress NodePort (Host Port) -> Ingress Controller (DaemonSet) -> Services
 
 Manifest
 - containerPort: (indicative) container listening port

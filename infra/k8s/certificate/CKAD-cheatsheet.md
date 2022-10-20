@@ -16,6 +16,8 @@ k delete pod <pod-name> -f
 k run NAME --image=IMAGE --env="KEY=VALUE" --env="KEY=VALUE" --labels="KEY=VALUE,KEY=VALUE" -- COMMAND ARGS
 # run command
 k exec NAME -- COMMAND
+# run temporary pod
+k run tmp --image=nginx:alpine --rm -it -- COMMAND ARGS
 ```
 
 ```yaml

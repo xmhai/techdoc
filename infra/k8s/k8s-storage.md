@@ -8,14 +8,26 @@
 - Volume is defined within a pod, and shared across contains inside a pod.
 - Persist Volume is the first class citizen in Kubernetes, shared across pods.
 
+## Persistent Volume
+- It is just an interface, the acutal physical storage need to be created and managed by k8s admin (e.g. Setup NFS Server, Google Storage).
+- The storage is defined in PV yaml.
+- PV are **NOT** tied to any node, and it is **NOT** namespaced.  
+While PVC is namespaced.
+- Created by k8s admin before POD.
+- Storage Class provisions PV dynamatically. In PVC, specify the StorageClass.
+
 ## Provision a Persistent volume: Manual vs Dynamic
 https://medium.com/swlh/kubernetes-storage-explained-558e85596d0c#:~:text=Storage%20classes%20are%20created%20as,kubernetes%20cluster%20by%20the%20administrator.&text=Users%20can%20then%20request%20storage,from%20a%20set%20of%20parameters.  
 - Manual:  
   - Create the storage (e.g. gcloud compute disks create ...)
   - In the GCE, define the PersistVolume to refer to the storage (GCE is able to find the storage by name)  
 - Dynamic:
-  - uses an API object called storage class (“StorageClass”) which define the Provisioner (e.g. rancher.io/local-path, kubernetes.io/gce-pd)
+  - uses an API object called storage class (“StorageClass”) which define the Provisioner (e.g. rancher.io/local-path, kubernetes.io/gce-pd) and extra parameters (e.g. SSD, thus it is named as class)
   - Storage Slass use Provisioner dynamically create persistent volumes when requested using a PVC.
+
+## Volume Binding Mode
+- Immediate: PVC to PV binding happen immediately.
+- WaitForFirstCustomer: only when pod is created and using the PVC, the binding will happen.
 
 ## PersistVolume  
 - hostPath  

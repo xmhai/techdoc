@@ -1,9 +1,9 @@
 ## Website
 https://ru.b-ok.as/book/6010931/b20b83  
 https://z-lib.org/  
-https://pdfcoffee.com/qdownload/kafka-in-actionpdf-pdf-free.html
-https://freepdf-books.com/
-https://itbook.download/ (username: xmhai2000/Test!1234)
+https://pdfcoffee.com/qdownload/kafka-in-actionpdf-pdf-free.html  
+https://freepdf-books.com/  
+https://itbook.download/  
 https://oiipdf.com/download/building-evolutionary-architectures  
 
 ## Programmming

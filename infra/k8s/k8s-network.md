@@ -1,26 +1,48 @@
 ## Concept
 https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0  
+https://theithollow.com/2019/02/05/kubernetes-service-publishing/  
+
+- containerPort (yaml)  
+  - For informational purposes only.
 
 - ClusterIP
   - Kubernetes will create EndPoint under the hood
   - Endpoint is created to store Pod IP and port
+
 - NodePort
   - Expose through Node port (on every node)
+  - Randomly assigned if not specified
+
 - LoadBalancer
   - Kubernetes will create NodePort under the hood.
   - The actual load balancer point to the Node port.
+  - Option 1: External LB + NodePort (30000+)
+  - Option 2: MetalLB
+
 - Ingress Controller  
   - Act as reverse proxy, to reduce the cost of load balancer.
+
 - EndPoint
   - Can point to multiple external IP address.
+
 - On-Premise Setup  
   - Load Balancer (HAProxy) -> Ingress NodePort (Host Port) -> Ingress Controller (DaemonSet) -> Services
 
-Manifest
-- containerPort: (indicative) container listening port
-- port: clusterIP service listening port
-- targetPort: target container listening port
-- nodePort: host port
+- Manifest defintion
+  - containerPort: (indicative) container listening port
+  - port: clusterIP service listening port
+  - targetPort: target container listening port
+  - nodePort: host port
+
+## Service (NodePort) 
+External-IP you will see when you using a LoadBalancer mode, not a NodePort. In NodePort you have no dedicated external IP for you service, all your nodes will handle the connection to your service.  
+
+## Service & Endpoints
+https://kubernetes.io/docs/concepts/services-networking/service/  
+- Kubernetes assigns Service an IP address (sometimes called the "cluster IP"), which is used by the Service proxies.  
+- The controller for the Service selector continuously scans for Pods that match its selector, and then POSTs any updates to an Endpoint object with same name as Service.
+- Services most commonly abstract access to Kubernetes Pods, but they can also abstract other kinds of backends. e.g. External Database.  
+  Because this Service has no selector, the corresponding Endpoints object is not created automatically. You can manually map the Service to the network address and port where it's running, by adding an Endpoints object manually
 
 ## Debug  
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/  

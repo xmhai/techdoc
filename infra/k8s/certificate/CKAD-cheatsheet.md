@@ -4,23 +4,24 @@ alias k=kubectl
 --dry-run=client -o yaml
 k config current-context
 k config set-context
+-h for help
 ```
 
 ## Pod
 ```sh
+# create pod
+k run NAME --image=IMAGE --env="KEY=VALUE" --env="KEY=VALUE" --labels="KEY=VALUE,KEY=VALUE" -- COMMAND ARGS
+# run temporary pod
+k run tmp --image=nginx:alpine --rm -it -- COMMAND ARGS
 # get pod
 k get po -o wide --show-labels --watch
 # delete pod
 k delete pod <pod-name> -f
-# create pod
-k run NAME --image=IMAGE --env="KEY=VALUE" --env="KEY=VALUE" --labels="KEY=VALUE,KEY=VALUE" -- COMMAND ARGS
 # run command
 k exec NAME -- COMMAND
-# run temporary pod
-k run tmp --image=nginx:alpine --rm -it -- COMMAND ARGS
 ```
 
-```yaml
+```yaml (Pod)
 containers:
 - command: ["/bin/sh", "-c", "<script>"]
   args: ["$(env-name)"]
@@ -31,6 +32,7 @@ containers:
   volumeMounts:
     - name: volume-name
       mountPath: /path
+# Major types of volumes: emptyDir(lifecycle as POD)/hostPath/ConfigMap/Secret/PVC
 volumes:
   - name: volume-name
     emptyDir: {}

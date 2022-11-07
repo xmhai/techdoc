@@ -42,3 +42,9 @@ k cordon node NAME
 k uncordon node NAME
 ```
 
+## RBAC
+```
+k create role|rolebinding|clusterrole|clusterrolebindding|sa -h
+k ... --as user
+k auth can-i --list --as user
+```

@@ -57,13 +57,18 @@ https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/
   - For debug  
 
 - NodePort
-  For on-premise, a proxy can be setup in front of cluster nodes, and forward the requests to node NodePorts.
+  - For on-premise
+  - A reverse proxy (HA) can be setup in front of cluster nodes, and forward the requests to node NodePorts.
 - LoadBalancer
-  For cloud env, NodePort and cloud load balancer will be automatically created for each microservice.
+  - For cloud env
+  - NodePort and cloud load balancer will be automatically created for each microservice.
 - Ingress  
+  - For cloud env
   - For multiple microservices, instead of using multiple load balancer and proxy, and to save the trouble of configuration, Ingress is a kubernetes solutions for this.  
+  - Ingress Controller is implemented using Nginx, HAProxy, Istio or Traefik etc, and not deployed by default. It has built-in intelligence to detect Ingress resource in cluster and configure controller automatically.
   - Ingress is actually NOT a type of service. Instead, it sits in front of multiple services and act as a “smart router” or entrypoint into your cluster.  
   - Ingress Controller still need one loadbalancer or proxy outside cluster to point to it. But it is a one-time configuration.
+  - 
   - Need deploy Ingress Controller (Nginx is k8s supported). It is intelligent to monitor cluster, IngressResource and configure Nginx automatically.
 
 ## Access to External

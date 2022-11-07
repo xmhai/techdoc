@@ -12,7 +12,8 @@ k config set-context
 # create pod
 k run NAME --image=IMAGE --env="KEY=VALUE" --env="KEY=VALUE" --labels="KEY=VALUE,KEY=VALUE" -- COMMAND ARGS
 # run temporary pod
-k run tmp --image=nginx:alpine --rm -it -- COMMAND ARGS
+# busybox must set restart=Never
+k run tmp --image=busybox --rm -it --restart=Never -- nslookup POD-IP > output.txt
 # get pod
 k get po -o wide --show-labels --watch
 # delete pod
@@ -80,8 +81,10 @@ volumes:
 ## Deployment
 ```sh
 k create deploy NAME --image=IMAGE --replicas=1 --port=5701
+k expose deploy NAME --port=8080 --targetPort=8080
 k scale deploy NAME --replicas=2
-k set image 
+k set image deploy NAME CONTAINER-NAME=IMAGE-NAME --record
+k autoscale deploy NAME --cpu-percent=80 --min=3 --max=5
 ```
 
 ## Deployment Rollout

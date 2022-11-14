@@ -1,9 +1,11 @@
 ## Docker Basic
 https://docs.docker.com/get-started/overview/  
-- Docker only run on linux, Linux VM is created on Windows or Mac
+- Docker only run on linux (as it relies on namespace and cgroup). For Windows or Mac, Linux VM is required.
 - Each containers run within a subset of resources (Harddisk/CPU/Memory/Network), this is achieved by Linux Namespace and Control Group
+- Docker Client -> Docker Server(Daemon) -> Docker Hub(Image Repo) -> Docker Image -> Docker Container
 - Docker Image contains files and start command
-- Docker Client->Docker Server(Daemon)->Docker Hub->Docker Image->Docker Container
+- Docker tag format repo:tag
+  - For repos other than DockerHub, need to start with a domain name.
 
 ## Installation
 https://docs.docker.com/engine/install/linux-postinstall/  

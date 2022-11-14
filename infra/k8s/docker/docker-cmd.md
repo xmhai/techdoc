@@ -8,6 +8,11 @@ docker image ls
 docker image rm  
 docker image prune  
 # e.g. docker image prune --filter="dangling=true"  
+# to download and upload an image
+docker save
+docker load
+docker tag
+docker push 
 ```
 
 -- Container Commands --  

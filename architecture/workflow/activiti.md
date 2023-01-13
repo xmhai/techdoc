@@ -1,5 +1,7 @@
 ## Concept
 https://www.activiti.org/userguide/?_ga=2.195193317.810505573.1631679651-2116017183.1629103886#_introduction  
+- Activiti is moving to cloud deployment since version 7.
+- Activiti 6 is the latest version for on-premise deployment, but there is no update after first release.
 
 **Major components:**  
 - activiti-rest  
@@ -14,7 +16,7 @@ https://www.activiti.org/userguide/?_ga=2.195193317.810505573.1631679651-2116017
 - Eclipse plugin
 
 ## Installation
-**Activiti 6** (deploy to application server)  
+**Activiti 6** (deploy to Tomcat 9 + JRE 8)  
 - Download the zip files
 - Unzip and configure database connection (default is h2)  
   - activiti-rest: WEB-INF\classes\db.properties

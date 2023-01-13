@@ -1,10 +1,15 @@
 ## Printer
-- Samsung M2020 express  
-  https://support.hp.com/us-en/drivers/selfservice/samsung-xpress-sl-m2020-laser-printer-series/16462592/model/16462596  
-  Connect to printer using USB.  
-  Run "Samsung Easy Wireless Setup" program.  
+- Brother
 
 ## MyBookLive
 - Map network drive  
 
-## 
+## TV
+- LG 49UF640T
+
+## Chromecast
+- Chromecast 3 Generation
+
+## Network
+- Google nest x 3
+- Use Google Home to view devices IP.

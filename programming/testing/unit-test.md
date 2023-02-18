@@ -29,6 +29,23 @@ Also quote from Spring doc:
   - **Test instance postprocessing**  
     TestInstancePostProcessor  
 
+## Unit Test
+- Spring Service Test
+  https://1kevinson.com/testing-service-spring-boot/
+  ```java
+  @ExtendWith(MockitoExtension.class)
+  class StudentServiceTest {
+    // @InjectMocks creates an instance of the class and injects the mocks that are marked with the annotations @Mock into it.
+    @InjectMocks
+    private StudentService service;
+    // @Mock creates a mock implementation for the classes you need.
+    @Mock
+    private StudentRepository repository;
+    @Test
+    void should_save_one_student() {...}
+  }
+  ```
+
 ## Integration Test
 use failsafe plugin.  
 https://www.baeldung.com/maven-integration-test  
@@ -38,7 +55,7 @@ https://www.baeldung.com/maven-integration-test
 ## easy-random
 To generate random data in objects.  
 
-## Spring Boot Test
+## Spring Boot Integration Test
 if a test requires starting up Spring in order to run such as @WebMvcTest , it is not a unit test but an integration test.  
 @SpringBootTest, @ContextConfiguration, @DataJpaTest and @WebMvcTest are all involved in loading a subset of Spring components. They are in consequence related to integration testing.  
 - @SpringBootTest with TestRestTemplate

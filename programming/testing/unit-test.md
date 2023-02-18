@@ -12,6 +12,7 @@ Also quote from Spring doc:
 >True unit tests typically run extremely quickly, as there is no runtime infrastructure to set up.  
 
 ## JUnit
+- Create: Menu File -> New -> Java ->JUnit Test Case...
 - Error: "The input type of launch configuration does not exist" when right click on test class and run as "Junit Test" .  
   Reason is the test class is not created under src/test/java folder.  
 - @ExtendWith({ExecutionContextExtension.class})  
@@ -20,8 +21,7 @@ Also quote from Spring doc:
   - **Conditional Test Execution**  
     ExecutionCondition makes the test case to run on the conditions. e.g. properties  
   - **Life-cycle callbacks**  
-    BeforeAllCallback, AfterAllCallback, BeforeEachCallback,
-  AfterEachCallback  
+    BeforeAllCallback, AfterAllCallback, BeforeEachCallback, AfterEachCallback  
   - **Parameter resolution**  
     ParameterResolver to resolve the constrcutor parameters.  
   - **Exception handling**  

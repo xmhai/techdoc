@@ -23,6 +23,7 @@ Endpoints:
 
 ## Tips
 - Same class name need to set to different schema name, e.g. class User can annotated with @Schema(name="user1"), @Schema(name="user2")  
+- @ParameterObject to deserialized the request object to individual fields
 
 ## tcases
 Test against OpenAPI specification.  

@@ -29,10 +29,12 @@ Also quote from Spring doc:
   - **Test instance postprocessing**  
     TestInstancePostProcessor  
 
-## Unit Test
+## Unit Test & Mokito
 - Spring Service Test
-  https://1kevinson.com/testing-service-spring-boot/
+  https://1kevinson.com/testing-service-spring-boot/  
+  https://www.baeldung.com/junit-assertions  
   ```java
+  import static org.junit.jupiter.api.Assertions.assertAll;
   @ExtendWith(MockitoExtension.class)
   class StudentServiceTest {
     // @InjectMocks creates an instance of the class and injects the mocks that are marked with the annotations @Mock into it.
@@ -42,7 +44,9 @@ Also quote from Spring doc:
     @Mock
     private StudentRepository repository;
     @Test
-    void should_save_one_student() {...}
+    void should_save_one_student() {
+      assertEquals(expected, actual);
+    }
   }
   ```
 

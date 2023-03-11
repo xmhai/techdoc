@@ -1,7 +1,8 @@
 ## Batch Framework
 - User external scheduler (AutoSys, Tivoli, Control-M or Quartz/Spring Scheduler) to trigger the batchjob script running on VM.
-- The script pulls data from staging server folder (should the script move the file to another folder???)
+- The script pulls data from staging server folder to local staging folder.
 - The script runs SpringBatch command line, SpringBatch run and die.
+- Delete files/Move files to archive folder after processing (who pull/process the files is also responsible for clean up)
 - In the SpringBatch, it read file and output to multiple destination using CompositeItemWritter.
 - Exception handling: ignore, retry or abort
 - Batch Job running report store in database. Two tables: summary and exception records.

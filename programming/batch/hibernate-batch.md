@@ -41,6 +41,22 @@ hibernate batch insert is disabled when ID generator is not Sequence.
   Test with a trigger to fail some records, in batch mode, other records will be insert successfully.
 
 ## Best Practice
-- Entity @id use @SequenceGenerator
-- The validation need to be done at Java side, server side should not throw exception unless server error.
-- 
+- Define the batch size, 100 is a good choice
+- Create sequence INCREMENT BY 100
+- Difine Entity @id use @SequenceGenerator with allocationSize=100
+- The validation need to be done at Java side, server side should not throw exceptions.
+- Spring Batch trunk defined as 100
+- spring.jpa.properties.hibernate.batch_size=100
+
+## Statistics
+One million record insert:  
+| ----------- | ----------- |
+| Batch Size  | Time (min)  |
+| ----------- | ----------- |
+|          1  |        26   |
+|         10  |        17   |
+|        100  |         9   |
+|        200  |         7.30|
+|        500  |         7.45|
+|       1000  |         7   |
+| ----------- | ----------- |

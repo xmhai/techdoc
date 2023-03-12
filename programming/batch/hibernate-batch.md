@@ -50,7 +50,6 @@ hibernate batch insert is disabled when ID generator is not Sequence.
 
 ## Statistics
 One million record insert:  
-| ----------- | ----------- |
 | Batch Size  | Time (min)  |
 | ----------- | ----------- |
 |          1  |        26   |
@@ -59,4 +58,3 @@ One million record insert:
 |        200  |         7.30|
 |        500  |         7.45|
 |       1000  |         7   |
-| ----------- | ----------- |

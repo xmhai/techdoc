@@ -1,4 +1,14 @@
-- Spring default use logback  
+- Logging Frameworks  
+  https://medium.com/javarevisited/understanding-logging-in-spring-boot-ac0fd79177b4  
+  log4J, logback, java.util.logging (JUL), tiny log, etc.  
+
+- By default, Spring Boot includes SLF4J along with Logback implementations.
+
+- Slf4j  
+  An abstraction of all these logging frameworks. It offers a generic API, making the logging independent of the actual implementation.
+
+- Logback  
+  Logback is already using SLF4J. It's the reference implementation.
   Can be configured logback.xml or in application.yml:  
   ```xml
     <configuration>
@@ -21,5 +31,10 @@
         root: WARN
         org.springframework.security: DEBUG
   ```
-- lombok @Slf4j
+
 - log4j
+  https://www.callicoder.com/spring-boot-log4j-2-example/  
+  support Async
+
+- lombok @Slf4j
+  Generate log for a class.

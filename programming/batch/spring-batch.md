@@ -113,3 +113,18 @@ BATCH_JOB_EXECUTION
 
 - Restart a Job
 
+## Job Restart
+```txt
+Spring Batch will always create new Job Execution and will not reuse a previous failed job execution to continue its execution.  
+
+Need to understand three similar but different concept in Spring Batch: Job, Job Instance, Job Execution. Example:-
+
+Job : End-Of-Day Batch
+Job Instance : End-Of-Day Batch for 2018-01-01
+Job Execution: End-Of-Day Batch for 2018-01-01, execution #1
+In high-level, that's how Spring Batch's recovery works:
+
+Assuming your first execution failed in the step 3. You can submit the same Job (End-of-Day Batch) with same Parameters (2018-01-01). Spring Batch will try to look up last Job Execution (End-Of-Day Batch for 2018-01-01, execution #1) of the submitted Job Instance (End-of-Day Batch for 2018-01-01), and found that it has previously failed in step 3. Spring Batch will then create a NEW execution, [End-Of-Day Batch for 2018-01-01, execution #2], and start the execution from step 3.
+
+So by design, what Spring trying to recover is a previously failed Job Instance (instead of Job Execution). Spring batch will not reuse execution when you are re-running a previous-failed execution.
+```

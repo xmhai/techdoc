@@ -30,12 +30,14 @@ Read more [api.md](../api/api.md)
 - CommonError response
 - BaseController handle validation Error
 - MessageId
-- Pagination
+- Pagination  
+  Read more [pagination.md](../db/pagination.md)
 
 ## Batch
 Read more [api.md](../batch/batch.md)
 
 ## Dashboard
+https://mariadb.com/kb/en/data-warehousing-summary-tables/  
 
 ## Kafka
 

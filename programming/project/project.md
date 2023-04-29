@@ -30,9 +30,19 @@ Read more [api.md](../api/api.md)
 - CommonError response
 - BaseController handle validation Error
 - MessageId
+- Pagination
 
 ## Batch
 Read more [api.md](../batch/batch.md)
+
+## Dashboard
+
+## Kafka
+
+## Authentication
+
+## MakerChecker
+- MakerCheckerEntity
 
 ## DB Design
 Read more [db-design.md](../data/db-design.md)

@@ -64,6 +64,9 @@ listeners=PLAINTEXT://0.0.0.0:9092
 advertised.listeners=PLAINTEXT://server-ip:9092
 ```
 
+Install as a service  
+https://ducmanhphan.github.io/2019-11-30-How-to-setup-kafka-in-linux/  
+
 ## Quickstart
 https://kafka.apache.org/quickstart  
 ```sh

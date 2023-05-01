@@ -22,4 +22,6 @@ Following are the options (last two options are heavily inspired by the way Kafk
 - Finite retry at the point of an error
 - Finite retry on a separate topic
 
-    
+## Implementation
+- Kafka is "dump broker, smart endpoint", thus DLQ is not handled by broker.  
+- 

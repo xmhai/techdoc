@@ -30,3 +30,4 @@ Use default Configuration
 
 - AckMode.BATCH only commit after batch process finished. This can be proved by close Eclipse during processing, commit offset doesn't change.
 
+- AckMode.MANUAL_IMMEDIATE works as infinite re-try if there is no ack in the fallback logic.

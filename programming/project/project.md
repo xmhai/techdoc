@@ -11,6 +11,17 @@ https://dzone.com/articles/reduce-onboarding-costs-using-a-code-repository?editi
 <Repository>
 ```
 
+## Application.properties
+- Two levels, e.g.  
+  ```yaml
+  server:
+  spring:
+    security:
+  logging:
+    level:
+  ```
+- Always put environment specific properties in env profile, dev/sit/uat/prod
+
 ## Common Library
 - Base classes
 - Beans with @ConditionOn for different type of services

@@ -11,6 +11,9 @@ bin/kafka-topics.sh --create --topic my-topic --bootstrap-server localhost:9092 
 https://towardsdatascience.com/overview-of-ui-monitoring-tools-for-apache-kafka-clusters-9ca516c165bd  
 Use Offset Explorer as it is easy to install on windows.
 
+## Avro  
+https://codingharbour.com/apache-kafka/guide-to-apache-avro-and-kafka/  
+
 ## Create Kafka Producer
 
 ## Create Kafka Consumer

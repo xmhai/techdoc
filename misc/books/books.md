@@ -1,6 +1,10 @@
 ## Website
 https://ru.b-ok.as/book/6010931/b20b83  
 https://z-lib.org/  
+https://singlelogin.re/?remix_userkey=570c02bec81201e43e09b48d3a241dfe&remix_userid=13127236&mailclick=clearnetaccesssecondarymsg  
+https://lib-dvoanz47xs2pgxz3tipxi2t2.1lib.ch/570c02bec81201e43e09b48d3a241dfe?redirectUrl=%2F%3Fmailclick%3Dannouncementclearnetaccess  
+https://lib-osvs6sy4edxgmpkbwohedj57.1lib.fr/570c02bec81201e43e09b48d3a241dfe?redirectUrl=%2F%3Fmailclick%3Dannouncementclearnetaccess  
+
 https://pdfcoffee.com/qdownload/kafka-in-actionpdf-pdf-free.html  
 https://freepdf-books.com/  
 https://itbook.download/  

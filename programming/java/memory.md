@@ -1,3 +1,6 @@
+## Performance Tuning
+https://dzone.com/articles/principles-java-application  
+
 ## OOM troubleshooting
 - Possible causes
   - Memory leak

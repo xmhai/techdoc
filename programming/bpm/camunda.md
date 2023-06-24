@@ -8,3 +8,12 @@ To summarize, asynchronous continuations or BPMN timer events will created JOBs,
 
 ## Job Executor  
 https://docs.camunda.org/manual/7.19/user-guide/process-engine/the-job-executor/  
+
+## Concept
+- Process Definition
+  - Defined in BPMN2.0 XML file and identified by id property
+  - Versioning: 
+
+- Process Instance
+  - State: stored in database.
+  - Process Variables: available to all tasks.

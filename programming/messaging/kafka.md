@@ -43,6 +43,12 @@ There are three acknowledgment modes:
 - enable.auto.commit=true  
   It's best not to use this option. It won't commit until the next poll(), and then only if the the auto.commit.interval has passed.
 
+## Rebalance  
+https://medium.com/lydtech-consulting/kafka-consumer-group-rebalance-1-of-2-7a3e00aa3bb4  
+- Topic/Partition/Consumer Group/Group Coordinator (broker)/group lead
+- Group membership is managed on the broker side.
+- Partition assignment is managed on the client side.
+
 ## Classes
 ConcurrentKafkaListenerContainerFactory (properties can be configure in application.yaml)
 - setPollTimeout  

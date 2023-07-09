@@ -47,6 +47,9 @@ hibernate batch insert is disabled when ID generator is not Sequence.
 - The validation need to be done at Java side, server side should not throw exceptions.
 - Spring Batch trunk defined as 100
 - spring.jpa.properties.hibernate.batch_size=100
+- rewriteBatchedStatements=true (https://www.reddit.com/r/java/comments/wk640s/a_lesserknown_mysql_jdbc_optimization_setting/)
+- useServerPrepStmts=true (https://stackoverflow.com/questions/32286518/whats-the-difference-between-cacheprepstmts-and-useserverprepstmts-in-mysql-jdb/32645365#32645365)
+- cachePrepStmts (https://vladmihalcea.com/how-does-the-mysql-jdbc-driver-handle-prepared-statements/)
 
 ## Statistics
 One million record insert:  

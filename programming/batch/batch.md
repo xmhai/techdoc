@@ -1,3 +1,11 @@
+## Major concerns
+- Timing
+  - When should the job start
+  - How long it will run
+- Performance
+  - Batch mode (determine batch size)
+  - Reduce the number of SQL
+
 ## Batch Framework
 - User external scheduler (AutoSys, Tivoli, Control-M or Quartz/Spring Scheduler) to trigger the batchjob script running on VM.
 - The script pulls data from staging server folder to local staging folder.
@@ -8,6 +16,9 @@
 - Batch Job running report store in database. Two tables: summary and exception records.
 - View the job execution status and details from UI and scheduler console.
 - Job retrigger
+  - Use Job Parameter to prevent same file to be processed multiple times.
+  - Check duplicate records in itemProcessor
+  - With external scheduler, we are not able to retrigger spring batch as need to use jobOperator.restart instead of normal jobLauncher.
 
 ## Batch Processing Requirements
 - Bulk-oriented (Long running)

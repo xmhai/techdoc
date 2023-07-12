@@ -1,8 +1,11 @@
 ## Useful links  
-https://www.jpa-buddy.com/blog/the-ultimate-guide-on-db-generated/  
+(MUST Read!!!) https://www.jpa-buddy.com/blog/the-ultimate-guide-on-db-generated/  
 https://www.baeldung.com/spring-jdbc-batch-inserts  
 https://percona.community/blog/2018/10/12/generating-identifiers-auto_increment-sequence/  
 https://docs.jboss.org/hibernate/core/3.3/reference/en/html/batch.html  
+
+## Check batch mode  
+generate_statistics: true
 
 ## Database support
 Database need to support sequence and multivalue insert.  

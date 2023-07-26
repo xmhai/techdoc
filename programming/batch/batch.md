@@ -5,6 +5,7 @@
 - Performance
   - Batch mode (determine batch size)
   - Reduce the number of SQL
+- Recovery (https://docs.oracle.com/html/E79064_01/Content/Batch%20Processor/Batch_failure_and_recovery.htm)
 
 ## Batch Framework
 - User external scheduler (AutoSys, Tivoli, Control-M or Quartz/Spring Scheduler) to trigger the batchjob script running on VM.
@@ -19,6 +20,17 @@
   - Use Job Parameter to prevent same file to be processed multiple times.
   - Check duplicate records in itemProcessor
   - With external scheduler, we are not able to retrigger spring batch as need to use jobOperator.restart instead of normal jobLauncher.
+
+## Batch Pattern
+### File -> DB
+- Source system put file on server (SFTP,S3)
+  - Use control file to indicate data file is complete.
+  - Should contain some form of integrity information in file like header or trailer including row_count or hash.
+- Script/App pull file to Local Staging Folder, and delete file on server after pull successfully.
+- Import file to staging table
+  - Truncate staging table for import
+- Process the records in staing table
+- Job must be able to re-trigger (from step2)
 
 ## Batch Processing Requirements
 - Bulk-oriented (Long running)

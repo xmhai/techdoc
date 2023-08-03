@@ -7,6 +7,12 @@ https://stackoverflow.com/questions/55241976/how-can-i-process-kafkalistener-met
 - concurrency on the annotation is just a convenience; it overrides the factory setting. This allows you to use the same factory with multiple listeners, each with different concurrency.
 - increase the concurrency ONLY if you have at least that number of partitions on the topic.
 
+## Partition, Offset and Consumer
+https://medium.com/event-driven-utopia/understanding-kafka-topic-partitions-ae40f80552e8
+
+## Message Ordering
+https://medium.com/latentview-data-services/how-to-use-apache-kafka-to-guarantee-message-ordering-ac2d00da6c22
+
 ## Poll Interval  
 https://stackoverflow.com/questions/48402355/spring-kafkalistener-execute-and-poll-records-after-certain-interval  
 

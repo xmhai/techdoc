@@ -13,6 +13,7 @@
   - Use faultTolerant() and skip()
   - Use SkipPolicy for more complicated scenarios.
 - Listner
+- ItemProcess: Business logic like validation, tranform, filter etc.
 
 ## Spring Batch Architecture
 https://docs.spring.io/spring-batch/docs/current/reference/html/domain.html#domainLanguageOfBatch  

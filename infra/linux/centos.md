@@ -37,3 +37,5 @@ sudo nano /etc/sudoers.d/hai
 ## Setup sftp server
 No need to setup SFTP server as it is sshd that handle the upload and download.  
  
+## Create Service  
+https://www.opentechguides.com/how-to/article/centos/169/systemd-custom-service.html  

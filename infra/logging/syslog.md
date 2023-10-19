@@ -1,4 +1,6 @@
 ## Syslog
+https://www.gilesorr.com/blog/rsyslog-intro.html  
+
 - It is protocol
 - use UDP
 - include two labels: facility and priority, other data are headers like host, timestamp and msg
@@ -12,3 +14,4 @@
   - Configure client /etc/rsyslog.d/apache.conf
 - syslog server 
   - Configure server (to forward to Logstash) /etc/rsyslog.d/logstash_apache.conf
+

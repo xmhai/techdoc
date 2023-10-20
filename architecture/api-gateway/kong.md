@@ -23,6 +23,25 @@ sudo vi /etc/kong/kong.conf
 database=off
 declarative_config={PATH_TO_KONG.YML}
 
+#################################################################
+### Below steps are for running service as process, RECOMMENED
+#################################################################
+```sh
+sudo mkdir /app
+cd /app
+sudo mkdir kong
+chown hai kong
+cd kong
+sudo cp /etc/kong/kong.conf kong.conf
+chown hai kong.conf
+sudo cp /etc/kong/kong.yaml kong.yaml
+chown hai kong.yaml
+vi kong.conf
+#declarative_config={PATH_TO_KONG.YML}
+kong restart -c kong.conf
+```
+
+
 #######################################################################################################
 ### Below steps are for running service as kong user. However user service is not supported in Centos.
 #######################################################################################################

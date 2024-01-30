@@ -14,3 +14,11 @@ https://docs.microsoft.com/en-us/dotnet/architecture/microservices/architect-mic
 
 # Dummy api endpoint  
 https://httpbin.org/anything
+
+# API LifeCycle
+- Definition (can import from other systems by OpenAPI Standard etc.)
+- Development (Development tools integration, e.g. AxWay integration with SoapUI)
+- Testing (Sandbox, e.g. AWS API Gateway)
+- Publication (Jenkins Pipeline, or dbs manually way)
+- Consumption (Retrieve API definition)
+- Operational Metrics

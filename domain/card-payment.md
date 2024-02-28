@@ -1,5 +1,9 @@
+https://www.youtube.com/watch?v=bCyjiMjPO_U
+https://www.tokenex.com/blog/credit-card-life-cycle-what-is-it-and-how-can-you-manage-it/
+
 ## Concept
 Payment System
+- MANIC (merchant, acquirer, network, issuer, card holder)
 - Cardholder
 - Credit Card  
   16 digits. First digit represents card network, 6 digit BIN, rest digit are unique and linked to card holder account.
@@ -8,7 +12,9 @@ Payment System
 - Merchant
 - Switch/Gateway
 - Acquirer
-- Payment Network/Payment Scheme/Payment Gateway
+- Payment Processor
+- Payment Gateway
+- Payment Network/Payment Scheme
 - Issuer
 
 ISO8583

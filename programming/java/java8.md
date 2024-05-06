@@ -1,4 +1,5 @@
 ## Stream API
+https://stackify.com/streams-guide-java-8/
   - map(*lambda*)
   - filter()
   - reduce(*identity*, *accumulator*[*lambda* or *Method Reference*], *combiner*)  

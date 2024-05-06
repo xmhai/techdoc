@@ -12,3 +12,15 @@
 - @EnableJpaRepositories to create the proxy instances
 
 ## Pratice
+
+## Tips
+- Springboot application will fail to start if database connection failed.
+  - java.sql.SQLException will be thrown, and detailed error message is returned from db server.
+  - Access denied for user 'root'@'localhost' (using password: YES):
+    cause: passord is wrong.
+  - Access denied for user 'root'@'localhost' (using password: NO):
+    cause: password is null, due to wrong spring yaml configuratioan.
+  - Communications link failure:
+    cannot access db ip and port, could due to wrong ip address or db server not up.
+  - Host 'OptiPlex5000.lan' is not allowed to connect to this MariaDB server:
+    cause: access from any server, e.g. hai@% is not set.

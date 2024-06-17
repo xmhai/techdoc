@@ -1,4 +1,7 @@
 ## Installation
+- Download VirtualBox
+- 
+
 **VM Settings:**  
 - Memory: 2G  
 - Dynamic Disk: 30G  

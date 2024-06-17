@@ -1,14 +1,19 @@
+## Concept
+- Cannot bridge on wireless interface  
+- So if the host only has wireless interface, the other hosts in the LAN cannot access the VMs directly. port forward is the only way to directly access the VMs, which means VMs will NOT appear as a normal machine.  
+
 ## Installation
 https://www.cyberciti.biz/faq/how-to-install-kvm-on-centos-7-rhel-7-headless-server/  
-
 - Run all the command with **sudo**
-- Cannot bridge on wireless interface  
+
 - Create bridge network for full briding connection, where the guest devices are connected to the host LAN, without using NAT.  
 https://linuxconfig.org/how-to-use-bridged-networking-with-libvirt-and-kvm  
 
 ```sh
 # Create bridged-network
 # Refer to https://linuxconfig.org/how-to-use-bridged-networking-with-libvirt-and-kvm
+sudo virsh net-list
+sudo virsh net-dumpxml default
 
 sudo nano /etc/qemu-kvm/bridge.conf
 # add "allow all"
@@ -24,11 +29,23 @@ sudo virt-install \
 --graphics vnc \
 --disk path=/home/hai/kvm/kmaster.qcow2,size=20,bus=virtio,format=qcow2
 
-# Find VNC server port (Exposed on Host)
+# Using macvtap
+sudo virt-install \
+--name=kvm1 \
+--vcpus=2 \
+--memory=4096 \
+--cdrom=/home/hai/iso/CentOS-7-x86_64-DVD-2009.iso \
+--disk path=/home/hai/kvm/kvm1.qcow2,size=20,bus=virtio,format=qcow2 \
+--os-variant=centos7.0 \
+--graphics vnc \
+--network type=direct,source=wlp2s0,source_mode=bridge,model=virtio
+
+# Find VNC server port (Exposed on Host, default 5900)
 sudo virsh dumpxml kmaster | grep vnc
 
 # From VNC Client machine (Windows in my case)
 ssh hai@192.168.86.43 -L 5900:127.0.0.1:5900
+
 # Install VNC
 # run VNC with 127.0.0.1:5900
 # This will bring up the installation wizard
@@ -38,31 +55,36 @@ NETWORK & HOSTNAME -> Enable eth0 (note down the ip addr), set hostname
 Create User -> Make this user administrator
 ```  
 
-## Delete VM
+## Clean up VM
 ```sh
-virsh list --all
-virsh dumpxml --domain <centos7> | grep 'source file'
+# Get VM names
+sudo virsh list --all
+# Get source file name for a vm
+sudo virsh dumpxml --domain <vm_name> | grep 'source file'
 # Note down the guest storage file
-virsh shutdown <centos7>
-# or force shutdown
-virsh destroy <centos7>
+sudo virsh shutdown <vm_name>
+# (option) or force shutdown
+sudo virsh destroy <vm_name>
 # Delete VM
-virsh undefine <centos7>
-# If error: Refusing to undefine while domain managed save image exists
-virsh managedsave-remove <centos7>
-# Remove file
-rm -rf </home/hai/centos/images/centos7.qcow2>
+sudo virsh undefine <vm_name>
+# (option) If error: Refusing to undefine while domain managed save image exists
+sudo virsh managedsave-remove <vm_name>
+# Remove source file
+sudo rm -rf </home/hai/kvm/vm_source_file.qcow2>
+
+# show bridge networks
+brctl show
 ```
 
 ## Connect
 - Connect via VNC
     ```sh
     # Enable VNC
-    virsh edit kmaster
+    sudo virsh edit kmaster
     <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'>
     <listen type='address' address='0.0.0.0'/>
     </graphics>
-    virsh dumpxml kmaster | grep vnc
+    sudo virsh dumpxml kmaster | grep vnc
     ```
 - Connect via console
     ```sh
@@ -70,7 +92,7 @@ rm -rf </home/hai/centos/images/centos7.qcow2>
     systemctl enable serial-getty@ttyS0.service
     systemctl start serial-getty@ttyS0.service
     # Now from Host
-    virsh console kmaster
+    sudo virsh console kmaster
     ```
 - Connect via SSH
     ```sh

@@ -4,6 +4,18 @@ https://martinfowler.com/articles/microservices.html
 "Building Microservices" - Sam Newman  
 "Implementing Domain-Driven Design" - Vaughn Vernon  
 
+## Architecture
+## Communication
+- Synchronous (RESTFul API)
+- ASynchronous
+  - Messaging (RabitMQ/Kafka)
+  - ASychrounous call + Webhook callback
+## Build
+## Testing
+## Security
+## Deployment
+## Monitoring
+
 ## Concept
 My understanding: Microservice is to address non-functional requirements and techincal needs in three areas:-  
 - **Maintenability**: Fast change and evolve part of the system  

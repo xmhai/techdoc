@@ -1,0 +1,2 @@
+- When actuator enabled, Application startup log will show "Exposing 13 endpoint(s) beneath base path '/actuator'".
+- To display the information in one page, need to create a controller or use Grafana.

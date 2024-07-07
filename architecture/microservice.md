@@ -5,31 +5,9 @@ https://martinfowler.com/articles/microservices.html
 "Implementing Domain-Driven Design" - Vaughn Vernon  
 
 ## Architecture
-## Communication
-- Synchronous (RESTFul API)
-- ASynchronous
-  - Messaging (RabitMQ/Kafka)
-  - ASychrounous call + Webhook callback
-## Build
-## Testing
-## Security
-## Deployment
-## Monitoring
-
-## Concept
-My understanding: Microservice is to address non-functional requirements and techincal needs in three areas:-  
-- **Maintenability**: Fast change and evolve part of the system  
-- **Scalability**  
-- **Performance**: Use appropriate technology Stack  
-
-Criteria:  
-- Loose coupled module: if a change to a miroservice will cause changes to other services, then we should think about is it part of other service.
-
-Benifit:  
-- Own CICD lifecycle, fast to evolve
-- Fault isolation
-- Increase throughput
-
+- Has its public interfaces
+- Has its own database
+- One microservice can have multiple processes
 ## Design
 - Identify Microservices  
   - Domain Driven Design
@@ -37,6 +15,10 @@ Benifit:
   - Business Capability/Function  
   - Business Organization
   - Change Frequency
+  - (Monolith) Database seams
+  - (Monolith) Loose-couple modules: if a change to a miroservice will cause changes to other services, then we should think about is it part of other service.
+  - (Monolith) Common Functions
+  - (Monolith) New features as microservice
 - Granularity
   DDD and bounded context as first step.  
   - Too coarse-grained  
@@ -48,6 +30,42 @@ Benifit:
   - Too fine-grained
     - Become a collection of simple CRUD
     - Heavily interdependent on one another (Chatty Services)  
+## Communication
+- Synchronous (RESTFul API)
+- ASynchronous
+  - Messaging (RabitMQ/Kafka)
+  - ASychrounous call + Webhook callback
+- Resillency
+  - Retry with backoff
+  - Circuit Breaker
+  - Caching
+  - Message Retries (Message Handler must be idempotent)
+## Build
+- Service Template, including authentication, logging etc.
+- Automated Test: Unit Test, Service Test, End-to-end test
+## Security
+- Encryption at transit(TLS), Encryption at rest
+- Authentication (Oauth2/OIDC), Authorization
+- To avoid Confused Dupety
+- Virtual Network, IP Whitelisting, Firewall, API Gateway
+## Deployment
+- Blue-green deployment
+- Rolling Upgrade (Kubernetes)
+## Monitoring
+- Host (CPU/Memory/Alert)
+- Application (Health check/HTTP Request Errors/Queue Length)
+- Log (Aggregated, standardized)
+
+## Concept
+My understanding: Microservice is to address non-functional requirements and techincal needs in three areas:-  
+- **Maintenability**: Fast change and evolve part of the system  
+- **Scalability**  
+- **Performance**: Use appropriate technology Stack  
+
+Benifit:  
+- Own CICD lifecycle, fast to evolve
+- Fault isolation
+- Increase throughput
 
 ## Difficulties
 - Code will increase 35-45 percent compare to monolithic
@@ -97,8 +115,6 @@ Benifit:
 - Distributed Transaction  
   Eventual Consistent:  
   Saga: compensation transaction callback is invoked when need to rollback.
-- Service communication  
-  Asynchronous Messaging.  
 
 **Operation**
 - Security/Authentication  

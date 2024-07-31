@@ -22,14 +22,14 @@ https://martinfowler.com/articles/microservices.html
 - Granularity
   DDD and bounded context as first step.  
   - Too coarse-grained  
-    - Too many responsibilities  
+    - Too many responsibilities, everything goes to this microservice.  
     - Manages data across a large number of tables
       Use the guideline that a microservice should own no more than three to five tables.  
     - Too many test cases  
       e.g. hundreds of unit and integration tests
   - Too fine-grained
     - Become a collection of simple CRUD
-    - Heavily interdependent on one another (Chatty Services)  
+    - Heavily interdependent on one another (Chatty Services), one user operation requires too many services call.    
 ## Communication
 - Synchronous (RESTFul API)
 - ASynchronous

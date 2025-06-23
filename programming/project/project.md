@@ -30,11 +30,16 @@ https://dzone.com/articles/reduce-onboarding-costs-using-a-code-repository?editi
 - In pom, set spring-boot-maven to skip
 
 ## Standard folders
-- api package name:   com.company.lbu.project.api.module
-- batch package name: com.company.lbu.project.batch.module
-- api/request|response, controller, service, repository, model, mapper
-- event
-- config, exception, constants, util
+- api  
+  - project name: user-service  
+  - package name: com.company.lbu.project.userservice
+  - folder: api/request|response, controller, service, repository, model, mapper, validator, exception, dto, health, config/mongo|kafka|security, constants  
+- batch  
+  - project name: user-batch  
+  - package name: com.company.lbu.project.userbatch
+- event  
+  - project name: user-event-processor  
+  - package name: com.company.lbu.project.usereventprocessor
 
 ## API
 Read more [api.md](../api/api.md)

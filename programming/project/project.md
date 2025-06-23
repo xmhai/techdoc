@@ -31,8 +31,8 @@ https://dzone.com/articles/reduce-onboarding-costs-using-a-code-repository?editi
 
 ## Standard folders
 - package name: com.company.lbu.project.module
-- api/[api]/request|response, controller, service, repository, entity, config, util
-- mapper
+- api/[api]/request|response, controller, service, repository, model, config(subfolder if there are multiple classes), util, exception, dto
+- mapper, validator
 
 ## API
 Read more [api.md](../api/api.md)

@@ -30,19 +30,21 @@ https://dzone.com/articles/reduce-onboarding-costs-using-a-code-repository?editi
 - In pom, set spring-boot-maven to skip
 
 ## Standard folders
-- package name: com.company.lbu.project.module
-- api/[api]/request|response, controller, service, repository, entity, config, util
-- mapper
+- api package name:   com.company.lbu.project.api.module
+- batch package name: com.company.lbu.project.batch.module
+- api/request|response, controller, service, repository, model, mapper
+- event
+- config, exception, constants, util
 
 ## API
 Read more [api.md](../api/api.md)
 - Swagger
 - Request Object validation
 - CommonError response
-- BaseController handle validation Error
+- BaseController handle validation Error (ControllerAdvice)
 - MessageId
 - Pagination  
-  Read more [pagination.md](../db/pagination.md)
+Read more [pagination.md](../db/pagination.md)
 
 ## Batch
 Read more [api.md](../batch/batch.md)
@@ -61,4 +63,3 @@ https://mariadb.com/kb/en/data-warehousing-summary-tables/
 Read more [db-design.md](../data/db-design.md)
 - BaseEntity (id, createdBy, createdAt, modifiedBy, modifiedAt)
 - Use Enum (Enumerated.STRING)
-
